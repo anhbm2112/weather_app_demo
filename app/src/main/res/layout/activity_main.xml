@@ -6,15 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.screen.main.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/txt1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Hello World !!!! -&#45;&#45;"-->
+<!--     -->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/id1" />-->
 
-    <include  layout="@layout/progress_dialog" android:id="@+id/id" />
+<!--    <ImageView-->
+<!--        android:id="@+id/id1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:background="@drawable/test"-->
+<!--        />-->
+
+<!--    <include-->
+<!--        android:id="@+id/id"-->
+<!--        layout="@layout/progress_dialog"-->
+<!--        tools:layout_editor_absoluteX="83dp"-->
+<!--        tools:layout_editor_absoluteY="162dp" />162dp-->
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
