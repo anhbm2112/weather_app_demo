@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Weather App</string>
+
+    <!--Toolbar menus-->
+    <string name="clear">Clear</string>
+    <string name="cut">Cut</string>
+    <string name="copy">Copy</string>
+    <string name="paste">Paste</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+
+    <!--App Message-->
+    <string name="api_retry_error">Please retry!</string>
+    <string name="api_default_error">Something wrong happened!</string>
+    <string name="some_error">Some Error Occurred!</string>
+    <string name="connection_error">Internet connection lost!</string>
+
+    <string name="error.dialog.positive">OK</string>
+    <string name="error.message.title.oops">Oops...</string>
+    <string name="error.message.api">Error while processing your request</string>
+    <string name="error.message.no.internet">No Internet Connection</string>
+    <string name="text.main.no.authors">No Authors</string>
+    <string name="message.loading">Loading...</string>
+
+    <string name="activity_about">About</string>
+
+</resources>

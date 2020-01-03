@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bone_white"
+    tools:context=".presentation.ui.screen.about.AboutActivity">
+
+    <TextView
+        android:id="@+id/textview_about_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="\@nandawperdana"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/warm_grey"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textview_about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/layout_about_version"
+        android:layout_alignStart="@+id/layout_about_version"
+        android:layout_below="@+id/textview_about_username"
+        android:layout_marginTop="18dp"
+        android:text="A simple clean architecture framework for Android"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/warm_grey"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- version title -->
+    <LinearLayout
+        android:id="@+id/layout_about_version"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_below="@+id/textview_about"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="14dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_about_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:letterSpacing="0"
+            android:text="Version"
+            android:textAllCaps="true"
+            android:textColor="@color/bone_white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- github title -->
+    <LinearLayout
+        android:id="@+id/layout_about_github"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_below="@+id/layout_about_version"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="14dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:letterSpacing="0"
+            android:text="View on Github"
+            android:textAllCaps="true"
+            android:textColor="@color/bone_white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>
