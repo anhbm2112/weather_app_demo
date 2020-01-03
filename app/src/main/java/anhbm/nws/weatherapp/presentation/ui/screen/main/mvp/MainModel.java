@@ -6,14 +6,15 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-import anhbm.nws.weatherapp.api.weather.Weather;
+import anhbm.nws.weatherapp.api.weather.example.Weather;
+import anhbm.nws.weatherapp.api.weather.example.WeatherForecasts;
 import anhbm.nws.weatherapp.domains.model.WeatherDomain;
 import anhbm.nws.weatherapp.presentation.presenters.base.BaseViewModel;
 
 
 public class MainModel extends BaseViewModel {
     public WeatherDomain peopleDomain;
-    private List<Weather> listPeople;
+    private List<WeatherForecasts> listPeople;
 
     public MainModel(Context context) {
         super(context);
@@ -21,11 +22,11 @@ public class MainModel extends BaseViewModel {
         this.listPeople = new ArrayList<>();
     }
 
-    public List<Weather> getListPeople() {
+    public List<WeatherForecasts> getListPeople() {
         return listPeople;
     }
 
-    public void setListPeople(List<Weather> listPeople) {
+    public void setListPeople(List<WeatherForecasts> listPeople) {
         this.listPeople = listPeople;
     }
 
