@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Weather App</string>
 
+    <string name="sizeitem">40dp</string>
     <!--Toolbar menus-->
     <string name="clear">Clear</string>
     <string name="cut">Cut</string>
@@ -21,7 +22,8 @@
     <string name="error.message.no.internet">No Internet Connection</string>
     <string name="text.main.no.authors">No Authors</string>
     <string name="message.loading">Loading...</string>
-
     <string name="activity_about">About</string>
+
+
 
 </resources>

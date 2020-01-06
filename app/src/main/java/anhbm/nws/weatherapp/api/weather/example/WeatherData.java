@@ -4,7 +4,7 @@ package anhbm.nws.weatherapp.api.weather.example;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Weather {
+public class WeatherData {
 
     @SerializedName("status")
     @Expose

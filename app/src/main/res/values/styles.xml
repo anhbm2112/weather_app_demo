@@ -6,6 +6,48 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
+    <style name="texttitle">
+        <item name="android:textSize">20dp</item>
+        <item name="android:text">asdasdasdsad</item>
+    </style>
+
+    <style name="bottomnavigation" parent="Widget.Design.BottomNavigationView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="itemIconSize">30dp</item>
+    </style>
+
+    <style name="toolbarMain">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+    </style>
+
+    <style name="recy">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">150dp</item>
+    </style>
+
+    <style name="textviewcity">
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:text">Thanh pho</item>
+        <item name="android:textSize">40dp</item>
+    </style>
+
+    <style name="textTemperature">
+        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:text">Nhiet Do</item>
+        <item name="android:textSize">40dp</item>
+    </style>
+
+    <style name="cardViewStyle" parent="Base.CardView">
+        <item name="android:layout_height">240dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:alpha">0.2</item>
+        <item name="cardCornerRadius">5dp</item>
+
+    </style>
 </resources>

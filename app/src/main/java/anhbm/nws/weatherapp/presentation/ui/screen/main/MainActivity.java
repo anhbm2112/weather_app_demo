@@ -4,8 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import anhbm.nws.weatherapp.R;
+import anhbm.nws.weatherapp.domains.interactors.WeatherInteractor;
 import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
 import anhbm.nws.weatherapp.presentation.ui.screen.BaseActivity;
 import anhbm.nws.weatherapp.presentation.ui.screen.about.AboutActivity;
@@ -13,7 +18,7 @@ import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainModel;
 import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainPresenterImpl;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements MainPresenter.MainView {
+public class MainActivity extends BaseActivity implements MainPresenter.MainView{
     private MainPresenter presenter;
     private MainModel model;
 
@@ -35,6 +40,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
     }
 
     private void initLayout() {
+
     }
 
     @Override
@@ -70,6 +76,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
 
     @Override
     public void showProgress(boolean flag) {
+
     }
 
     @Override
@@ -83,6 +90,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
                 break;
             case SHOW_WEATHER:
                 showPeople();
+
                 break;
             case OPEN_ABOUT:
                 openActivityAbout();
@@ -103,11 +111,15 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
      */
     private void showPeople() {
         // show the data
-        presenter.presentState(ViewState.IDLE);
+         presenter.presentState(ViewState.IDLE);
+
+
     }
 
     private void openActivityAbout() {
         Intent intent = new Intent(MainActivity.this, AboutActivity.class);
         startActivity(intent);
     }
+
+
 }

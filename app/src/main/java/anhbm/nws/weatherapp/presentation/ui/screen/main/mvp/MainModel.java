@@ -6,7 +6,6 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-import anhbm.nws.weatherapp.api.weather.example.Weather;
 import anhbm.nws.weatherapp.api.weather.example.WeatherForecasts;
 import anhbm.nws.weatherapp.domains.model.WeatherDomain;
 import anhbm.nws.weatherapp.presentation.presenters.base.BaseViewModel;
@@ -32,7 +31,7 @@ public class MainModel extends BaseViewModel {
 
     public void setListPeople() {
         getListPeople().clear();
-//        for (Weather data : peopleDomain.getModel().getWeathers()) {
+//        for (WeatherData data : peopleDomain.getModel().getWeathers()) {
 //            getListPeople().add(data);
 //        }
     }

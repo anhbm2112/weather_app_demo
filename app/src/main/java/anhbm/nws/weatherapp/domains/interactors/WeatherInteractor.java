@@ -1,5 +1,8 @@
 package anhbm.nws.weatherapp.domains.interactors;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.APICallManager;
 import anhbm.nws.weatherapp.api.weather.WeatherResponse;
@@ -11,6 +14,7 @@ import retrofit2.Response;
 
 public class WeatherInteractor implements Interactor {
     APICallListener listener;
+    Context context;
 
     public WeatherInteractor(APICallListener listener) {
         this.listener = listener;
