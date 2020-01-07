@@ -35,6 +35,9 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
     }
 
     private void initLayout() {
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+//        recyclerView.setAdapter(new PeopleAdapter(doRetrieveModel().getListPeople(), MainActivity.this));
     }
 
     @Override
@@ -103,6 +106,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
      */
     private void showPeople() {
         // show the data
+        //recyclerView.getAdapter().notifyDataSetChanged();
         presenter.presentState(ViewState.IDLE);
     }
 
