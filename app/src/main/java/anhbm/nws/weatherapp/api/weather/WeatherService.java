@@ -5,7 +5,7 @@ import retrofit2.http.GET;
 
 
 public interface WeatherService {
-    @GET("/weather.json")
+    @GET("nearest_city")
     Call<WeatherResponse>
     getPeople();
 }

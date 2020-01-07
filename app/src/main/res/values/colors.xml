@@ -42,4 +42,8 @@
     <color name="bone_white">#fafafa</color>
     <color name="pink">#FC4482</color>
     <color name="dark">#363238</color>
+
+    <!---background-->
+    <color name="BottomNavigationView">#33CCFF</color>
+    <color name="background">#66CCFF</color>
 </resources>

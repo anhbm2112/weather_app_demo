@@ -84,6 +84,7 @@ public class MainPresenterImpl implements MainPresenter, APICallListener {
 
     @Override
     public void onAPICallSucceed(Enums.APIRoute route, List<BaseResponse> responseModels) {
+
     }
 
     @Override
