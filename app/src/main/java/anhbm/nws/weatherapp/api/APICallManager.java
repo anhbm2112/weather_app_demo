@@ -4,6 +4,7 @@ import com.androidnetworking.interceptors.HttpLoggingInterceptor;
 
 import anhbm.nws.weatherapp.api.weather.WeatherResponse;
 import anhbm.nws.weatherapp.api.weather.WeatherService;
+import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
 import anhbm.nws.weatherapp.utils.Constants;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -56,6 +57,9 @@ public class APICallManager {
         return retrofit.create(serviceClass);
     }
 
+
+
+
     public class PeopleManager {
         WeatherService service;
 
@@ -63,7 +67,7 @@ public class APICallManager {
             this.service = getService(WeatherService.class);
         }
 
-        public Call<WeatherResponse> getContacts() {
+        public Call<Weather> getContacts() {
             return service.getPeople();
         }
     }

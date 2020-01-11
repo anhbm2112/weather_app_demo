@@ -1,10 +1,10 @@
 
-package anhbm.nws.weatherapp.api.weather.example;
+package anhbm.nws.weatherapp.api.weather.modelWeatherAPI;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class WeatherForecasts {
+public class Weather_current {
 
     @SerializedName("ts")
     @Expose

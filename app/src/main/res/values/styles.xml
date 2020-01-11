@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,6 +12,8 @@
     <style name="texttitle">
         <item name="android:textSize">20dp</item>
         <item name="android:text">asdasdasdsad</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:textColor">@color/bg_color</item>
     </style>
 
     <style name="bottomnavigation" parent="Widget.Design.BottomNavigationView">
@@ -37,7 +39,7 @@
     </style>
 
     <style name="textTemperature">
-        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:text">Nhiet Do</item>
         <item name="android:textSize">40dp</item>
@@ -46,7 +48,7 @@
     <style name="cardViewStyle" parent="Base.CardView">
         <item name="android:layout_height">240dp</item>
         <item name="android:layout_margin">5dp</item>
-        <item name="android:alpha">0.2</item>
+        <item name="android:alpha">0.3</item>
         <item name="cardCornerRadius">5dp</item>
 
     </style>

@@ -1,13 +1,18 @@
 package anhbm.nws.weatherapp.presentation.presenters;
 
 
+import anhbm.nws.weatherapp.api.weather.WeatherResponse;
 import anhbm.nws.weatherapp.presentation.presenters.base.BasePresenter;
 import anhbm.nws.weatherapp.presentation.presenters.base.BaseView;
 import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainModel;
 
 public interface MainPresenter extends BasePresenter {
 
+
+
     interface MainView extends BaseView {
+
+
         /**
          * This enum is used for determine the current state of this screen
          */
@@ -30,6 +35,11 @@ public interface MainPresenter extends BasePresenter {
          * @return
          */
         MainModel doRetrieveModel();
+        void thanhpho(String s);
+        void nhietdo(String integer);
+        void ngay(String ngay);
+        void usAQI(String integer);
+
     }
 
     /**
@@ -38,4 +48,6 @@ public interface MainPresenter extends BasePresenter {
      * @param state
      */
     void presentState(MainView.ViewState state);
+
+
 }

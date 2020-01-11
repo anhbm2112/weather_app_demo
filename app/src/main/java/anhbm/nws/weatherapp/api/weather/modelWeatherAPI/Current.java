@@ -1,5 +1,5 @@
 
-package anhbm.nws.weatherapp.api.weather.example;
+package anhbm.nws.weatherapp.api.weather.modelWeatherAPI;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -8,17 +8,17 @@ public class Current {
 
     @SerializedName("weather")
     @Expose
-    private WeatherForecasts weather;
+    private Weather_current WeatherCurrent;
     @SerializedName("pollution")
     @Expose
     private Pollution pollution;
 
-    public WeatherForecasts getWeather() {
-        return weather;
+    public Weather_current getWeatherCurrent() {
+        return WeatherCurrent;
     }
 
-    public void setWeather(WeatherForecasts weather) {
-        this.weather = weather;
+    public void setWeatherCurrent(Weather_current weather) {
+        this.WeatherCurrent = weather;
     }
 
     public Pollution getPollution() {

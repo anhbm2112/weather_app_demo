@@ -1,5 +1,5 @@
 
-package anhbm.nws.weatherapp.api.weather.example;
+package anhbm.nws.weatherapp.api.weather.modelWeatherAPI;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

@@ -5,15 +5,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
-import anhbm.nws.weatherapp.api.weather.example.WeatherForecasts;
+
+import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
 import butterknife.ButterKnife;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
-    private List<WeatherForecasts> listPeople;
+    private List<Weather> listPeople;
     private Context mContext;
 
-    public WeatherAdapter(List<WeatherForecasts> listPeople, Context mContext) {
+    public WeatherAdapter(List<Weather> listPeople, Context mContext) {
         this.listPeople = listPeople;
         this.mContext = mContext;
     }
@@ -45,7 +47,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
             ButterKnife.bind(this, view);
         }
 
-        void bindView(Context context, WeatherForecasts data) {
+        void bindView(Context context, Weather data) {
         }
     }
 }
