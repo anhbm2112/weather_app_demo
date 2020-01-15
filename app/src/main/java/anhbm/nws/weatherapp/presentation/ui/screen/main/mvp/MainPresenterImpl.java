@@ -41,7 +41,7 @@ public class MainPresenterImpl implements APICallListener {
         main.thanhpho(thanhpho);
         main.ngay(ngaygio);
         main.usAQI(USaqi);
-        main.USmain(USmainpr);
+        //main.USmain(USmainpr);
     }
 
     @Override

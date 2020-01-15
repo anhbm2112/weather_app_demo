@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.application.GPSTracker;
+import anhbm.nws.weatherapp.presentation.presenters.AboutPresenter;
 import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
 import anhbm.nws.weatherapp.presentation.ui.screen.BaseActivity;
 import anhbm.nws.weatherapp.presentation.ui.screen.about.AboutActivity;
@@ -19,10 +20,10 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainPresenter {
     private MainPresenterImpl presenter;
+
     private MainModel model;
     private TextView tvThanhpho, tvNhietdo, tvNgay, tvUsAQI, tvUSmain, tvCNaqi, tvCNmain;
     private RecyclerView recyGio, recyNgay;
-
 
 
     public MainActivity(MainPresenterImpl presenter) {
@@ -117,18 +118,26 @@ public class MainActivity extends BaseActivity implements MainPresenter {
         tvUsAQI.setText(usAQI);
     }
 
-    @Override
-    public void USmain(String USmain) {
+    /**
+     * show WeatherResponse to UI
+     */
+    private void showPeople() {
+        // show the data
+        //recyclerView.getAdapter().notifyDataSetChanged();
+//        presenter.presentState(AboutPresenter.AboutView.ViewState.IDLE);
 
-    }
+//    @Override
+//    public void USmain(String USmain) {
+//
+//    }
 
-    @Override
-    public void ToastGPS() {
-//        mainPresenter.showToastGPS();
-    }
+//    @Override
+//    public void ToastGPS() {
+////        mainPresenter.showToastGPS();
+//    }
 
 
-    //    @Override
+        //    @Override
 //    protected void onResume() {
 //        super.onResume();
 //        presenter.resume();
@@ -151,7 +160,7 @@ public class MainActivity extends BaseActivity implements MainPresenter {
 //        return true;
 //    }
 
-    //    @Override
+        //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        switch (item.getItemId()) {
 //            default:
@@ -230,4 +239,5 @@ public class MainActivity extends BaseActivity implements MainPresenter {
 //
 //
 //    }
+    }
 }
