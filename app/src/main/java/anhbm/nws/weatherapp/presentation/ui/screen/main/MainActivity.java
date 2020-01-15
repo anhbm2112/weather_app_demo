@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity implements MainPresenter.MainView {
     private MainPresenter presenter;
     private MainModel model;
-    private TextView tvThanhpho, tvNhietdo, tvNgay, tvUsAQI;
+    private TextView tvThanhpho, tvNhietdo, tvNgay, tvUsAQI, tvUSmain, tvCNaqi, tvCNmain;
     private RecyclerView recyGio, recyNgay;
     MainPresenterImpl mainPresenter;
 
@@ -28,12 +28,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvThanhpho = findViewById(R.id.tv_city);
-        tvNhietdo = findViewById(R.id.tv_temperature);
-        tvNgay = findViewById(R.id.tv_title);
-        recyGio = findViewById(R.id.recyclerView);
-        tvUsAQI = findViewById(R.id.tv_pollution_AQI);
-//        recyNgay = findViewById(R.id.cardview_recyclerview);
+
 
         init();
         presenter.presentState(ViewState.LOAD_WEATHER);
@@ -48,7 +43,15 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
     }
 
     private void initLayout() {
-
+        tvThanhpho = findViewById(R.id.tv_city);
+        tvNhietdo = findViewById(R.id.tv_temperature);
+        tvNgay = findViewById(R.id.tv_title);
+        recyGio = findViewById(R.id.recyclerView);
+        tvUsAQI = findViewById(R.id.tv_pollution_AQI);
+        //        recyNgay = findViewById(R.id.cardview_recyclerview);
+        tvUSmain = findViewById(R.id.tv_pollution2);
+        tvCNaqi = findViewById(R.id.tv_pollution3);
+        tvCNmain = findViewById(R.id.tv_pollution4);
     }
 
     @Override
@@ -122,19 +125,33 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
 
     @Override
     public void nhietdo(String nhietdo) {
-        tvNhietdo.setText(nhietdo);
+        tvNhietdo.setText(nhietdo+"ºC");
     }
 
     @Override
     public void ngay(String ngay) {
         tvNgay.setText(ngay);
-
         tvNgay.setPaintFlags(tvNgay.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
 
     @Override
     public void usAQI(String integer) {
         tvUsAQI.setText(integer);
+    }
+
+    @Override
+    public void USmain(String USmain) {
+        tvUSmain.setText(USmain);
+    }
+
+    @Override
+    public void CNaqi(String CNaqi) {
+        tvCNaqi.setText(CNaqi);
+    }
+
+    @Override
+    public void CNmain(String CNmain) {
+        tvCNmain.setText(CNmain);
     }
 
 

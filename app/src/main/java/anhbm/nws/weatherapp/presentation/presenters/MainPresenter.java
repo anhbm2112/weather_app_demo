@@ -9,7 +9,6 @@ import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainModel;
 public interface MainPresenter extends BasePresenter {
 
 
-
     interface MainView extends BaseView {
 
 
@@ -35,10 +34,20 @@ public interface MainPresenter extends BasePresenter {
          * @return
          */
         MainModel doRetrieveModel();
+
         void thanhpho(String s);
+
         void nhietdo(String integer);
+
         void ngay(String ngay);
-        void usAQI(String integer);
+
+        void usAQI(String usAQI);
+
+        void USmain(String USmain);
+
+        void CNaqi(String CNaqi);
+
+        void CNmain(String CNmain);
 
     }
 

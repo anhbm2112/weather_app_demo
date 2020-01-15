@@ -123,13 +123,21 @@ public class MainPresenterImpl implements MainPresenter, APICallListener {
     @Override
     public void onAPICallSucceed(Enums.APIRoute route, Weather weather) {
         String thanhpho = weather.getData().getState();
-        String nhietdo = String.valueOf(weather.getData().getCurrent().getWeatherCurrent().getTp() + "ºC");
+        String nhietdo = String.valueOf(weather.getData().getCurrent().getWeatherCurrent().getTp());
         String ngaygio = weather.getData().getCurrent().getWeatherCurrent().getTs();
         String USaqi = weather.getData().getCurrent().getPollution().getAqius().toString();
+        String USmainpr = weather.getData().getCurrent().getPollution().getMainus();
+        String CNaqipr = weather.getData().getCurrent().getPollution().getAqicn().toString();
+        String CNmainpr = weather.getData().getCurrent().getPollution().getMaincn();
         view.nhietdo(nhietdo);
         view.thanhpho(thanhpho);
         view.ngay(ngaygio);
         view.usAQI(USaqi);
+        view.USmain(USmainpr);
+        view.CNaqi(CNaqipr);
+        view.CNmain(CNmainpr);
+
+
 //        try {
 //            JSONObject jsonObject = new JSONObject(String.valueOf(weather.getData().getCurrent().getWeatherCurrent()));
 //            String ngay = jsonObject.getString(ngaygio);

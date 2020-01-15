@@ -77,6 +77,19 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="30dp" />
+            <TextView
+                android:id="@+id/tv_pollution3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+            <TextView
+                android:id="@+id/tv_pollution4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+
         </LinearLayout>
 
         <!--        <androidx.recyclerview.widget.RecyclerView-->
@@ -89,6 +102,6 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         style="@style/bottomnavigation"
         android:layout_alignParentBottom="true"
-        app:itemIconTint="@color/cyan_light"
+        app:itemIconTint="@color/white"
         app:menu="@menu/menu_main" />
 </RelativeLayout>
