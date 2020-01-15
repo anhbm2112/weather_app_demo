@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.0"
     defaultConfig {
         applicationId "anhbm.nws.weatherapp"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -71,6 +71,7 @@ dependencies {
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
     implementation 'com.jakewharton:butterknife:8.8.1'
     //annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
 }
 
 configurations.all {

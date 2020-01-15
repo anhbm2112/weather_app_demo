@@ -90,6 +90,12 @@ public class AboutActivity extends AppCompatActivity implements AboutPresenter.A
     }
 
     @Override
+    public void showToastGPS() {
+
+    }
+
+
+    @Override
     public void showProgress(boolean flag) {
 
     }

@@ -1,15 +1,15 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.main;
 
 import android.content.Intent;
-import android.graphics.Paint;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import anhbm.nws.weatherapp.R;
+import anhbm.nws.weatherapp.application.GPSTracker;
 import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
 import anhbm.nws.weatherapp.presentation.ui.screen.BaseActivity;
 import anhbm.nws.weatherapp.presentation.ui.screen.about.AboutActivity;
@@ -17,24 +17,34 @@ import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainModel;
 import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainPresenterImpl;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements MainPresenter.MainView {
-    private MainPresenter presenter;
+public class MainActivity extends BaseActivity implements MainPresenter {
+    private MainPresenterImpl presenter;
     private MainModel model;
     private TextView tvThanhpho, tvNhietdo, tvNgay, tvUsAQI, tvUSmain, tvCNaqi, tvCNmain;
     private RecyclerView recyGio, recyNgay;
-    MainPresenterImpl mainPresenter;
+
+
+
+    public MainActivity(MainPresenterImpl presenter) {
+        this.presenter = presenter;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        showToastGPS();
         init();
-        presenter.presentState(ViewState.LOAD_WEATHER);
-        presenter.presentState(ViewState.SHOW_WEATHER);
+        GPSTracker gpsTracker = new GPSTracker(getApplicationContext());
+        String sd = String.valueOf(gpsTracker.getLatitude());
+        String sa = String.valueOf(gpsTracker.getLongtitude());
+        tvCNaqi.setText(sd);
+        tvCNmain.setText(sa);
+
     }
 
+    //        presenter.presentState(ViewState.LOAD_WEATHER);
+//        presenter.presentState(ViewState.SHOW_WEATHER);
     private void init() {
         ButterKnife.bind(this);
         presenter = new MainPresenterImpl(this);
@@ -54,23 +64,87 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
         tvCNmain = findViewById(R.id.tv_pollution4);
     }
 
+
+    private void openActivityAbout() {
+        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+        startActivity(intent);
+    }
+
+
     @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.resume();
+    public void resume() {
+
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        presenter.pause();
+    public void pause() {
+
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        presenter.destroy();
+    public void stop() {
+
     }
+
+    @Override
+    public void destroy() {
+
+    }
+
+    @Override
+    public void onError(String message) {
+
+    }
+
+
+    @Override
+    public void thanhpho(String s) {
+        tvThanhpho.setText(s);
+    }
+
+    @Override
+    public void nhietdo(String integer) {
+        tvNhietdo.setText(integer + "ºC");
+    }
+
+    @Override
+    public void ngay(String ngay) {
+        tvNgay.setText(ngay);
+    }
+
+    @Override
+    public void usAQI(String usAQI) {
+        tvUsAQI.setText(usAQI);
+    }
+
+    @Override
+    public void USmain(String USmain) {
+
+    }
+
+    @Override
+    public void ToastGPS() {
+//        mainPresenter.showToastGPS();
+    }
+
+
+    //    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        presenter.resume();
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        presenter.pause();
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        presenter.destroy();
+//    }
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,91 +158,76 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
 //                return super.onOptionsItemSelected(item);
 //        }
 //    }
-    @Override
-    public void showProgress(boolean flag) {
 
-    }
+//    @Override
+//    public void showProgress(boolean flag) {
+//
+//    }
 
-    @Override
-    public void showState(MainPresenter.MainView.ViewState viewState) {
-        switch (viewState) {
-            case IDLE:
-                showProgress(false);
-                break;
-            case LOADING:
-                showProgress(true);
-                break;
-            case SHOW_WEATHER:
+//    @Override
+//    public void showState(MainPresenter.MainView.ViewState viewState) {
+//        switch (viewState) {
+//            case IDLE:
+//                showProgress(false);
+//                break;
+//            case LOADING:
+//                showProgress(true);
+//                break;
+//            case SHOW_WEATHER:
+//
+//                showPeople();
+//                break;
+//            case OPEN_ABOUT:
+//                openActivityAbout();
+//                break;
+//            case ERROR:
+////                showToast(doRetrieveModel().getErrorMessage());
+//                break;
+//        }
+//    }
 
-                showPeople();
-                break;
-            case OPEN_ABOUT:
-                openActivityAbout();
-                break;
-            case ERROR:
-                showToast(doRetrieveModel().getErrorMessage());
-                break;
-        }
-    }
+//    @Override
+//    public MainModel doRetrieveModel() {
+//        return this.model;
+//
+//    }
 
-    @Override
-    public MainModel doRetrieveModel() {
-        return this.model;
+//    @Override
+//    public void thanhpho(String s) {
+////        Toast.makeText(MainActivity.this,s,Toast.LENGTH_SHORT).show();
+//        tvThanhpho.setText(s);
+//    }
 
-    }
-
-    @Override
-    public void thanhpho(String s) {
-//        Toast.makeText(MainActivity.this,s,Toast.LENGTH_SHORT).show();
-        tvThanhpho.setText(s);
-    }
-
-    @Override
-    public void nhietdo(String nhietdo) {
-        tvNhietdo.setText(nhietdo+"ºC");
-    }
-
-    @Override
-    public void ngay(String ngay) {
-        tvNgay.setText(ngay);
-        tvNgay.setPaintFlags(tvNgay.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-    }
-
-    @Override
-    public void usAQI(String integer) {
-        tvUsAQI.setText(integer);
-    }
-
-    @Override
-    public void USmain(String USmain) {
-        tvUSmain.setText(USmain);
-    }
-
-    @Override
-    public void CNaqi(String CNaqi) {
-        tvCNaqi.setText(CNaqi);
-    }
-
-    @Override
-    public void CNmain(String CNmain) {
-        tvCNmain.setText(CNmain);
-    }
+//    @Override
+//    public void nhietdo(String nhietdo) {
+//        tvNhietdo.setText(nhietdo+"ºC");
+//    }
+//
+//    @Override
+//    public void ngay(String ngay) {
+//        tvNgay.setText(ngay);
+//
+//        tvNgay.setPaintFlags(tvNgay.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//    }
+//
+//    @Override
+//    public void usAQI(String integer) {
+//        tvUsAQI.setText(integer);
+//    }
+//
+//    @Override
+//    public void USmain(String USmain) {
+//        tvUSmain.setText(USmain);
+//    }
 
 
-    /**
-     * show WeatherResponse to UI
-     */
-    private void showPeople() {
-        // show the data
-        presenter.presentState(ViewState.IDLE);
-
-
-    }
-
-    private void openActivityAbout() {
-        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-        startActivity(intent);
-    }
-
-
+//    /**
+//     * show WeatherResponse to UI
+//     */
+//    private void showPeople() {
+//        // show the data
+//        presenter.presentState(ViewState.IDLE);
+//
+//
+//    }
 }

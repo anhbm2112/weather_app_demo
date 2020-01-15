@@ -18,9 +18,9 @@ public class WeatherInteractor {
     public WeatherInteractor(APICallListener listener) {
         this.listener = listener;
     }
-    public void callAPIGetContacts() {
+    public void callAPIGetContacts(double lat, double lon) {
         final Enums.APIRoute route = Enums.APIRoute.GET_WEATHER;
-        Call<Weather> call = APICallManager.getInstance().peopleManager.getContacts();
+        Call<Weather> call = APICallManager.getInstance().peopleManager.getContacts(lat , lon);
         call.enqueue(new Callback<Weather>() {
             @Override
             public void onResponse(Call<Weather> call, Response<Weather> response) {

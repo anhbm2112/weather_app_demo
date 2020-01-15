@@ -1,7 +1,7 @@
 package anhbm.nws.weatherapp.presentation.presenters.base;
 
 public interface BaseView {
-
+void showToastGPS();
     /**
      * This is a general method used for showing some kind of progress during a background task. For example, this
      * method should show a progress bar and/or disable buttons before some background work starts.
@@ -24,4 +24,5 @@ public interface BaseView {
      * @param message
      */
     void showError(String title, String message);
+
 }
