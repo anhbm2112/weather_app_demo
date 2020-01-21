@@ -14,9 +14,21 @@ public interface MainPresenter extends BasePresenter {
 
     void ngay(String ngay);
 
-    void usAQI(String usAQI);
+    void usAQI(Integer usAQI);
 
-   // void USmain(String USmain);
+    void AQI301();
+
+    void AQI201();
+
+    void AQI151();
+
+    void AQI101();
+
+    void AQI51();
+
+    void AQI00();
+
+    // void USmain(String USmain);
     //void ToastGPS();
 
 //    interface MainView extends BaseView {

@@ -1,11 +1,9 @@
 package anhbm.nws.weatherapp.application;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -17,43 +15,27 @@ import androidx.annotation.Nullable;
 
 public class GPSTracker extends Service implements LocationListener {
     protected LocationManager locationManager;
-    private Context mcontext;
+    Context mcontext;
     private Location location;
     // flag for GPS status
     boolean isGPSEnabled = false;
-
     // flag for network status
     boolean isNetworkEnabled = false;
-
     // flag for GPS status
     boolean canGetLocation = false;
     double latitude; // latitude
     double longitude; // longitude
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
-
     // The minimum time between updates in milliseconds
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
+
 
     public GPSTracker(Context context) {
         this.mcontext = context;
         getToaDo();
     }
-
     @SuppressLint("MissingPermission")
     public Location getToaDo() {
-//        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-//        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            // TODO: Consider calling
-//            //    Activity#requestPermissions
-//            // here to request the missing permissions, and then overriding
-//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//            //                                          int[] grantResults)
-//            // to handle the case where the user grants the permission. See the documentation
-//            // for Activity#requestPermissions for more details.
-//            return;
-//
-//        }
-//        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, this);
         try {
             locationManager = (LocationManager) mcontext
                     .getSystemService(LOCATION_SERVICE);
@@ -118,10 +100,8 @@ public class GPSTracker extends Service implements LocationListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return location;
     }
-
     public double getLatitude() {
         if (location != null) {
             latitude = location.getLatitude();
@@ -129,7 +109,6 @@ public class GPSTracker extends Service implements LocationListener {
         // return latitude
         return latitude;
     }
-
     public double getLongtitude() {
         if (location != null) {
             longitude = location.getLongitude();
@@ -137,7 +116,6 @@ public class GPSTracker extends Service implements LocationListener {
         // return Longitude
         return longitude;
     }
-
     @Override
     public void onLocationChanged(Location location) {
 

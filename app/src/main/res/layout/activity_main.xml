@@ -45,58 +45,42 @@
         style="@style/recy"
         android:layout_below="@id/tv_title" />
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
+        android:id="@+id/chiso_onhiem"
         style="@style/cardViewStyle"
         android:layout_width="match_parent"
         android:layout_below="@+id/recyclerView"
-        android:background="@color/blue_black_dark"
-        android:backgroundTint="@color/blue_black_dark">
+        android:background="@color/white"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Chỉ Số Ô Nhiễm "
-                android:textColor="@color/white"
-                android:textSize="20dp" />
+        <TextView
+            android:id="@+id/tieude"
+            style="@style/TieuDeONHIEM" />
 
-            <TextView
-                android:id="@+id/tv_pollution_AQI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="30dp" />
+        <TextView
+            android:id="@+id/tv_pollution_AQI"
+            style="@style/tvStyleONHIEM_USAQI"
+            android:layout_width="match_parent" />
 
-            <TextView
-                android:id="@+id/tv_pollution2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="30dp" />
-            <TextView
-                android:id="@+id/tv_pollution3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="30dp" />
-            <TextView
-                android:id="@+id/tv_pollution4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="30dp" />
+        <TextView
+            android:id="@+id/tv_pollution2"
+            style="@style/tvStyleONHIEM" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_pollution3"
+            style="@style/tvStyleONHIEM" />
+
+        <TextView
+            android:id="@+id/tv_pollution4"
+            style="@style/tvStyleONHIEM" />
+
 
         <!--        <androidx.recyclerview.widget.RecyclerView-->
         <!--            android:id="@+id/cardview_recyclerview"-->
         <!--            android:layout_width="match_parent"-->
         <!--            android:layout_height="wrap_content" />-->
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

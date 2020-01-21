@@ -4,8 +4,8 @@ import android.util.Log;
 
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.APICallManager;
-import anhbm.nws.weatherapp.api.weather.WeatherResponse;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
+import anhbm.nws.weatherapp.application.GPSTracker;
 import anhbm.nws.weatherapp.utils.Enums;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,13 +14,12 @@ import retrofit2.Response;
 
 public class WeatherInteractor {
     APICallListener listener;
-
     public WeatherInteractor(APICallListener listener) {
         this.listener = listener;
     }
-    public void callAPIGetContacts(double lat, double lon) {
+    public void callAPIGetContacts(GPSTracker gpsTracker) {
         final Enums.APIRoute route = Enums.APIRoute.GET_WEATHER;
-        Call<Weather> call = APICallManager.getInstance().peopleManager.getContacts(lat , lon);
+        Call<Weather> call = APICallManager.getInstance().peopleManager.getContacts(gpsTracker);
         call.enqueue(new Callback<Weather>() {
             @Override
             public void onResponse(Call<Weather> call, Response<Weather> response) {

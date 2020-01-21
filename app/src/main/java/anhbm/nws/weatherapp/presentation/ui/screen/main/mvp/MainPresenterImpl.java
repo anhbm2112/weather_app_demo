@@ -2,10 +2,14 @@ package anhbm.nws.weatherapp.presentation.ui.screen.main.mvp;
 
 
 import android.content.Context;
+import android.graphics.Color;
+
 import java.util.List;
+
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.BaseResponse;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
+import anhbm.nws.weatherapp.application.GPSTracker;
 import anhbm.nws.weatherapp.domains.interactors.WeatherInteractor;
 import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
 import anhbm.nws.weatherapp.utils.Enums;
@@ -15,18 +19,13 @@ public class MainPresenterImpl implements APICallListener {
     //    private MainView view;
     WeatherInteractor peopleInteractor;
     private MainPresenter main;
+    Integer USaqi;
 
-    Context context;
-
-    public MainPresenterImpl(MainPresenter main) {
+    public MainPresenterImpl(MainPresenter main, GPSTracker gpsTracker) {
         this.main = main;
-        double lat = 1.0;
-        double lon = 1.0;
         this.peopleInteractor = new WeatherInteractor(this);
-        peopleInteractor.callAPIGetContacts(lat, lon);
+        peopleInteractor.callAPIGetContacts(gpsTracker);
     }
-
-
 
 
     @Override
@@ -34,14 +33,29 @@ public class MainPresenterImpl implements APICallListener {
         String thanhpho = weather.getData().getState();
         String nhietdo = String.valueOf(weather.getData().getCurrent().getWeatherCurrent().getTp());
         String ngaygio = weather.getData().getCurrent().getWeatherCurrent().getTs();
-        String USaqi = weather.getData().getCurrent().getPollution().getAqius().toString();
+        USaqi = weather.getData().getCurrent().getPollution().getAqius();
         String USmainpr = weather.getData().getCurrent().getPollution().getMainus();
-
         main.nhietdo(nhietdo);
         main.thanhpho(thanhpho);
         main.ngay(ngaygio);
         main.usAQI(USaqi);
         //main.USmain(USmainpr);
+    }
+
+    public void MucDoONhiem() {
+        if (USaqi >= 301) {
+            main.AQI301();
+        } else if (USaqi >= 201) {
+            main.AQI201();
+        } else if (USaqi >= 151) {
+            main.AQI151();
+        } else if (USaqi >= 101) {
+            main.AQI101();
+        } else if (USaqi >= 51) {
+            main.AQI51();
+        } else {
+            main.AQI00();
+        }
     }
 
     @Override
