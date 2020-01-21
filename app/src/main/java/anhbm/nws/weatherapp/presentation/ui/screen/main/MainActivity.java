@@ -3,14 +3,20 @@ package anhbm.nws.weatherapp.presentation.ui.screen.main;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 import anhbm.nws.weatherapp.R;
+import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.application.GPSTracker;
 import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
+import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherAdapter;
 import anhbm.nws.weatherapp.presentation.ui.screen.BaseActivity;
 import anhbm.nws.weatherapp.presentation.ui.screen.about.AboutActivity;
 import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainModel;
@@ -21,10 +27,11 @@ public class MainActivity extends BaseActivity implements MainPresenter {
     private MainPresenterImpl presenter;
     private MainModel model;
     private TextView tvThanhpho, tvNhietdo, tvNgay, tvUsAQI, tvUSmain, tvonhiem, tvCNmain, tvTieudeOnhiem;
-    private RecyclerView recyGio, recyNgay;
+    private RecyclerView recyNgay;
     private LinearLayout linearLayout;
     GPSTracker gpsTracker;
-
+    private WeatherAdapter weatherListDayAdapter;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +40,9 @@ public class MainActivity extends BaseActivity implements MainPresenter {
         showToastGPS();
         gpsTracker = new GPSTracker(getApplicationContext());
         init();
-//        String sd = String.valueOf(gpsTracker.getLatitude());
-//        String sa = String.valueOf(gpsTracker.getLongtitude());
-//        tvCNaqi.setText(sd);
-//        tvCNmain.setText(sa);
+        LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyNgay.setLayoutManager(horizontalLayoutManagaer);
+
     }
 
     //        presenter.presentState(ViewState.LOAD_WEATHER);
@@ -44,7 +50,6 @@ public class MainActivity extends BaseActivity implements MainPresenter {
     private void init() {
         ButterKnife.bind(this);
         presenter = new MainPresenterImpl(this, gpsTracker);
-
         model = new MainModel(this);
         initLayout();
     }
@@ -53,19 +58,25 @@ public class MainActivity extends BaseActivity implements MainPresenter {
         tvThanhpho = findViewById(R.id.tv_city);
         tvNhietdo = findViewById(R.id.tv_temperature);
         tvNgay = findViewById(R.id.tv_title);
-        recyGio = findViewById(R.id.recyclerView);
+        recyNgay = findViewById(R.id.recyclerView);
         tvUsAQI = findViewById(R.id.tv_pollution_AQI);
         //        recyNgay = findViewById(R.id.cardview_recyclerview);
         tvonhiem = findViewById(R.id.tv_pollution2);
-        tvUSmain = findViewById(R.id.tv_pollution3);
-        tvCNmain = findViewById(R.id.tv_pollution4);
         linearLayout = findViewById(R.id.chiso_onhiem);
         tvTieudeOnhiem = findViewById(R.id.tieude);
+        imageView = findViewById(R.id.icon_onhiem);
     }
 
     @Override
     public void thanhpho(String s) {
         tvThanhpho.setText(s);
+    }
+
+    @Override
+    public void getRecyclerView(List<ListAPI> weatherListDays) {
+        weatherListDayAdapter = new WeatherAdapter(this, weatherListDays);
+        recyNgay.setAdapter(weatherListDayAdapter);
+
     }
 
     @Override
@@ -86,42 +97,50 @@ public class MainActivity extends BaseActivity implements MainPresenter {
 
     @Override
     public void AQI301() {
-        linearLayout.setBackgroundColor(Color.parseColor("#990000"));
+        tvUsAQI.setBackgroundColor(Color.parseColor("#990000"));
         tvonhiem.setText("Không Khí Đang Ở Mức Nguy hiểm");
+        imageView.setImageResource(R.mipmap.ic_onhiem_301);
     }
 
     @Override
     public void AQI201() {
-        linearLayout.setBackgroundColor(Color.parseColor("#A2007C"));
+        tvUsAQI.setBackgroundColor(Color.parseColor("#A2007C"));
         tvonhiem.setText("Không Khí Đang Ở Mức RẤt Ô Nhiễm");
+        imageView.setImageResource(R.mipmap.ic_onhiem_201);
     }
 
     @Override
     public void AQI151() {
-        linearLayout.setBackgroundColor(Color.parseColor("#FF0000"));
+        tvUsAQI.setBackgroundColor(Color.parseColor("#FF0000"));
         tvonhiem.setText("Không Khí Đang Ở Mức Ô Nhiễm");
+        imageView.setImageResource(R.mipmap.ic_onhiem_151);
     }
 
     @Override
     public void AQI101() {
-        linearLayout.setBackgroundColor(Color.parseColor("#FF6600"));
+        tvUsAQI.setBackgroundColor(Color.parseColor("#FF6600"));
         tvonhiem.setText("Không Khí Đang Ở Mức Không tốt cho người thuộc nhóm nhạy cảm");
+        tvonhiem.setTextColor(Color.parseColor("#000000"));
+        tvUsAQI.setTextColor(Color.parseColor("#000000"));
+        tvTieudeOnhiem.setTextColor(Color.parseColor("#000000"));
+        imageView.setImageResource(R.mipmap.ic_onhiem_101);
     }
 
     @Override
     public void AQI51() {
-        linearLayout.setBackgroundColor(Color.parseColor("#FFFF00"));
+        tvUsAQI.setBackgroundColor(Color.parseColor("#FFFF00"));
         tvonhiem.setText("Không Khí Đang Ở Mức Vừa Phải");
         tvonhiem.setTextColor(Color.parseColor("#000000"));
         tvUsAQI.setTextColor(Color.parseColor("#000000"));
-        tvCNmain.setTextColor(Color.parseColor("#000000"));
         tvTieudeOnhiem.setTextColor(Color.parseColor("#000000"));
+        imageView.setImageResource(R.mipmap.ic_onhiem_51);
     }
 
     @Override
     public void AQI00() {
-        linearLayout.setBackgroundColor(Color.parseColor("#00FF33"));
+        tvUsAQI.setBackgroundColor(Color.parseColor("#00FF33"));
         tvonhiem.setText("Không Khí Đang Ở Mức Tốt");
+        imageView.setImageResource(R.mipmap.ic_onhiem_50);
     }
 
 

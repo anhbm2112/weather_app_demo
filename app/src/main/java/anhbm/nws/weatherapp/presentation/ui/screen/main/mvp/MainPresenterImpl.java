@@ -1,14 +1,12 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.main.mvp;
 
-
-import android.content.Context;
-import android.graphics.Color;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import anhbm.nws.weatherapp.api.APICallListener;
-import anhbm.nws.weatherapp.api.BaseResponse;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
+import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
+import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherList;
 import anhbm.nws.weatherapp.application.GPSTracker;
 import anhbm.nws.weatherapp.domains.interactors.WeatherInteractor;
 import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
@@ -20,11 +18,13 @@ public class MainPresenterImpl implements APICallListener {
     WeatherInteractor peopleInteractor;
     private MainPresenter main;
     Integer USaqi;
+    private List<ListAPI> weatherListDays = new ArrayList<ListAPI>();
 
     public MainPresenterImpl(MainPresenter main, GPSTracker gpsTracker) {
         this.main = main;
         this.peopleInteractor = new WeatherInteractor(this);
         peopleInteractor.callAPIGetContacts(gpsTracker);
+        peopleInteractor.callAPIlist(gpsTracker);
     }
 
 
@@ -59,7 +59,16 @@ public class MainPresenterImpl implements APICallListener {
     }
 
     @Override
-    public void onAPICallSucceedList(Enums.APIRoute route, List<BaseResponse> responseModels) {
+    public void onAPICallSucceedList(Enums.APIRoute route, WeatherList weatherList) {
+//        ArrayList<WeatherListDay> ListDuBaoNgay =new ArrayList<>();
+//        List<WeatherListDay> weather = weatherList.getList().get(0).getWeather();
+//        for(int i=0;i<weatherListDays.size();i++){
+//            weatherListDays.add((WeatherListDay) weatherList.getList().get(i).getWeather());
+//        }
+
+        weatherListDays = weatherList.getList();
+        main.getRecyclerView(weatherListDays);
+
 
     }
 
@@ -67,69 +76,5 @@ public class MainPresenterImpl implements APICallListener {
     public void onAPICallFailed(Enums.APIRoute route, Throwable throwable) {
 //        onError(throwable.getMessage());
     }
-
-
-//    public MainPresenterImpl(MainView view) {
-//        this.view = view;
-//        this.peopleInteractor = new WeatherInteractor(this);
-//    }
-
-//    @Override
-//    public void presentState(MainView.ViewState state) {
-//        switch (state) {
-//            case IDLE:
-//                view.showState(MainView.ViewState.IDLE);
-//                break;
-//            case LOADING:
-//                view.showState(MainView.ViewState.LOADING);
-//                break;
-//            case LOAD_WEATHER:
-//                presentState(MainView.ViewState.LOADING);
-//                peopleInteractor.callAPIGetContacts();
-//                break;
-//            case SHOW_WEATHER:
-//                // set API response to model
-////                view.doRetrieveModel().setListPeople();
-//                view.showState(MainView.ViewState.SHOW_WEATHER);
-//                break;
-//            case OPEN_ABOUT:
-//                view.showState(MainView.ViewState.OPEN_ABOUT);
-//                break;
-//            case ERROR:
-//                view.showState(MainView.ViewState.ERROR);
-//                break;
-//        }
-//
-//
-//    }
-//
-//
-//    @Override
-//    public void resume() {
-//
-//    }
-//
-//    @Override
-//    public void pause() {
-//
-//    }
-
-//    @Override
-//    public void stop() {
-//
-//    }
-//
-//    @Override
-//    public void destroy() {
-//
-//    }
-//
-//    @Override
-//    public void onError(String message) {
-////        view.doRetrieveModel().setErrorMessage(message);
-//        presentState(MainView.ViewState.IDLE);
-//        presentState(MainView.ViewState.ERROR);
-//    }
-
 
 }

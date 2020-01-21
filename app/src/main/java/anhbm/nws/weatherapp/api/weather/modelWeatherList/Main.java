@@ -32,7 +32,7 @@ public class Main {
     private Integer humidity;
     @SerializedName("temp_kf")
     @Expose
-    private Integer tempKf;
+    private double tempKf;
 
     public Double getTemp() {
         return temp;
@@ -98,11 +98,11 @@ public class Main {
         this.humidity = humidity;
     }
 
-    public Integer getTempKf() {
+    public double getTempKf() {
         return tempKf;
     }
 
-    public void setTempKf(Integer tempKf) {
+    public void setTempKf(double tempKf) {
         this.tempKf = tempKf;
     }
 

@@ -4,7 +4,7 @@ package anhbm.nws.weatherapp.api.weather.modelWeatherList;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Weather_ {
+public class WeatherListDay {
 
     @SerializedName("id")
     @Expose
@@ -50,5 +50,6 @@ public class Weather_ {
     public void setIcon(String icon) {
         this.icon = icon;
     }
+
 
 }

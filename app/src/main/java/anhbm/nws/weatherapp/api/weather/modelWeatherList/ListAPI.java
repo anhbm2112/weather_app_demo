@@ -4,7 +4,9 @@ package anhbm.nws.weatherapp.api.weather.modelWeatherList;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class List {
+import java.util.List;
+
+public class ListAPI {
 
     @SerializedName("dt")
     @Expose
@@ -14,7 +16,7 @@ public class List {
     private Main main;
     @SerializedName("weather")
     @Expose
-    private java.util.List<Weather_> weather = null;
+    private List<WeatherListDay> weather = null;
     @SerializedName("clouds")
     @Expose
     private Clouds clouds;
@@ -47,11 +49,11 @@ public class List {
         this.main = main;
     }
 
-    public java.util.List<Weather_> getWeather() {
+    public List<WeatherListDay> getWeather() {
         return weather;
     }
 
-    public void setWeather(java.util.List<Weather_> weather) {
+    public void setWeather(List<WeatherListDay> weather) {
         this.weather = weather;
     }
 

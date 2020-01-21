@@ -4,7 +4,9 @@ package anhbm.nws.weatherapp.api.weather.modelWeatherList;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Weather {
+import java.util.List;
+
+public class WeatherList {
 
     @SerializedName("cod")
     @Expose
@@ -17,7 +19,7 @@ public class Weather {
     private Integer cnt;
     @SerializedName("list")
     @Expose
-    private java.util.List<ListAPI> list = null;
+    private List<ListAPI> list = null;
     @SerializedName("city")
     @Expose
     private City city;
@@ -46,11 +48,11 @@ public class Weather {
         this.cnt = cnt;
     }
 
-    public java.util.List<ListAPI> getList() {
+    public List<ListAPI> getList() {
         return list;
     }
 
-    public void setList(java.util.List<ListAPI> list) {
+    public void setList(List<ListAPI> list) {
         this.list = list;
     }
 

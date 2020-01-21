@@ -58,6 +58,11 @@ public class APICallManager  {
         return retrofit.create(serviceClass);
     }
     PeopleManager getPeopleManager;
+
+
+
+
+
     public class PeopleManager {
         WeatherService service;
 
