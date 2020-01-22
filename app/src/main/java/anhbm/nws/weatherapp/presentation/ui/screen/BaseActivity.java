@@ -1,6 +1,7 @@
 package anhbm.nws.weatherapp.presentation.ui.screen;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,10 +23,11 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.snackbar.Snackbar;
 
 import anhbm.nws.weatherapp.R;
+import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.presentation.presenters.base.BaseView;
 
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseView{
+public abstract class BaseActivity extends AppCompatActivity implements BaseView {
     ProgressDialog progressDialog;
 
     @Override
@@ -57,13 +59,14 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         textView.setTextColor(ContextCompat.getColor(this, R.color.white));
         snackbar.show();
     }
+
     @Override
     public void showToastGPS() {
 
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            Toast.makeText(this,"GPS Đã Được Bật ",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "GPS Đã Được Bật ", Toast.LENGTH_LONG).show();
         } else {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Ứng dụng cần xác định vị trí vui lòng bật GPS")
@@ -86,6 +89,15 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
             alert.show();
         }
     }
+
+//    public void showF() {
+//        Dialog dialog = new Dialog(this);
+//        dialog.setTitle("Chuyển Sang ºF");
+//        dialog.setContentView(R.layout.dialog_f);
+//        dialog.show();
+//
+//    }
+
     @Override
     public void showError(String title, String message) {
         new MaterialDialog.Builder(getApplicationContext())

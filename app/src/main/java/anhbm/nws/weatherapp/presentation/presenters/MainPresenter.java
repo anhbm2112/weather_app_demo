@@ -11,7 +11,9 @@ public interface MainPresenter extends BasePresenter {
     void thanhpho(String s);
    void getRecyclerView(List<ListAPI> weatherListDays);
 
-    void nhietdo(String integer);
+    void nhietdo(Integer integer);
+    void nhietF(double inF);
+    void nhietC(Integer inC);
 
     void ngay(String ngay);
 
@@ -28,6 +30,8 @@ public interface MainPresenter extends BasePresenter {
     void AQI51();
 
     void AQI00();
+
+
 
     // void USmain(String USmain);
     //void ToastGPS();

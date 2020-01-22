@@ -1,8 +1,15 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.main.mvp;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
@@ -18,9 +25,12 @@ public class MainPresenterImpl implements APICallListener {
     WeatherInteractor peopleInteractor;
     private MainPresenter main;
     Integer USaqi;
-    private List<ListAPI> weatherListDays = new ArrayList<ListAPI>();
+    Integer nhietdo;
+    private List<ListAPI> weatherListDays = new ArrayList<>();
+    Context context;
 
-    public MainPresenterImpl(MainPresenter main, GPSTracker gpsTracker) {
+    public MainPresenterImpl(MainPresenter main, GPSTracker gpsTracker, Context context) {
+        this.context = context;
         this.main = main;
         this.peopleInteractor = new WeatherInteractor(this);
         peopleInteractor.callAPIGetContacts(gpsTracker);
@@ -31,15 +41,13 @@ public class MainPresenterImpl implements APICallListener {
     @Override
     public void onAPICallSucceed(Enums.APIRoute route, Weather weather) {
         String thanhpho = weather.getData().getState();
-        String nhietdo = String.valueOf(weather.getData().getCurrent().getWeatherCurrent().getTp());
+        nhietdo = weather.getData().getCurrent().getWeatherCurrent().getTp();
         String ngaygio = weather.getData().getCurrent().getWeatherCurrent().getTs();
         USaqi = weather.getData().getCurrent().getPollution().getAqius();
-        String USmainpr = weather.getData().getCurrent().getPollution().getMainus();
         main.nhietdo(nhietdo);
         main.thanhpho(thanhpho);
         main.ngay(ngaygio);
         main.usAQI(USaqi);
-        //main.USmain(USmainpr);
     }
 
     public void MucDoONhiem() {
@@ -58,18 +66,38 @@ public class MainPresenterImpl implements APICallListener {
         }
     }
 
+    public void nhietDoF() {
+        final double F = nhietdo * 1.8000 + 32.00;
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        View view1 = LayoutInflater.from(context).inflate(R.layout.dialog_f, null);
+        builder.setView(view1);
+        builder.setTitle("Chuyển Đổi ºC vs ºF");
+        final AlertDialog dialog = builder.show();
+        Button buttonC, buttonF;
+        buttonC = dialog.findViewById(R.id.c);
+        buttonF = dialog.findViewById(R.id.f);
+        buttonC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               main.nhietC(nhietdo);
+                dialog.dismiss();
+            }
+        });
+        buttonF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                main.nhietF(F);
+                dialog.dismiss();
+            }
+        });
+
+
+    }
+
     @Override
     public void onAPICallSucceedList(Enums.APIRoute route, WeatherList weatherList) {
-//        ArrayList<WeatherListDay> ListDuBaoNgay =new ArrayList<>();
-//        List<WeatherListDay> weather = weatherList.getList().get(0).getWeather();
-//        for(int i=0;i<weatherListDays.size();i++){
-//            weatherListDays.add((WeatherListDay) weatherList.getList().get(i).getWeather());
-//        }
-
         weatherListDays = weatherList.getList();
         main.getRecyclerView(weatherListDays);
-
-
     }
 
     @Override

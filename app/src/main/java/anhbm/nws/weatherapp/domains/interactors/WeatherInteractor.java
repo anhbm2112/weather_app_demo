@@ -1,16 +1,11 @@
 package anhbm.nws.weatherapp.domains.interactors;
 
 import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.APICallManager;
 import anhbm.nws.weatherapp.api.APICallManagerList;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherList;
-import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherListDay;
 import anhbm.nws.weatherapp.application.GPSTracker;
 import anhbm.nws.weatherapp.utils.Enums;
 import retrofit2.Call;
@@ -20,7 +15,6 @@ import retrofit2.Response;
 
 public class WeatherInteractor {
     APICallListener listener;
-    private List<WeatherListDay> weatherListDays = new ArrayList<>();
 
     public WeatherInteractor(APICallListener listener) {
         this.listener = listener;

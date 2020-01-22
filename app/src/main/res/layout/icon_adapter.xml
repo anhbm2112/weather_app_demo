@@ -24,7 +24,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="20dp"
-        android:maxLength="2"/>
+      />
     <TextView
         android:id="@+id/trangthai_chitiet"
         android:layout_width="match_parent"

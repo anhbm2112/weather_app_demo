@@ -15,10 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import anhbm.nws.weatherapp.R;
-import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
-import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherListDay;
-import butterknife.ButterKnife;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
     private List<ListAPI> listPeople;
@@ -28,10 +25,11 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         this.listPeople = weatherListDays;
         this.mContext = applicationContext;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.icon_day_adapter, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.icon_adapter, parent, false);
         return new ViewHolder(view);
     }
 
@@ -40,7 +38,8 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         ListAPI listday = listPeople.get(position);
         holder.tvngay.setText(listday.getDtTxt());
         holder.tvmota_trangthai.setText(listday.getWeather().get(0).getDescription());
-        holder.tvnhietdo.setText(String.valueOf(listday.getMain().getTemp() - 273.15) + " ºC");
+        String sub = String.valueOf(listday.getMain().getTemp() - 273.15).substring(0,2);
+        holder.tvnhietdo.setText(sub + "ºC");
         String s = listday.getWeather().get(0).getIcon();
         Picasso.with(mContext).load("http://api.openweathermap.org/img/w/" + s + ".png").into(holder.imageView);
     }
