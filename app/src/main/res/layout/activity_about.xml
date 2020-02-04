@@ -3,86 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bone_white"
+    android:background="@drawable/backgroundweather"
     tools:context=".presentation.ui.screen.about.AboutActivity">
 
-    <TextView
-        android:id="@+id/textview_about_username"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linTimkiem"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edtim"
+            style="@style/EdtTim"
+            android:hint="Nhập Thành Phố " />
+
+        <Button
+            android:id="@+id/bttim"
+            style="@style/BtTim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_city_manCity"
+        style="@style/textviewcity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linTimkiem"
         android:gravity="center"
-        android:text="\@nandawperdana"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/warm_grey"
-        android:textSize="14sp" />
+        android:textColor="@color/bg_color" />
 
     <TextView
-        android:id="@+id/textview_about"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_temperature_mancity"
+        style="@style/textTemperature"
+        android:layout_below="@+id/tv_city_manCity"
+        android:gravity="center"
+        android:textColor="@color/bg_color" />
+
+    <TextView
+        android:id="@+id/tv_ngaycity"
+        style="@style/tvngay_city"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/layout_about_version"
-        android:layout_alignStart="@+id/layout_about_version"
-        android:layout_below="@+id/textview_about_username"
-        android:layout_marginTop="18dp"
-        android:text="A simple clean architecture framework for Android"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/warm_grey"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_below="@id/tv_temperature_mancity" />
 
-    <!-- version title -->
-    <LinearLayout
-        android:id="@+id/layout_about_version"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCity"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_below="@+id/textview_about"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="14dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_ngaycity">
 
-        <TextView
-            android:id="@+id/textview_about_version"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:letterSpacing="0"
-            android:text="Version"
-            android:textAllCaps="true"
-            android:textColor="@color/bone_white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <!-- github title -->
-    <LinearLayout
-        android:id="@+id/layout_about_github"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_below="@+id/layout_about_version"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="14dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:letterSpacing="0"
-            android:text="View on Github"
-            android:textAllCaps="true"
-            android:textColor="@color/bone_white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
+    </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

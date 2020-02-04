@@ -44,7 +44,8 @@
         style="@style/cardViewStyle"
         android:layout_width="match_parent"
         android:layout_below="@+id/recyclerView"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
 
         <TextView
@@ -60,9 +61,10 @@
             <TextView
                 android:id="@+id/tv_pollution_AQI"
                 style="@style/tvStyleONHIEM_USAQI"
-                android:layout_gravity="center"
                 android:gravity="center"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
 
             <ImageView
                 android:id="@+id/icon_onhiem"

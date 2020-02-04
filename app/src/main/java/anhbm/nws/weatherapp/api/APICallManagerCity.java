@@ -4,36 +4,37 @@ import com.androidnetworking.interceptors.HttpLoggingInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-
 import anhbm.nws.weatherapp.api.weather.WeatherService;
+import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
+import anhbm.nws.weatherapp.api.weather.modelWeatherCity.WeatherCity;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherList;
-import anhbm.nws.weatherapp.application.GPSTracker;
+import anhbm.nws.weatherapp.presentation.ui.screen.about.AboutActivity;
 import anhbm.nws.weatherapp.utils.Constants;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class APICallManagerList {
-    public String url = Constants.Base.BASE_URL;
-    public static APICallManagerList instance;
-    private static Retrofit retrofit;
-    public PeopleManagerList peopleManagerList;
+public class APICallManagerCity {
 
-    public static APICallManagerList getListDay() {
+    public String url = Constants.Base.BASE_URL;
+    public static APICallManagerCity instance;
+    private static Retrofit retrofit;
+    public PeopleManagerCity peopleManagerCity;
+
+    public static APICallManagerCity getCity() {
         if (instance == null) {
-            synchronized (APICallManagerList.class) {
+            synchronized (APICallManagerCity.class) {
                 if (instance == null) {
-                    instance = new APICallManagerList();
+                    instance = new APICallManagerCity();
                 }
             }
-
         }
         return instance;
 
     }
 
-    public APICallManagerList() {
+    public APICallManagerCity() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -46,23 +47,22 @@ public class APICallManagerList {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
                 .build();
-        this.peopleManagerList = new PeopleManagerList();
+        this.peopleManagerCity = new PeopleManagerCity();
     }
 
-    public static <T> T getServiceList(Class<T> serviceClass) {
+    public static <T> T getServiceCity(Class<T> serviceClass) {
         return retrofit.create(serviceClass);
     }
 
-    public class PeopleManagerList {
+    public class PeopleManagerCity {
         WeatherService service;
 
-        public PeopleManagerList() {
-            this.service = getServiceList(WeatherService.class);
+        public PeopleManagerCity() {
+            this.service = getServiceCity(WeatherService.class);
         }
 
-        public Call<WeatherList> getContactsListDay(GPSTracker gpsTracker) {
-            return service.getWeather(gpsTracker.getLatitude(),
-                    gpsTracker.getLongtitude());
+        public Call<WeatherList> getContactsCityDay(String s) {
+            return service.getWeatherCity(s);
         }
 
 

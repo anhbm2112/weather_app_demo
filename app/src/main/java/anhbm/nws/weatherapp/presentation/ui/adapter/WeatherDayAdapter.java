@@ -6,14 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
-
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 
@@ -38,7 +34,6 @@ public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.ho
         ListAPI listAPI = listAPIS.get(position);
 
         String subNgay = listAPI.getDtTxt().substring(0,10);
-
         holder.tvngay.setText(subNgay);
         holder.tvdogio.setText(String.valueOf(listAPI.getWind().getSpeed()));
         holder.tvgio.setText(String.valueOf(listAPI.getWind().getDeg()));

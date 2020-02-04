@@ -9,11 +9,14 @@ import anhbm.nws.weatherapp.presentation.presenters.base.BasePresenter;
 public interface MainPresenter extends BasePresenter {
 
     void thanhpho(String s);
-   void getRecyclerView(List<ListAPI> weatherListDays);
 
-    void nhietdo(Integer integer);
+    void getRecyclerView(List<ListAPI> weatherListDays);
+
+    void nhietdo(double integer);
+
     void nhietF(double inF);
-    void nhietC(Integer inC);
+
+    void nhietC(double inC);
 
     void ngay(String ngay);
 
@@ -30,7 +33,6 @@ public interface MainPresenter extends BasePresenter {
     void AQI51();
 
     void AQI00();
-
 
 
     // void USmain(String USmain);

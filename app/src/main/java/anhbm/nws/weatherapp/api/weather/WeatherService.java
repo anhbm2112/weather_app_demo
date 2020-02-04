@@ -1,6 +1,7 @@
 package anhbm.nws.weatherapp.api.weather;
 
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
+import anhbm.nws.weatherapp.api.weather.modelWeatherCity.WeatherCity;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherList;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -15,5 +16,9 @@ public interface WeatherService {
 
     @GET("data/2.5/forecast?appid=ecdd51cc4c60e1fb08cf11263bbb546a")
     Call<WeatherList> getWeather(@Query("lat") double lat,
-                                          @Query("lon") double lon);
+                                 @Query("lon") double lon);
+
+//    @GET("data/2.5/find?units=metric&appid=ecdd51cc4c60e1fb08cf11263bbb546a")
+    @GET("data/2.5/forecast?appid=ecdd51cc4c60e1fb08cf11263bbb546a&units=metric")
+    Call<WeatherList> getWeatherCity(@Query("q") String q);
 }
