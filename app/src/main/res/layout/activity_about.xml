@@ -4,42 +4,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundweather"
-    tools:context=".presentation.ui.screen.about.AboutActivity">
+    tools:context=".presentation.ui.screen.searchCity.AboutActivity">
 
-    <LinearLayout
-        android:id="@+id/linTimkiem"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_choncity"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Moi Chon Thanh Pho"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+       />
 
-        <EditText
-            android:id="@+id/edtim"
-            style="@style/EdtTim"
-            android:hint="Nhập Thành Phố " />
+    <Spinner
+        android:id="@+id/spin"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_choncity"
+        android:layout_alignParentRight="true"/>
 
-        <Button
-            android:id="@+id/bttim"
-            style="@style/BtTim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-    </LinearLayout>
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/linTimkiem"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_below="@+id/spin">-->
+    <!--        <EditText-->
+    <!--            android:id="@+id/edtim"-->
+    <!--            style="@style/EdtTim"-->
+    <!--            android:hint="Nhập Thành Phố " />-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/bttim"-->
+    <!--            style="@style/BtTim"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content" />-->
+    <!--    </LinearLayout>-->
 
     <TextView
         android:id="@+id/tv_city_manCity"
         style="@style/textviewcity"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linTimkiem"
-        android:gravity="center"
-        android:textColor="@color/bg_color" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/bg_color"
+        android:layout_below="@+id/spin"/>
 
     <TextView
         android:id="@+id/tv_temperature_mancity"
         style="@style/textTemperature"
         android:layout_below="@+id/tv_city_manCity"
-        android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/bg_color" />
+
+    <ImageView
+        android:id="@+id/imgIconchinh"
+        style="@style/iconchinh"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/tv_temperature_mancity"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/tv_ngaycity"
@@ -52,7 +76,7 @@
         android:id="@+id/recyclerViewCity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_ngaycity">
+        android:layout_below="@+id/imgIconchinh">
 
     </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

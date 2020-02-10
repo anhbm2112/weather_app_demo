@@ -18,6 +18,10 @@
         android:id="@+id/menu_bottomn_Left"
         android:icon="@drawable/ic_action_weather"
         android:title="" />
+    <item
+        android:id="@+id/menu_history"
+        android:icon="@drawable/ic_action_history"
+        android:title="" />
 
 
 </menu>

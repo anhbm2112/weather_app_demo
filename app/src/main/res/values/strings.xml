@@ -24,6 +24,31 @@
     <string name="message.loading">Loading...</string>
     <string name="activity_about">About</string>
 
-
+    <string-array name="City">
+        <item>Ha noi</item>
+        <item>Ho chi minh</item>
+        <item>Tuyen Quang</item>
+        <item>Yen Bai</item>
+        <item>Ha Tinh</item>
+        <item>Ninh Binh</item>
+        <item>Phu Tho</item>
+        <item>Bac Giang</item>
+        <item>Hung Yen</item>
+        <item>Hai Duong</item>
+        <item>Bac Ninh</item>
+        <item>Binh Duong</item>
+        <item>Thanh Hoa</item>
+        <item>Thai Nguyen</item>
+        <item>Hue</item>
+        <item>Haiphong</item>
+        <item>Can Tho</item>
+        <item>Nam Dinh</item>
+        <item>Bac lieu</item>
+        <item>Ben Tre</item>
+        <item>Tay Ninh</item>
+        <item>Vinh Long</item>
+        <item>Yen Bai</item>
+        <item>Ca mau</item>
+    </string-array>
 
 </resources>

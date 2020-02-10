@@ -3,8 +3,6 @@ package anhbm.nws.weatherapp.api;
 import com.androidnetworking.interceptors.HttpLoggingInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-
 import anhbm.nws.weatherapp.api.weather.WeatherService;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherList;
 import anhbm.nws.weatherapp.application.GPSTracker;

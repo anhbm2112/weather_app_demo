@@ -23,7 +23,8 @@
         style="@style/textTemperature"
         android:layout_below="@+id/toolbar"
         android:gravity="center"
-        android:textColor="@color/bg_color" />
+        android:textColor="@color/bg_color"
+        android:layout_centerHorizontal="true"/>
 
 
     <TextView

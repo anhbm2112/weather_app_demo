@@ -56,13 +56,13 @@ public class APICallManager  {
 
     public static <T> T getService(Class<T> serviceClass) {
         return retrofit.create(serviceClass);
+
     }
+
+
+
+
     PeopleManager getPeopleManager;
-
-
-
-
-
     public class PeopleManager {
         WeatherService service;
 

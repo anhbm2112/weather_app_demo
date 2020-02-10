@@ -35,6 +35,7 @@ public interface MainPresenter extends BasePresenter {
     void AQI00();
 
 
+
     // void USmain(String USmain);
     //void ToastGPS();
 

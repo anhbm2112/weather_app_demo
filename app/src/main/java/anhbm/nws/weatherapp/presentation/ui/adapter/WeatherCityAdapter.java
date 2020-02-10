@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
@@ -32,9 +34,16 @@ public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.
     @Override
     public void onBindViewHolder(@NonNull WeatherCityAdapter.hodel holder, int position) {
         ListAPI listCity = listCityList.get(position);
+
+        int fomatnNgay = listCity.getDt();
+        Date date = new Date(fomatnNgay * 1000l);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE dd-MM-yyy");
+        String day = simpleDateFormat.format(date);
+        holder.ngay.setText(day);
+
         holder.tocdogio.setText(String.valueOf(listCity.getWind().getSpeed()));
         holder.dogio.setText(String.valueOf(listCity.getWind().getDeg()));
-        holder.nhietdo.setText(String.valueOf(listCity.getMain().getTemp()).substring(0,2));
+        holder.nhietdo.setText(String.valueOf(listCity.getMain().getTemp()).substring(0, 2));
         holder.doam.setText(String.valueOf(listCity.getMain().getHumidity() + "%"));
         holder.trangthai.setText(listCity.getWeather().get(0).getDescription());
         String maIconAnh = listCity.getWeather().get(0).getIcon();
@@ -55,7 +64,7 @@ public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.
             super(itemView);
             imagIcon = itemView.findViewById(R.id.iconimg_city);
             ngay = itemView.findViewById(R.id.iconngay_city);
-            thanhpho = itemView.findViewById(R.id.tv_ten_thanhpho);
+//            thanhpho = itemView.findViewById(R.id.tv_ten_thanhpho);
             tocdogio = itemView.findViewById(R.id.tocdogio_city);
             dogio = itemView.findViewById(R.id.dogio_city);
             nhietdo = itemView.findViewById(R.id.nhietdo_city);

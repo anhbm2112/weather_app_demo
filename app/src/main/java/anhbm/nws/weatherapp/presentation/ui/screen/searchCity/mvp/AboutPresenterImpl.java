@@ -1,15 +1,11 @@
-package anhbm.nws.weatherapp.presentation.ui.screen.about.mvp;
+package anhbm.nws.weatherapp.presentation.ui.screen.searchCity.mvp;
 
 import android.content.Context;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
-import anhbm.nws.weatherapp.api.weather.modelWeatherCity.ListCity;
-import anhbm.nws.weatherapp.api.weather.modelWeatherCity.WeatherCity;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherList;
 import anhbm.nws.weatherapp.domains.interactors.WeatherInteractor;
@@ -42,7 +38,9 @@ public class AboutPresenterImpl implements APICallListener {
         listCityList = weatherCity.getList();
         mView.getRecyCity(listCityList);
         String thanhpho = weatherCity.getCity().getName();
-        String nhietdo = String.valueOf(weatherCity.getList().get(0).getMain().getTemp()).substring(0,2);
+        String nhietdo = String.valueOf(weatherCity.getList().get(0).getMain().getTemp()).substring(0, 2);
+        String iconchinh = weatherCity.getList().get(0).getWeather().get(0).getIcon();
+        mView.icon(iconchinh);
         mView.thanhpho(thanhpho);
         mView.nhietdo(nhietdo);
     }
@@ -53,30 +51,12 @@ public class AboutPresenterImpl implements APICallListener {
     }
 
     public void Tim(String snhap) {
-        weatherInteractor.callAPICity(snhap);
         if (snhap.isEmpty()) {
             Toast.makeText(mcontext, "Xin Mời Nhập Thành Phố", Toast.LENGTH_LONG).show();
         } else {
+            weatherInteractor.callAPICity(snhap);
             Toast.makeText(mcontext, snhap, Toast.LENGTH_LONG).show();
         }
     }
 
-
-    //    @Override
-//    public void presentState(AboutView.ViewState state) {
-//        switch (state) {
-//            case IDLE:
-//                mView.showState(AboutView.ViewState.IDLE);
-//                break;
-//            case LOADING:
-//                mView.showState(AboutView.ViewState.LOADING);
-//                break;
-//            case SHOW_ABOUT:
-//                mView.showState(AboutView.ViewState.SHOW_ABOUT);
-//                break;
-//            case ERROR:
-//                mView.showState(AboutView.ViewState.ERROR);
-//                break;
-//        }
-//    }
 }

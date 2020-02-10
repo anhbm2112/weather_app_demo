@@ -3,12 +3,8 @@ package anhbm.nws.weatherapp.api;
 import com.androidnetworking.interceptors.HttpLoggingInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import anhbm.nws.weatherapp.api.weather.WeatherService;
-import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
-import anhbm.nws.weatherapp.api.weather.modelWeatherCity.WeatherCity;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherList;
-import anhbm.nws.weatherapp.presentation.ui.screen.about.AboutActivity;
 import anhbm.nws.weatherapp.utils.Constants;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
