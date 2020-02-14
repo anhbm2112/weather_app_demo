@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
+
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import anhbm.nws.weatherapp.R;
@@ -19,10 +21,12 @@ import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.hodel> {
     private Context context;
     private List<ListAPI> listAPIS;
+private double dof;
 
-    public WeatherDayAdapter(Context context, List<ListAPI> weatherList) {
+    public WeatherDayAdapter(Context context, List<ListAPI> weatherList,double dof) {
         this.context = context;
         this.listAPIS = weatherList;
+        this.dof=dof;
     }
 
     @NonNull
@@ -35,15 +39,17 @@ public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.ho
     @Override
     public void onBindViewHolder(@NonNull WeatherDayAdapter.hodel holder, int position) {
         ListAPI listAPI = listAPIS.get(position);
+        double doF = listAPI.getMain().getTemp();
         int fomatnNgay = listAPI.getDt();
         Date date = new Date(fomatnNgay * 1000l);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE dd-MM-yyy HH.mm");
         String day = simpleDateFormat.format(date);
         holder.tvngay.setText(day);
-
         holder.tvdogio.setText(String.valueOf(listAPI.getWind().getSpeed()));
         holder.tvgio.setText(String.valueOf(listAPI.getWind().getDeg()));
-        holder.tvnhietdo.setText(String.valueOf(listAPI.getMain().getTemp()));
+        holder.tvnhietdo.setText(String.valueOf(listAPI.getMain().onConvertCelsiusToF(doF)+"ºF"));
+
+        holder.tvnhietdo.setText(String.valueOf(listAPI.getMain().getTemp()+"º"));
         holder.tvdoam.setText(String.valueOf(listAPI.getMain().getHumidity() + "%"));
         holder.tvtrangthai.setText(listAPI.getWeather().get(0).getDescription());
         String s = listAPI.getWeather().get(0).getIcon();
@@ -53,7 +59,7 @@ public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.ho
 
     @Override
     public int getItemCount() {
-        return listAPIS.size();
+        return (listAPIS != null) ? listAPIS.size() : 0;
     }
 
     public class hodel extends RecyclerView.ViewHolder {

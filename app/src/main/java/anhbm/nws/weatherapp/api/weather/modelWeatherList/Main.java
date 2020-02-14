@@ -106,4 +106,8 @@ public class Main {
         this.tempKf = tempKf;
     }
 
+    public double onConvertCelsiusToF(double temp){
+        return temp * 1.8000 + 32.00;
+    }
+
 }

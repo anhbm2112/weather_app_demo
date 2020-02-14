@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
     android:alpha="0.4"
     android:background="@drawable/botron"
     android:orientation="vertical">
@@ -75,12 +75,12 @@
             android:textColor="@color/white"
             android:textSize="24dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ºC"
-            android:textColor="@color/white"
-            android:textSize="24dp" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="ºC"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="24dp" />-->
 
         <ImageView
             android:id="@+id/iconlist"

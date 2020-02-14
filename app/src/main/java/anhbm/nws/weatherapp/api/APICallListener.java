@@ -1,10 +1,7 @@
 package anhbm.nws.weatherapp.api;
 
 
-import java.util.List;
-
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
-import anhbm.nws.weatherapp.api.weather.modelWeatherCity.WeatherCity;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherList;
 import anhbm.nws.weatherapp.utils.Enums;
 

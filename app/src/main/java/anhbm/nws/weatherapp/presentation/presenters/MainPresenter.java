@@ -1,6 +1,8 @@
 package anhbm.nws.weatherapp.presentation.presenters;
 
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;

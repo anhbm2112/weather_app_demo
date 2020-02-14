@@ -12,7 +12,7 @@
     <style name="texttitle">
         <item name="android:textSize">20dp</item>
         <item name="android:text">____</item>
-        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginTop">5dp</item>
         <item name="android:textColor">@color/bg_color</item>
         <item name="android:maxLength">10</item>
         <item name="android:layout_marginLeft">20dp</item>

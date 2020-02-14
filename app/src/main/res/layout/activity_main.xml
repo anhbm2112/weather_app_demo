@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundweather">
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/toolbarMain">
@@ -18,13 +19,14 @@
             android:gravity="center"
             android:textColor="@color/bg_color" />
     </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:id="@+id/tv_temperature"
         style="@style/textTemperature"
         android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:textColor="@color/bg_color"
-        android:layout_centerHorizontal="true"/>
+        android:textColor="@color/bg_color" />
 
 
     <TextView
@@ -32,27 +34,39 @@
         style="@style/texttitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_temperature"
-     />
+        android:layout_below="@id/tv_temperature" />
+
+    <TextView
+        android:id="@+id/gach_tren"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/tv_title"
+        android:background="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         style="@style/recy"
-        android:layout_below="@id/tv_title" />
+        android:layout_below="@id/gach_tren" />
+
+    <TextView
+        android:id="@+id/gach_duoi"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/recyclerView"
+        android:background="@color/white"/>
 
     <LinearLayout
         android:id="@+id/chiso_onhiem"
         style="@style/cardViewStyle"
         android:layout_width="match_parent"
-        android:layout_below="@+id/recyclerView"
-        android:orientation="vertical"
-        >
+        android:layout_below="@+id/gach_duoi"
+        android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/tieude"
             style="@style/TieuDeONHIEM"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,10 +76,9 @@
             <TextView
                 android:id="@+id/tv_pollution_AQI"
                 style="@style/tvStyleONHIEM_USAQI"
-                android:gravity="center"
-                android:textColor="@color/black"
                 android:layout_gravity="center"
-                />
+                android:gravity="center"
+                android:textColor="@color/black" />
 
             <ImageView
                 android:id="@+id/icon_onhiem"
@@ -76,16 +89,13 @@
         <TextView
             android:id="@+id/tv_pollution2"
             style="@style/tvStyleONHIEM"
-            android:gravity="center"/>
+            android:gravity="center" />
     </LinearLayout>
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/chiso_onhiem"
-         />
+        android:layout_below="@+id/chiso_onhiem" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnavigation"

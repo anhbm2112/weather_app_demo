@@ -5,7 +5,7 @@ import java.util.List;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.presentation.presenters.base.BasePresenter;
 
-public interface AboutPresenter extends BasePresenter {
+public interface AboutPresenter {
     void thanhpho(String thanhpho);
 
     void nhietdo(String integer);

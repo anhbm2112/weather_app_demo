@@ -1,21 +1,31 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.main;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.application.GPSTracker;
@@ -23,10 +33,12 @@ import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
 import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherAdapter;
 import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherDayAdapter;
 import anhbm.nws.weatherapp.presentation.ui.screen.BaseActivity;
+import anhbm.nws.weatherapp.presentation.ui.screen.history.HistoryActivity;
 import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainPresenterImpl;
+import anhbm.nws.weatherapp.presentation.ui.screen.searchCity.AboutActivity;
 
 
-public class MainActivity extends BaseActivity implements MainPresenter,BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements MainPresenter, BottomNavigationView.OnNavigationItemSelectedListener {
     private BottomNavigationView bottomNavigationView;
     private MainPresenterImpl presenter;
     private TextView tvThanhpho, tvNhietdo, tvNgay, tvUsAQI, tvonhiem, tvTieudeOnhiem;
@@ -35,18 +47,20 @@ public class MainActivity extends BaseActivity implements MainPresenter,BottomNa
     private WeatherAdapter weatherListDayAdapter;
     private ImageView imageView;
     private WeatherDayAdapter weatherListAdapter;
-
     ///SharedPreferences
-    private ArrayList<ListAPI> enums = new ArrayList<>();
+    private List<ListAPI> enums = new ArrayList<>();
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     private Gson gson;
+    private boolean temp_type;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         showToastGPS();
+        CheckInternetshowCaidat();
         gpsTracker = new GPSTracker(getApplicationContext());
         init();
         Managaer();
@@ -79,36 +93,48 @@ public class MainActivity extends BaseActivity implements MainPresenter,BottomNa
     }
 
     @Override
-    public void getRecyclerView(final List<ListAPI> weatherListDays) {
+    public void getRecyclerView(List<ListAPI> weatherListDays) {
+        double doC = weatherListDays.get(0).getMain().getTemp();
+        double doF = weatherListDays.get(0).getMain().onConvertCelsiusToF(doC);
+        saveValueToPreference(weatherListDays);
         weatherListDayAdapter = new WeatherAdapter(this, weatherListDays);
         recyNgay.setAdapter(weatherListDayAdapter);
-        weatherListAdapter = new WeatherDayAdapter(getApplicationContext(), weatherListDays);
+        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, weatherListDays,doF);
         recyList.setAdapter(weatherListAdapter);
     }
-    private ArrayList<ListAPI> getValueFromPreference() {
-        Type collectionType = new TypeToken<ArrayList<ListAPI>>() {
-        }.getType();
-        return gson.fromJson(preferences.getString("keyList", ""), collectionType);
-    }
 
-//    private void saveValueToPreference(List<ListAPI> list) {
-//
-//    }
-    private void initRecyclerView(ArrayList<ListAPI> list) {
+    private void initRecyclerView(List<ListAPI> list) {
+        ///hien thi du lieu list khi mat mang
+        double doC = list.get(0).getMain().getTemp();
+        double doF = list.get(0).getMain().onConvertCelsiusToF(doC);
+        weatherListDayAdapter = new WeatherAdapter(this, list);
+        recyNgay.setAdapter(weatherListDayAdapter);
+        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, list,doF);
+        recyList.setAdapter(weatherListAdapter);
         String thanhpho = preferences.getString("keyThanhpho", "");
         tvThanhpho.setText(thanhpho);
         Integer Onhiem = preferences.getInt("keyOnhiem", 1);
         tvUsAQI.setText(String.valueOf(Onhiem));
-        tvNhietdo.setText(String.valueOf(list.get(0).getMain().getTemp()).substring(0, 2) + "ºC");
-        tvNgay.setText(String.valueOf(list.get(0).getDtTxt().substring(0, 10)));
-        ///
-        weatherListDayAdapter = new WeatherAdapter(this, list);
-        recyNgay.setAdapter(weatherListDayAdapter);
-        weatherListAdapter = new WeatherDayAdapter(getApplicationContext(), list);
-        recyList.setAdapter(weatherListAdapter);
+        String nhietdo = preferences.getString("keynhietdo", "");
+        tvNhietdo.setText(String.valueOf(nhietdo) + "ºC");
+        String ngay = preferences.getString("keyngay", "");
+        tvNgay.setText(ngay);
 
     }
 
+
+    private void saveValueToPreference(List<ListAPI> list) {
+        String json = gson.toJson(list);
+        editor.putString("keyList", json);
+        editor.apply();
+
+    }
+
+    private List<ListAPI> getValueFromPreference() {
+        Type collectionType = new TypeToken<List<ListAPI>>() {
+        }.getType();
+        return gson.fromJson(preferences.getString("keyList", ""), collectionType);
+    }
 
     private void Managaer() {
         LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -119,10 +145,48 @@ public class MainActivity extends BaseActivity implements MainPresenter,BottomNa
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        presenter.clickItemm(menuItem);
+        switch (menuItem.getItemId()) {
+            case R.id.menu_bottomn_Left:
+                Intent intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.menu_bottomn_Right:
+                presenter.nhietDoF();
+                return true;
+            case R.id.menu_history:
+                Intent history = new Intent(this, HistoryActivity.class);
+                startActivity(history);
+                return true;
+        }
         return false;
+
     }
 
+//    private void nhietDoF() {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        View view1 = LayoutInflater.from(this).inflate(R.layout.dialog_f, null);
+//        builder.setView(view1);
+//        builder.setTitle("Chuyển Đổi ºC vs ºF");
+//        final AlertDialog dialog = builder.show();
+//        Button buttonC, buttonF;
+//        buttonC = dialog.findViewById(R.id.c);
+//        buttonF = dialog.findViewById(R.id.f);
+//        buttonC.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                dialog.dismiss();
+//            }
+//        });
+//        buttonF.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                dialog.dismiss();
+//            }
+//        });
+//
+//    }
 
 
     @Override
@@ -274,7 +338,6 @@ public class MainActivity extends BaseActivity implements MainPresenter,BottomNa
     public void onError(String message) {
 
     }
-
 
 
     /**

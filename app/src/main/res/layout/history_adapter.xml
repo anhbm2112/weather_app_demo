@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="#083145"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/ngay_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:text="ngay "
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+    <TextView
+        android:id="@+id/gio_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/ngay_history"
+        android:text="gio "
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/tocdogio_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ngay_history"
+        android:layout_marginLeft="30dp"
+        android:text="Tốc Độ Gió"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/tocdogioText_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ngay_history"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/tocdogio_history"
+        android:text="Độ Gió text"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/nhietdo_hitory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tocdogioText_history"
+        android:layout_marginLeft="40dp"
+        android:text="___"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tocdogioText_history"
+        android:layout_toRightOf="@id/nhietdo_hitory"
+        android:text="ºC"
+        android:textColor="@color/white"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/doam_hitory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nhietdo_hitory"
+        android:layout_marginLeft="30dp"
+        android:text="Độ Ẩm"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/doamText_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nhietdo_hitory"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/doam_hitory"
+        android:text="do am"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/thanhpho_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/gach_giua"
+        android:text="thanh pho"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/xoa_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xóa Lịch Sử"
+        android:textColor="@color/white"
+        android:textSize="13dp"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/dogio_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/thanhpho_history"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/gach_giua"
+        android:text="Độ Gió"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+    <TextView
+        android:id="@+id/dogioText_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/thanhpho_history"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/dogio_history"
+        android:text="Độ Gió"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+    <ImageView
+        android:id="@+id/icon_history"
+        android:layout_width="60dp"
+        android:layout_height="38dp"
+        android:layout_below="@+id/dogio_history"
+        android:layout_toRightOf="@+id/gach_giua"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/trangthai_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="trang thai"
+        android:layout_below="@id/icon_history"
+        android:layout_toRightOf="@id/gach_giua"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/white"/>
+    <TextView
+        android:id="@+id/chitiet_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chi Tiết"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:textSize="13dp"/>
+    <TextView
+        android:id="@+id/gach_giua"
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:background="@color/white" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white" />
+</RelativeLayout>

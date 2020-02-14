@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.Settings;
@@ -25,6 +26,7 @@ import com.google.android.material.snackbar.Snackbar;
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.presentation.presenters.base.BaseView;
+import anhbm.nws.weatherapp.presentation.ui.screen.main.MainActivity;
 
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
@@ -40,8 +42,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
 
     }
-
-
     @Override
     public void showProgress(boolean flag) {
         if (flag)
@@ -62,15 +62,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     @Override
     public void showToastGPS() {
-
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             Toast.makeText(this, "GPS Đã Được Bật ", Toast.LENGTH_LONG).show();
         } else {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage("Ứng dụng cần xác định vị trí vui lòng bật GPS")
-                    .setCancelable(false)
+            alertDialogBuilder.setMessage("Ứng dụng cần xác định vị trí vui lòng bật GPS").setCancelable(false)
                     .setPositiveButton("Vào cài đặt GPS",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
@@ -87,6 +84,36 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
                     });
             AlertDialog alert = alertDialogBuilder.create();
             alert.show();
+        }
+    }
+
+    public void CheckInternetshowCaidat() {
+        android.net.ConnectivityManager cm = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
+
+        android.net.NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
+            Toast.makeText(this, "Đã Kết Nối Dữ Liệu  ", Toast.LENGTH_SHORT).show();
+        } else {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Dữ Liệu Di Dộng Đã Tắt");
+            builder.setMessage("Bật Dữ Liệu Di Động Hoặc Sử Dụng Wi-Fi Để Truy Cập Dữ Liệu");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    builder.create();
+                }
+            });
+            builder.setNegativeButton("Cài Đặt", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                    startActivity(intent);
+
+                }
+            });
+            builder.show();
+
         }
     }
 
