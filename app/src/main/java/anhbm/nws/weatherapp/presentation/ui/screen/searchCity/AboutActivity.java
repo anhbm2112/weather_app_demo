@@ -41,6 +41,7 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
     private ImageView imageView;
     private Spinner spinner;
     private ImageView back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

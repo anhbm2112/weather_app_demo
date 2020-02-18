@@ -9,26 +9,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
-
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
-import anhbm.nws.weatherapp.presentation.ui.screen.main.MainActivity;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
+
     private List<ListAPI> listPeople;
     private Context mContext;
+    private int type;
 
-
-    public WeatherAdapter(Context context, List<ListAPI> listAPIS) {
-        this.listPeople = listAPIS;
-        this.mContext = context;
+    public WeatherAdapter(Context mContext, List<ListAPI> listPeople, int type) {
+        this.listPeople = listPeople;
+        this.mContext = mContext;
+        this.type = type;
     }
-
 
     @NonNull
     @Override
@@ -48,8 +45,14 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         holder.tvngay.setText(day);
 
         holder.tvmota_trangthai.setText(listday.getWeather().get(0).getDescription());
-        String sub = String.valueOf(listday.getMain().getTemp()).substring(0,2);
-        holder.tvnhietdo.setText(sub + "ºC");
+        String sub = String.valueOf(listday.getMain().getTemp()).substring(0, 2);
+        String sF = String.valueOf(listday.getMain().onConvertCelsiusToF(Double.parseDouble(sub))).substring(0, 2);
+        if (type == 0) {
+            holder.tvnhietdo.setText(sub + "ºC");
+        } else if (type == 1) {
+            holder.tvnhietdo.setText(sF + "ºF");
+        }
+
         String s = listday.getWeather().get(0).getIcon();
         Picasso.with(mContext).load("http://api.openweathermap.org/img/w/" + s + ".png").into(holder.imageView);
     }

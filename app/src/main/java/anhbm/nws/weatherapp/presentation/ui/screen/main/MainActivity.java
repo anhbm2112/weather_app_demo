@@ -1,18 +1,20 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.main;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -52,8 +54,9 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     private Gson gson;
-    private boolean temp_type;
+    private int type_degree = 0;
 
+    private String nhietdo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,34 +97,30 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 
     @Override
     public void getRecyclerView(List<ListAPI> weatherListDays) {
-        double doC = weatherListDays.get(0).getMain().getTemp();
-        double doF = weatherListDays.get(0).getMain().onConvertCelsiusToF(doC);
         saveValueToPreference(weatherListDays);
-        weatherListDayAdapter = new WeatherAdapter(this, weatherListDays);
+        weatherListDayAdapter = new WeatherAdapter(this, weatherListDays, type_degree);
         recyNgay.setAdapter(weatherListDayAdapter);
-        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, weatherListDays,doF);
+        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, weatherListDays, type_degree);
         recyList.setAdapter(weatherListAdapter);
+
     }
 
     private void initRecyclerView(List<ListAPI> list) {
         ///hien thi du lieu list khi mat mang
-        double doC = list.get(0).getMain().getTemp();
-        double doF = list.get(0).getMain().onConvertCelsiusToF(doC);
-        weatherListDayAdapter = new WeatherAdapter(this, list);
+
+        weatherListDayAdapter = new WeatherAdapter(this, list, type_degree);
         recyNgay.setAdapter(weatherListDayAdapter);
-        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, list,doF);
+        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, list, type_degree);
         recyList.setAdapter(weatherListAdapter);
         String thanhpho = preferences.getString("keyThanhpho", "");
         tvThanhpho.setText(thanhpho);
         Integer Onhiem = preferences.getInt("keyOnhiem", 1);
         tvUsAQI.setText(String.valueOf(Onhiem));
-        String nhietdo = preferences.getString("keynhietdo", "");
+        nhietdo = preferences.getString("keynhietdo", "");
         tvNhietdo.setText(String.valueOf(nhietdo) + "ºC");
         String ngay = preferences.getString("keyngay", "");
         tvNgay.setText(ngay);
-
     }
-
 
     private void saveValueToPreference(List<ListAPI> list) {
         String json = gson.toJson(list);
@@ -151,7 +150,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
                 startActivity(intent);
                 return true;
             case R.id.menu_bottomn_Right:
-                presenter.nhietDoF();
+                nhietDoF();
                 return true;
             case R.id.menu_history:
                 Intent history = new Intent(this, HistoryActivity.class);
@@ -162,31 +161,43 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 
     }
 
-//    private void nhietDoF() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        View view1 = LayoutInflater.from(this).inflate(R.layout.dialog_f, null);
-//        builder.setView(view1);
-//        builder.setTitle("Chuyển Đổi ºC vs ºF");
-//        final AlertDialog dialog = builder.show();
-//        Button buttonC, buttonF;
-//        buttonC = dialog.findViewById(R.id.c);
-//        buttonF = dialog.findViewById(R.id.f);
-//        buttonC.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                dialog.dismiss();
-//            }
-//        });
-//        buttonF.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                dialog.dismiss();
-//            }
-//        });
-//
-//    }
+    private void nhietDoF() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view1 = LayoutInflater.from(this).inflate(R.layout.dialog_f, null);
+        builder.setView(view1);
+        builder.setTitle("Chuyển Đổi ºC vs ºF");
+        final AlertDialog dialog = builder.show();
+        Button buttonC, buttonF;
+        buttonC = dialog.findViewById(R.id.c);
+        buttonF = dialog.findViewById(R.id.f);
+        buttonC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                type_degree = 0;
+                initRecyclerView(enums);
+//                android.net.ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+//                android.net.NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+//                if (activeNetworkInfo == null && activeNetworkInfo.isConnected()) {
+//                }
+                String keyC = preferences.getString("keyC", "");
+                tvNhietdo.setText(keyC);
+                dialog.dismiss();
+
+            }
+        });
+        buttonF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                type_degree = 1;
+                initRecyclerView(enums);
+                String keyF = preferences.getString("keyF", "");
+                tvNhietdo.setText(keyF);
+                dialog.dismiss();
+            }
+        });
+
+    }
 
 
     @Override

@@ -49,7 +49,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:text">_ _ _</item>
-        <item name="android:textSize">40dp</item>
+        <item name="android:textSize">42dp</item>
     </style>
     <style name="iconchinh">
         <item name="android:layout_height">70dp</item>

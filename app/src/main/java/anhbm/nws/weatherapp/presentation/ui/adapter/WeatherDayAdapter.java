@@ -6,12 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -21,12 +18,13 @@ import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.hodel> {
     private Context context;
     private List<ListAPI> listAPIS;
-private double dof;
+    private int type_F;
 
-    public WeatherDayAdapter(Context context, List<ListAPI> weatherList,double dof) {
+    public WeatherDayAdapter(Context context, List<ListAPI> weatherList, int type) {
         this.context = context;
         this.listAPIS = weatherList;
-        this.dof=dof;
+        this.type_F = type;
+
     }
 
     @NonNull
@@ -39,7 +37,7 @@ private double dof;
     @Override
     public void onBindViewHolder(@NonNull WeatherDayAdapter.hodel holder, int position) {
         ListAPI listAPI = listAPIS.get(position);
-        double doF = listAPI.getMain().getTemp();
+
         int fomatnNgay = listAPI.getDt();
         Date date = new Date(fomatnNgay * 1000l);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE dd-MM-yyy HH.mm");
@@ -47,9 +45,13 @@ private double dof;
         holder.tvngay.setText(day);
         holder.tvdogio.setText(String.valueOf(listAPI.getWind().getSpeed()));
         holder.tvgio.setText(String.valueOf(listAPI.getWind().getDeg()));
-        holder.tvnhietdo.setText(String.valueOf(listAPI.getMain().onConvertCelsiusToF(doF)+"ºF"));
-
-        holder.tvnhietdo.setText(String.valueOf(listAPI.getMain().getTemp()+"º"));
+        String oC = String.valueOf(listAPI.getMain().getTemp()).substring(0,2);
+        String oF = String.valueOf(listAPI.getMain().onConvertCelsiusToF(Double.parseDouble(oC))).substring(0, 2);
+        if (type_F == 0) {
+            holder.tvnhietdo.setText(oC + "ºC");
+        } else if (type_F == 1) {
+            holder.tvnhietdo.setText(oF + "ºF");
+        }
         holder.tvdoam.setText(String.valueOf(listAPI.getMain().getHumidity() + "%"));
         holder.tvtrangthai.setText(listAPI.getWeather().get(0).getDescription());
         String s = listAPI.getWeather().get(0).getIcon();
