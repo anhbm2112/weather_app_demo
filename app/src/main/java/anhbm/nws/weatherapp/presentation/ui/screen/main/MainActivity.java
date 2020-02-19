@@ -8,10 +8,12 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,8 +57,11 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     private SharedPreferences.Editor editor;
     private Gson gson;
     private int type_degree = 0;
-
     private String nhietdo;
+
+
+    private static final String IS_DEGREE = "IS_DEGREE";
+    private static final String IS_KELVIN = "IS_KELVIN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,14 +75,26 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         enums = getValueFromPreference();
         initRecyclerView(enums);
 
+
     }
 
     private void init() {
-        presenter = new MainPresenterImpl(this, gpsTracker, this);
         preferences = getSharedPreferences("key", MODE_PRIVATE);
         editor = preferences.edit();
         gson = new Gson();
         initLayout();
+        initData();
+        presenter = new MainPresenterImpl(this, gpsTracker, this);
+    }
+
+    private void initData() {
+        boolean c = preferences.getBoolean(IS_DEGREE, true);
+        boolean k = preferences.getBoolean(IS_KELVIN, false);
+        if (c && !k) {
+            type_degree = 0;
+        } else if (!c && k) {
+            type_degree = 1;
+        }
     }
 
     private void initLayout() {
@@ -98,26 +115,25 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     @Override
     public void getRecyclerView(List<ListAPI> weatherListDays) {
         saveValueToPreference(weatherListDays);
-        weatherListDayAdapter = new WeatherAdapter(this, weatherListDays, type_degree);
-        recyNgay.setAdapter(weatherListDayAdapter);
-        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, weatherListDays, type_degree);
-        recyList.setAdapter(weatherListAdapter);
+        //      weatherListDayAdapter = new WeatherAdapter(this, weatherListDays, type_degree);
+//        recyNgay.setAdapter(weatherListDayAdapter);
+//        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, weatherListDays, type_degree);
+//        recyList.setAdapter(weatherListAdapter);
 
     }
 
     private void initRecyclerView(List<ListAPI> list) {
         ///hien thi du lieu list khi mat mang
-
         weatherListDayAdapter = new WeatherAdapter(this, list, type_degree);
         recyNgay.setAdapter(weatherListDayAdapter);
         weatherListAdapter = new WeatherDayAdapter(MainActivity.this, list, type_degree);
         recyList.setAdapter(weatherListAdapter);
         String thanhpho = preferences.getString("keyThanhpho", "");
         tvThanhpho.setText(thanhpho);
-        Integer Onhiem = preferences.getInt("keyOnhiem", 1);
-        tvUsAQI.setText(String.valueOf(Onhiem));
         nhietdo = preferences.getString("keynhietdo", "");
         tvNhietdo.setText(String.valueOf(nhietdo) + "ºC");
+        Integer Onhiem = preferences.getInt("keyOnhiem", 1);
+        tvUsAQI.setText(String.valueOf(Onhiem));
         String ngay = preferences.getString("keyngay", "");
         tvNgay.setText(ngay);
     }
@@ -125,8 +141,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     private void saveValueToPreference(List<ListAPI> list) {
         String json = gson.toJson(list);
         editor.putString("keyList", json);
-        editor.apply();
-
+        editor.commit();
     }
 
     private List<ListAPI> getValueFromPreference() {
@@ -175,13 +190,12 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
             @Override
             public void onClick(View view) {
                 type_degree = 0;
+                editor.putBoolean(IS_DEGREE, true);
+                editor.putBoolean(IS_KELVIN, false);
+                editor.commit();
                 initRecyclerView(enums);
-//                android.net.ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-//                android.net.NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
-//                if (activeNetworkInfo == null && activeNetworkInfo.isConnected()) {
-//                }
                 String keyC = preferences.getString("keyC", "");
-                tvNhietdo.setText(keyC);
+                tvNhietdo.setText(keyC + "ºC");
                 dialog.dismiss();
 
             }
@@ -190,9 +204,12 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
             @Override
             public void onClick(View view) {
                 type_degree = 1;
+                editor.putBoolean(IS_DEGREE, false);
+                editor.putBoolean(IS_KELVIN, true);
+                editor.commit();
                 initRecyclerView(enums);
                 String keyF = preferences.getString("keyF", "");
-                tvNhietdo.setText(keyF);
+                tvNhietdo.setText(keyF + "ºF");
                 dialog.dismiss();
             }
         });
@@ -214,6 +231,8 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         tvNhietdo.setTypeface(typeface);
         String sub = String.valueOf(integer).substring(0, 2);
         tvNhietdo.setText(sub + "ºC");
+
+
     }
 
     @Override

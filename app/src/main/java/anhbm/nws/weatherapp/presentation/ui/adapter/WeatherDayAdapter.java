@@ -1,6 +1,7 @@
 package anhbm.nws.weatherapp.presentation.ui.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,6 @@ public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.ho
     @Override
     public void onBindViewHolder(@NonNull WeatherDayAdapter.hodel holder, int position) {
         ListAPI listAPI = listAPIS.get(position);
-
         int fomatnNgay = listAPI.getDt();
         Date date = new Date(fomatnNgay * 1000l);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE dd-MM-yyy HH.mm");
@@ -54,8 +54,8 @@ public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.ho
         }
         holder.tvdoam.setText(String.valueOf(listAPI.getMain().getHumidity() + "%"));
         holder.tvtrangthai.setText(listAPI.getWeather().get(0).getDescription());
-        String s = listAPI.getWeather().get(0).getIcon();
-        Picasso.with(context).load("http://api.openweathermap.org/img/w/" + s + ".png").into(holder.iconview);
+        String ss = listAPI.getWeather().get(0).getIcon();
+        Picasso.with(context).load("http://api.openweathermap.org/img/w/" + ss + ".png").into(holder.iconview);
 
     }
 

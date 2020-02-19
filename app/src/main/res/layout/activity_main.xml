@@ -58,8 +58,6 @@
                 </androidx.appcompat.widget.Toolbar>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
-
-
         <include layout="@layout/conten_main"
             />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
