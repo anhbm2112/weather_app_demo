@@ -92,6 +92,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         boolean k = preferences.getBoolean(IS_KELVIN, false);
         if (c && !k) {
             type_degree = 0;
+            
         } else if (!c && k) {
             type_degree = 1;
         }
