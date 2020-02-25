@@ -58,8 +58,8 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     private Gson gson;
     private int type_degree = 0;
     private String nhietdo;
-
-
+    String oC, oF;
+    String keyF, keyC;
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
 
@@ -74,7 +74,6 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         Managaer();
         enums = getValueFromPreference();
         initRecyclerView(enums);
-
 
     }
 
@@ -92,7 +91,6 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         boolean k = preferences.getBoolean(IS_KELVIN, false);
         if (c && !k) {
             type_degree = 0;
-            
         } else if (!c && k) {
             type_degree = 1;
         }
@@ -110,13 +108,14 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         imageView = findViewById(R.id.icon_onhiem);
         bottomNavigationView = findViewById(R.id.bottomnavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-
     }
 
     @Override
     public void getRecyclerView(List<ListAPI> weatherListDays) {
+//        oC = String.valueOf(weatherListDays.get(0).getMain().getTemp()).substring(0, 2);
+//        oF = String.valueOf(weatherListDays.get(0).getMain().onConvertCelsiusToF(Double.parseDouble(oC))).substring(0, 2);
         saveValueToPreference(weatherListDays);
-        //      weatherListDayAdapter = new WeatherAdapter(this, weatherListDays, type_degree);
+//        weatherListDayAdapter = new WeatherAdapter(this, weatherListDays, type_degree);
 //        recyNgay.setAdapter(weatherListDayAdapter);
 //        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, weatherListDays, type_degree);
 //        recyList.setAdapter(weatherListAdapter);
@@ -129,14 +128,25 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         recyNgay.setAdapter(weatherListDayAdapter);
         weatherListAdapter = new WeatherDayAdapter(MainActivity.this, list, type_degree);
         recyList.setAdapter(weatherListAdapter);
+
         String thanhpho = preferences.getString("keyThanhpho", "");
         tvThanhpho.setText(thanhpho);
-        nhietdo = preferences.getString("keynhietdo", "");
-        tvNhietdo.setText(String.valueOf(nhietdo) + "ºC");
+//        nhietdo = preferences.getString("keynhietdo", "");
+//        tvNhietdo.setText(String.valueOf(nhietdo) + "ºC");
         Integer Onhiem = preferences.getInt("keyOnhiem", 1);
         tvUsAQI.setText(String.valueOf(Onhiem));
         String ngay = preferences.getString("keyngay", "");
         tvNgay.setText(ngay);
+        boolean s = preferences.getBoolean(IS_DEGREE, true);
+        boolean k = preferences.getBoolean(IS_KELVIN, false);
+        if (s && !k) {
+            keyC = preferences.getString("keyC", "");
+            tvNhietdo.setText(keyC + "ºC");
+        } else if (!s && k) {
+            keyF = preferences.getString("keyF", "");
+            tvNhietdo.setText(keyF + "ºF");
+        }
+
     }
 
     private void saveValueToPreference(List<ListAPI> list) {
@@ -174,11 +184,9 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
                 return true;
         }
         return false;
-
     }
 
     private void nhietDoF() {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view1 = LayoutInflater.from(this).inflate(R.layout.dialog_f, null);
         builder.setView(view1);
@@ -195,8 +203,6 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
                 editor.putBoolean(IS_KELVIN, false);
                 editor.commit();
                 initRecyclerView(enums);
-                String keyC = preferences.getString("keyC", "");
-                tvNhietdo.setText(keyC + "ºC");
                 dialog.dismiss();
 
             }
@@ -209,14 +215,11 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
                 editor.putBoolean(IS_KELVIN, true);
                 editor.commit();
                 initRecyclerView(enums);
-                String keyF = preferences.getString("keyF", "");
-                tvNhietdo.setText(keyF + "ºF");
                 dialog.dismiss();
             }
         });
 
     }
-
 
     @Override
     public void thanhpho(String s) {
@@ -231,20 +234,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         tvNhietdo.setTypeface(typeface);
         String sub = String.valueOf(integer).substring(0, 2);
-        tvNhietdo.setText(sub + "ºC");
-
-
-    }
-
-    @Override
-    public void nhietC(double inC) {
-        tvNhietdo.setText(String.valueOf(inC).substring(0, 2) + "ºC");
-    }
-
-    @Override
-    public void nhietF(double inF) {
-        tvNhietdo.setText(String.valueOf(inF).substring(0, 2) + "ºF");
-
+//        tvNhietdo.setText(sub + "ºC");
     }
 
     @Override
@@ -267,7 +257,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         tvonhiem.setTextColor(Color.parseColor("#990000"));
         tvTieudeOnhiem.setTextColor(Color.parseColor("#990000"));
         imageView.setImageResource(R.mipmap.ic_onhiem_301);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "VGARAMB.TTF");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         tvonhiem.setTypeface(typeface);
         tvUsAQI.setTypeface(typeface);
@@ -281,7 +271,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         tvonhiem.setTextColor(Color.parseColor("#A2007C"));
         tvTieudeOnhiem.setTextColor(Color.parseColor("#A2007C"));
         imageView.setImageResource(R.mipmap.ic_onhiem_201);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "VGARAMB.TTF");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         tvonhiem.setTypeface(typeface);
         tvUsAQI.setTypeface(typeface);
@@ -295,7 +285,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         tvonhiem.setTextColor(Color.parseColor("#FF0000"));
         tvTieudeOnhiem.setTextColor(Color.parseColor("#FF0000"));
         imageView.setImageResource(R.mipmap.ic_onhiem_151);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "VGARAMB.TTF");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         tvonhiem.setTypeface(typeface);
         tvUsAQI.setTypeface(typeface);
@@ -309,7 +299,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         tvonhiem.setTextColor(Color.parseColor("#FF6600"));
         tvTieudeOnhiem.setTextColor(Color.parseColor("#FF6600"));
         imageView.setImageResource(R.mipmap.ic_onhiem_101);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "VGARAMB.TTF");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         tvonhiem.setTypeface(typeface);
         tvUsAQI.setTypeface(typeface);
@@ -323,7 +313,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         tvonhiem.setTextColor(Color.parseColor("#FFFF00"));
         tvTieudeOnhiem.setTextColor(Color.parseColor("#FFFF00"));
         imageView.setImageResource(R.mipmap.ic_onhiem_51);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "VGARAMB.TTF");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         tvonhiem.setTypeface(typeface);
         tvUsAQI.setTypeface(typeface);
@@ -337,7 +327,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         tvonhiem.setTextColor(Color.parseColor("#00FF33"));
         tvTieudeOnhiem.setTextColor(Color.parseColor("#00FF33"));
         imageView.setImageResource(R.mipmap.ic_onhiem_50);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "VGARAMB.TTF");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         tvonhiem.setTypeface(typeface);
         tvUsAQI.setTypeface(typeface);

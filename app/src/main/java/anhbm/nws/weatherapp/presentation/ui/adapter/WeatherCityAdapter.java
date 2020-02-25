@@ -1,6 +1,7 @@
 package anhbm.nws.weatherapp.presentation.ui.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.hodel> {
     private Context context;
     private List<ListAPI> listCityList;
+    private static final String IS_DEGREE = "IS_DEGREE";
+    private static final String IS_KELVIN = "IS_KELVIN";
 
     public WeatherCityAdapter(List<ListAPI> listCityList, Context context) {
         this.context = context;
@@ -41,9 +44,19 @@ public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.
         String day = simpleDateFormat.format(date);
         holder.ngay.setText(day);
 
+        SharedPreferences sharedPreferences = context.getSharedPreferences("key", context.MODE_PRIVATE);
+        boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
+        boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
+        Double temp = Double.valueOf(String.valueOf(listCity.getMain().getTemp()).substring(0,2));
+        String temF = String.valueOf(listCity.getMain().onConvertCelsiusToF(temp)).substring(0,2);
+        if (c && !k) {
+            holder.nhietdo.setText(temp + "ºC");
+        } else if (!c && k) {
+            holder.nhietdo.setText(temF+ "ºF");
+        }
+
         holder.tocdogio.setText(String.valueOf(listCity.getWind().getSpeed()));
         holder.dogio.setText(String.valueOf(listCity.getWind().getDeg()));
-        holder.nhietdo.setText(String.valueOf(listCity.getMain().getTemp()).substring(0, 2));
         holder.doam.setText(String.valueOf(listCity.getMain().getHumidity() + "%"));
         holder.trangthai.setText(listCity.getWeather().get(0).getDescription());
         String maIconAnh = listCity.getWeather().get(0).getIcon();

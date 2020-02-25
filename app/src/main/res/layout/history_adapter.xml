@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tocdogioText_history"
         android:layout_toRightOf="@id/nhietdo_hitory"
-        android:text="ºC"
+        android:text="º"
         android:textColor="@color/white"
         android:textSize="25dp" />
 
@@ -101,7 +101,7 @@
         android:layout_height="wrap_content"
         android:text="Xóa Lịch Sử"
         android:textColor="@color/white"
-        android:textSize="13dp"
+        android:textSize="16dp"
         android:layout_alignParentRight="true"/>
 
     <TextView
@@ -150,7 +150,8 @@
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"
         android:layout_marginBottom="10dp"
-        android:textSize="13dp"/>
+        android:textSize="16dp"
+        android:layout_marginRight="15dp"/>
     <TextView
         android:id="@+id/gach_giua"
         android:layout_width="2dp"

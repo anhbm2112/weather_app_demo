@@ -34,7 +34,7 @@
             android:layout_toRightOf="@id/back_timkiem"
             android:text="Mời Chọn Thành Phố"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/gach_doc"

@@ -2,10 +2,8 @@ package anhbm.nws.weatherapp.presentation.ui.screen.main.mvp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
@@ -82,8 +80,8 @@ public class MainPresenterImpl implements APICallListener {
     @Override
     public void onAPICallSucceedList(WeatherList weatherList) {
         weatherListDays = weatherList.getList();
-        doC = Double.parseDouble(String.valueOf(weatherListDays.get(0).getMain().getTemp()).substring(0, 2));
-        doF = Double.parseDouble(String.valueOf(weatherListDays.get(0).getMain().onConvertCelsiusToF(doC)).substring(0, 2));
+        doC = Double.parseDouble(String.valueOf(weatherListDays.get(0).getMain().getTemp()));
+        doF = Double.parseDouble(String.valueOf(weatherListDays.get(0).getMain().onConvertCelsiusToF(doC)));
 
         main.getRecyclerView(weatherListDays);
         String thanhpho = weatherList.getCity().getName();
@@ -95,8 +93,8 @@ public class MainPresenterImpl implements APICallListener {
         editor.putString("keyThanhpho", thanhpho);
         editor.putString("keynhietdo", String.valueOf(nhietdo).substring(0, 2));
         editor.putString("keyngay", ngaygio);
-        editor.putString("keyC", String.valueOf(doC));
-        editor.putString("keyF", String.valueOf(doF));
+        editor.putString("keyC", String.valueOf(doC).substring(0,2));
+        editor.putString("keyF", String.valueOf(doF).substring(0,2));
         editor.apply();
         main.nhietdo(nhietdo);
         main.ngay(ngaygio);

@@ -2,34 +2,28 @@ package anhbm.nws.weatherapp.presentation.ui.screen.searchCity;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import anhbm.nws.weatherapp.R;
-import anhbm.nws.weatherapp.api.weather.modelWeatherList.City;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
-import anhbm.nws.weatherapp.application.SQLiteWeather.SqlDatabase;
 import anhbm.nws.weatherapp.presentation.presenters.AboutPresenter;
 import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherCityAdapter;
 import anhbm.nws.weatherapp.presentation.ui.screen.BaseActivity;
-import anhbm.nws.weatherapp.presentation.ui.screen.history.mvp.HistoryModel;
 import anhbm.nws.weatherapp.presentation.ui.screen.searchCity.mvp.AboutPresenterImpl;
 import butterknife.ButterKnife;
 
@@ -41,6 +35,12 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
     private ImageView imageView;
     private Spinner spinner;
     private ImageView back;
+    private ArrayList<String> arrayList;
+    private String thanhphoLichsu;
+    private int type;
+    private Integer C, F;
+    private static final String IS_DEGREE = "IS_DEGREE";
+    private static final String IS_KELVIN = "IS_KELVIN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,20 +48,52 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
         setContentView(R.layout.activity_about);
         CheckInternetshowCaidat();
         init();
-        Intent intent = getIntent();
-        String thanhphoLichsu = intent.getStringExtra("timthanhpho");
+        arrayList = new ArrayList<>();
+        arrayList.add("Ha noi");
+        arrayList.add("Ho chi minh");
+        arrayList.add("Tuyen Quang");
+        arrayList.add("Yen Bai");
+        arrayList.add("Ha Tinh");
+        arrayList.add("Ninh Binh");
+        arrayList.add("Phu Tho");
+        arrayList.add("Bac Giang");
+        arrayList.add("Hung Yen");
+        arrayList.add("Hai Duong");
+        arrayList.add("Bac Ninh");
+        arrayList.add("Binh Duong");
+        arrayList.add("Thanh Hoa");
+        arrayList.add("thai nguyen");
+        arrayList.add("Hue");
+        arrayList.add("Can Tho");
+        arrayList.add("Nam Dinh");
+        arrayList.add("Bac lieu");
+        arrayList.add("Haiphong");
+        arrayList.add("Ben Tre");
+        arrayList.add("Tay Ninh");
+        arrayList.add("Yen Bai");
+        arrayList.add("Vinh Long");
+        arrayList.add("Ca mau");
 
+        Intent intent = getIntent();
+        thanhphoLichsu = intent.getStringExtra("timthanhpho");
         //spinner
-        ArrayAdapter<CharSequence> arrayAdapterSpin = ArrayAdapter.createFromResource(this, R.array.City,
-                android.R.layout.simple_spinner_item);
+//        ArrayAdapter<CharSequence> arrayAdapterSpin = ArrayAdapter.createFromResource(this, R.array.City,
+//                android.R.layout.simple_spinner_item);
+
+        ArrayAdapter<String> arrayAdapterSpin = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
         arrayAdapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapterSpin);
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i).equals(thanhphoLichsu)) {
+                spinner.setSelection(i);
+            }
+        }
+
 ///recy
         LinearLayoutManager LayoutManagaer = new LinearLayoutManager(getApplicationContext());
         recyCity.setLayoutManager(LayoutManagaer);
         initLayout();
     }
-
     private void initLayout() {
         ButterKnife.bind(AboutActivity.this);
         spinner.setOnItemSelectedListener(this);
@@ -86,7 +118,7 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
 
     @Override
     public void nhietdo(String integer) {
-        tvNhietdo.setText(integer + "ºC");
+//        tvNhietdo.setText(integer + "ºC");
     }
 
     @Override
@@ -94,6 +126,18 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
         aboutPresenter.insetLichSu(listCityList);
         weatherCityAdapter = new WeatherCityAdapter(listCityList, this);
         recyCity.setAdapter(weatherCityAdapter);
+        Double s = listCityList.get(0).getMain().getTemp();
+        String s1 = String.valueOf(listCityList.get(0).getMain().onConvertCelsiusToF(s));
+
+        SharedPreferences sharedPreferences = getSharedPreferences("key", MODE_PRIVATE);
+        boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
+        boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
+        if (c && !k) {
+            tvNhietdo.setText(String.valueOf(s).substring(0,2)+"ºC");
+        } else if (!c && k) {
+            tvNhietdo.setText(s1.substring(0,2)+"ºF");
+
+        }
     }
 
     @Override

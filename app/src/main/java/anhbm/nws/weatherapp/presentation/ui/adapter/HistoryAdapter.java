@@ -3,6 +3,7 @@ package anhbm.nws.weatherapp.presentation.ui.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +12,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
+
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.application.SQLiteWeather.SqlDatabase;
 import anhbm.nws.weatherapp.presentation.presenters.onClickRecy.ItemOnClick;
@@ -25,7 +30,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
     private Context mContext;
     private List<HistoryModel> historyModelList;
     private SqlDatabase sqlDatabase;
-private String pho;
+    private String pho;
+    private static final String IS_DEGREE = "IS_DEGREE";
+    private static final String IS_KELVIN = "IS_KELVIN";
+
     public HistoryAdapter(Context mContext, List<HistoryModel> historyModelList, SqlDatabase sqlDatabase) {
         this.mContext = mContext;
         this.historyModelList = historyModelList;
@@ -46,7 +54,7 @@ private String pho;
         holder.xoa.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         holder.tvgio.setText(historyModel.getGiohientai());
         holder.tvngay.setText(historyModel.getNgayhientai());
-        pho=historyModel.getThanhpho();
+        pho = historyModel.getThanhpho();
         holder.tvthanhpho.setText(pho);
         holder.tvdogio.setText(historyModel.getDogioDeg());
         holder.tvtocdogio.setText(historyModel.getTocdogioSpeed());
@@ -54,7 +62,10 @@ private String pho;
         holder.tvtrangthai.setText(historyModel.getTrangthaiDescription());
         String icon = historyModel.getIconSql();
         Picasso.with(mContext).load("http://api.openweathermap.org/img/w/" + icon + ".png").into(holder.iconviewHistory);
+
         holder.tvnhietdo.setText(String.valueOf(historyModel.getNhietDoTemp()).substring(0, 2));
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("key", mContext.MODE_PRIVATE);
+
         holder.xoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,7 +136,7 @@ private String pho;
             @Override
             public void onClick(View view, int i, boolean isLongClick) {
                 Intent intent = new Intent(mContext, AboutActivity.class);
-                intent.putExtra("timthanhpho",pho);
+                intent.putExtra("timthanhpho", pho);
                 mContext.startActivity(intent);
 
             }

@@ -16,9 +16,9 @@ public interface MainPresenter extends BasePresenter {
 
     void nhietdo(double integer);
 
-    void nhietF(double inF);
-
-    void nhietC(double inC);
+//    void nhietF(double inF);
+//
+//    void nhietC(double inC);
 
     void ngay(String ngay);
 

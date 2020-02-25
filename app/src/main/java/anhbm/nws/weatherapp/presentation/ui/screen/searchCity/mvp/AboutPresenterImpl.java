@@ -2,6 +2,7 @@ package anhbm.nws.weatherapp.presentation.ui.screen.searchCity.mvp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -28,8 +29,10 @@ public class AboutPresenterImpl implements APICallListener {
     List<ListAPI> listCityList = new ArrayList<>();
     private SqlDatabase sqlDatabase;
     private String gio, ngay, dogio, tocdogio, doam, trangthai, icon;
-    private double nhietdo;
+    private double nhietdo, nhietdoF;
     private HistoryModel historyModel = new HistoryModel();
+    private static final String IS_DEGREE = "IS_DEGREE";
+    private static final String IS_KELVIN = "IS_KELVIN";
 
     public AboutPresenterImpl(AboutPresenter mView, Context context) {
         this.mView = mView;
@@ -69,19 +72,27 @@ public class AboutPresenterImpl implements APICallListener {
     }
 
     public void insetLichSu(List<ListAPI> listCityList) {
+        SharedPreferences sharedPreferences = mcontext.getSharedPreferences("key", mcontext.MODE_PRIVATE);
+        boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
+        boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
         nhietdo = listCityList.get(0).getMain().getTemp();
+        nhietdoF = listCityList.get(0).getMain().onConvertCelsiusToF(nhietdo);
         dogio = String.valueOf(listCityList.get(0).getWind().getDeg());
         tocdogio = String.valueOf(listCityList.get(0).getWind().getSpeed());
         doam = String.valueOf(listCityList.get(0).getMain().getHumidity());
         trangthai = listCityList.get(0).getWeather().get(0).getDescription();
         icon = listCityList.get(0).getWeather().get(0).getIcon();
-        Log.e("LLLLL", trangthai);
         Calendar calendar = Calendar.getInstance();
         gio = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(calendar.getTime());
         ngay = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
         historyModel.setGiohientai(gio);
         historyModel.setNgayhientai(ngay);
-        historyModel.setNhietDoTemp(nhietdo);
+        if (c && !k) {
+            historyModel.setNhietDoTemp(nhietdo);
+        } else if (!c && k) {
+            historyModel.setNhietDoTemp(nhietdoF);
+        }
+
         historyModel.setDogioDeg(dogio);
         historyModel.setTocdogioSpeed(tocdogio);
         historyModel.setDoamHumidity(doam);

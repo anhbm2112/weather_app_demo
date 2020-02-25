@@ -82,15 +82,7 @@
             android:id="@+id/nhietdo_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLength="2"
             android:text="__"
-            android:textColor="@color/black"
-            android:textSize="24dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ºC"
             android:textColor="@color/black"
             android:textSize="24dp" />
 
