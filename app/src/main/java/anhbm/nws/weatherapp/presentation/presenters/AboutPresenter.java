@@ -8,11 +8,13 @@ import anhbm.nws.weatherapp.presentation.presenters.base.BasePresenter;
 public interface AboutPresenter {
     void thanhpho(String thanhpho);
 
-    void nhietdo(String integer);
-
     void getRecyCity(List<ListAPI> listCityList);
 
     void icon(String icon);
+
+    void nhietdoF(String F);
+
+    void nhietdoC(Double C);
 //    interface AboutView extends BaseView {
 //        enum ViewState {
 //            IDLE, LOADING, SHOW_ABOUT, ERROR

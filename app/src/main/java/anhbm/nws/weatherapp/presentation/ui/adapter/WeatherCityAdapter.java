@@ -30,7 +30,7 @@ public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.
     @NonNull
     @Override
     public WeatherCityAdapter.hodel onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.icon_city_adapter, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.search_city_icon, parent, false);
         return new WeatherCityAdapter.hodel(view);
     }
 
@@ -43,7 +43,6 @@ public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE dd-MM-yyy");
         String day = simpleDateFormat.format(date);
         holder.ngay.setText(day);
-
         SharedPreferences sharedPreferences = context.getSharedPreferences("key", context.MODE_PRIVATE);
         boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
         boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);

@@ -4,6 +4,7 @@ package anhbm.nws.weatherapp.presentation.ui.screen.searchCity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,11 +38,6 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
     private ImageView back;
     private ArrayList<String> arrayList;
     private String thanhphoLichsu;
-    private int type;
-    private Integer C, F;
-    private static final String IS_DEGREE = "IS_DEGREE";
-    private static final String IS_KELVIN = "IS_KELVIN";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,12 +84,11 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
                 spinner.setSelection(i);
             }
         }
-
-///recy
         LinearLayoutManager LayoutManagaer = new LinearLayoutManager(getApplicationContext());
         recyCity.setLayoutManager(LayoutManagaer);
         initLayout();
     }
+
     private void initLayout() {
         ButterKnife.bind(AboutActivity.this);
         spinner.setOnItemSelectedListener(this);
@@ -117,32 +112,24 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
     }
 
     @Override
-    public void nhietdo(String integer) {
-//        tvNhietdo.setText(integer + "ºC");
-    }
-
-    @Override
     public void getRecyCity(List<ListAPI> listCityList) {
         aboutPresenter.insetLichSu(listCityList);
         weatherCityAdapter = new WeatherCityAdapter(listCityList, this);
         recyCity.setAdapter(weatherCityAdapter);
-        Double s = listCityList.get(0).getMain().getTemp();
-        String s1 = String.valueOf(listCityList.get(0).getMain().onConvertCelsiusToF(s));
-
-        SharedPreferences sharedPreferences = getSharedPreferences("key", MODE_PRIVATE);
-        boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
-        boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
-        if (c && !k) {
-            tvNhietdo.setText(String.valueOf(s).substring(0,2)+"ºC");
-        } else if (!c && k) {
-            tvNhietdo.setText(s1.substring(0,2)+"ºF");
-
-        }
     }
 
     @Override
     public void icon(String icon) {
         Picasso.with(this).load("http://api.openweathermap.org/img/w/" + icon + ".png").into(imageView);
+    }
+
+    @Override
+    public void nhietdoF(String F) {
+        tvNhietdo.setText(F.substring(0,2)+ "ºF");
+    }
+    @Override
+    public void nhietdoC(Double C) {
+        tvNhietdo.setText(String.valueOf(C).substring(0, 2) + "ºC");
     }
 
 

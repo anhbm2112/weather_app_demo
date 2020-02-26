@@ -3,8 +3,8 @@ package anhbm.nws.weatherapp.presentation.ui.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +43,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
     @NonNull
     @Override
     public HistoryAdapter.holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.history_adapter, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.history_icon, parent, false);
         return new HistoryAdapter.holder(view);
     }
 
@@ -64,13 +64,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
         Picasso.with(mContext).load("http://api.openweathermap.org/img/w/" + icon + ".png").into(holder.iconviewHistory);
 
         holder.tvnhietdo.setText(String.valueOf(historyModel.getNhietDoTemp()).substring(0, 2));
-        SharedPreferences sharedPreferences = mContext.getSharedPreferences("key", mContext.MODE_PRIVATE);
-
         holder.xoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                View view1 = LayoutInflater.from(mContext).inflate(R.layout.dialog_xoa, null);
+                View view1 = LayoutInflater.from(mContext).inflate(R.layout.delete_dialog, null);
                 builder.setView(view1);
                 builder.setTitle("Bạn Có Chắc  Chắn Muốn Xóa Lịch Sử Tìm Kiếm Thành Phố ");
                 final AlertDialog dialog = builder.show();
@@ -101,7 +99,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                View view1 = LayoutInflater.from(mContext).inflate(R.layout.dialog_chitiet, null);
+                View view1 = LayoutInflater.from(mContext).inflate(R.layout.detail_dialog, null);
                 builder.setView(view1);
                 final AlertDialog dialog = builder.show();
                 TextView gio, ngay, dogio, tocdogio, nhietdo, trangthai, doam, thanhpho;
@@ -136,9 +134,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
             @Override
             public void onClick(View view, int i, boolean isLongClick) {
                 Intent intent = new Intent(mContext, AboutActivity.class);
-                intent.putExtra("timthanhpho", pho);
+                intent.putExtra("timthanhpho", historyModel.getThanhpho());
                 mContext.startActivity(intent);
-
+                Log.d("tenthanhpho", historyModel.getThanhpho());
             }
         });
 

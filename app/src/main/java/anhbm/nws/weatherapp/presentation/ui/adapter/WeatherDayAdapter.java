@@ -1,7 +1,6 @@
 package anhbm.nws.weatherapp.presentation.ui.adapter;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,7 @@ public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.ho
     @NonNull
     @Override
     public WeatherDayAdapter.hodel onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.icon_day_adapter, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.main_day_icon, parent, false);
         return new hodel(view);
     }
 

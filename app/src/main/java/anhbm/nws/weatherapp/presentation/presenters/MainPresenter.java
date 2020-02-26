@@ -14,7 +14,9 @@ public interface MainPresenter extends BasePresenter {
 
     void getRecyclerView(List<ListAPI> weatherListDays);
 
-    void nhietdo(double integer);
+    void nhietdoC(String C);
+
+    void nhietdoF(String F);
 
 //    void nhietF(double inF);
 //
@@ -35,7 +37,6 @@ public interface MainPresenter extends BasePresenter {
     void AQI51();
 
     void AQI00();
-
 
 
     // void USmain(String USmain);

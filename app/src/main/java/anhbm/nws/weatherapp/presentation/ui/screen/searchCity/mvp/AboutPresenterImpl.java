@@ -30,6 +30,8 @@ public class AboutPresenterImpl implements APICallListener {
     private SqlDatabase sqlDatabase;
     private String gio, ngay, dogio, tocdogio, doam, trangthai, icon;
     private double nhietdo, nhietdoF;
+    private double s;
+    private String s1;
     private HistoryModel historyModel = new HistoryModel();
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
@@ -56,11 +58,24 @@ public class AboutPresenterImpl implements APICallListener {
         String thanhpho = weatherCity.getCity().getName();
         String nhietdo = String.valueOf(weatherCity.getList().get(0).getMain().getTemp()).substring(0, 2);
         String iconchinh = weatherCity.getList().get(0).getWeather().get(0).getIcon();
+        s = listCityList.get(0).getMain().getTemp();
+        s1 = String.valueOf(listCityList.get(0).getMain().onConvertCelsiusToF(s));
+
+        SharedPreferences sharedPreferences = mcontext.getSharedPreferences("key", mcontext.MODE_PRIVATE);
+        boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
+        boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
+        if (c && !k) {
+            mView.nhietdoC(s);
+
+        } else if (!c && k) {
+            mView.nhietdoF(s1);
+
+        }
         mView.icon(iconchinh);
         mView.thanhpho(thanhpho);
-        mView.nhietdo(nhietdo);
-    }
 
+
+    }
     @Override
     public void onAPICallFailed(Enums.APIRoute route, Throwable throwable) {
 
@@ -70,7 +85,6 @@ public class AboutPresenterImpl implements APICallListener {
         weatherInteractor.callAPICity(snhap);
         historyModel.setThanhpho(snhap);
     }
-
     public void insetLichSu(List<ListAPI> listCityList) {
         SharedPreferences sharedPreferences = mcontext.getSharedPreferences("key", mcontext.MODE_PRIVATE);
         boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
@@ -92,7 +106,6 @@ public class AboutPresenterImpl implements APICallListener {
         } else if (!c && k) {
             historyModel.setNhietDoTemp(nhietdoF);
         }
-
         historyModel.setDogioDeg(dogio);
         historyModel.setTocdogioSpeed(tocdogio);
         historyModel.setDoamHumidity(doam);

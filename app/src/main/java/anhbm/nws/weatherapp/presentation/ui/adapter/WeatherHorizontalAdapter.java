@@ -15,13 +15,13 @@ import java.util.List;
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 
-public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
+public class WeatherHorizontalAdapter extends RecyclerView.Adapter<WeatherHorizontalAdapter.ViewHolder> {
 
     private List<ListAPI> listPeople;
     private Context mContext;
     private int type;
 
-    public WeatherAdapter(Context mContext, List<ListAPI> listPeople, int type) {
+    public WeatherHorizontalAdapter(Context mContext, List<ListAPI> listPeople, int type) {
         this.listPeople = listPeople;
         this.mContext = mContext;
         this.type = type;
@@ -30,7 +30,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.icon_adapter, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.main_horizontal_icon, parent, false);
         return new ViewHolder(view);
     }
 

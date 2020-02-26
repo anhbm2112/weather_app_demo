@@ -1,22 +1,17 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.main;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,7 +29,7 @@ import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.application.GPSTracker;
 import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
-import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherAdapter;
+import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherHorizontalAdapter;
 import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherDayAdapter;
 import anhbm.nws.weatherapp.presentation.ui.screen.BaseActivity;
 import anhbm.nws.weatherapp.presentation.ui.screen.history.HistoryActivity;
@@ -48,7 +43,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     private TextView tvThanhpho, tvNhietdo, tvNgay, tvUsAQI, tvonhiem, tvTieudeOnhiem;
     private RecyclerView recyNgay, recyList;
     private GPSTracker gpsTracker;
-    private WeatherAdapter weatherListDayAdapter;
+    private WeatherHorizontalAdapter weatherListDayAdapter;
     private ImageView imageView;
     private WeatherDayAdapter weatherListAdapter;
     ///SharedPreferences
@@ -57,9 +52,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     private SharedPreferences.Editor editor;
     private Gson gson;
     private int type_degree = 0;
-    private String nhietdo;
     String oC, oF;
-    String keyF, keyC;
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
 
@@ -115,7 +108,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 //        oC = String.valueOf(weatherListDays.get(0).getMain().getTemp()).substring(0, 2);
 //        oF = String.valueOf(weatherListDays.get(0).getMain().onConvertCelsiusToF(Double.parseDouble(oC))).substring(0, 2);
         saveValueToPreference(weatherListDays);
-//        weatherListDayAdapter = new WeatherAdapter(this, weatherListDays, type_degree);
+//        weatherListDayAdapter = new WeatherHorizontalAdapter(this, weatherListDays, type_degree);
 //        recyNgay.setAdapter(weatherListDayAdapter);
 //        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, weatherListDays, type_degree);
 //        recyList.setAdapter(weatherListAdapter);
@@ -124,29 +117,17 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 
     private void initRecyclerView(List<ListAPI> list) {
         ///hien thi du lieu list khi mat mang
-        weatherListDayAdapter = new WeatherAdapter(this, list, type_degree);
+        weatherListDayAdapter = new WeatherHorizontalAdapter(this, list, type_degree);
         recyNgay.setAdapter(weatherListDayAdapter);
         weatherListAdapter = new WeatherDayAdapter(MainActivity.this, list, type_degree);
         recyList.setAdapter(weatherListAdapter);
-
         String thanhpho = preferences.getString("keyThanhpho", "");
         tvThanhpho.setText(thanhpho);
-//        nhietdo = preferences.getString("keynhietdo", "");
-//        tvNhietdo.setText(String.valueOf(nhietdo) + "ºC");
         Integer Onhiem = preferences.getInt("keyOnhiem", 1);
         tvUsAQI.setText(String.valueOf(Onhiem));
         String ngay = preferences.getString("keyngay", "");
         tvNgay.setText(ngay);
-        boolean s = preferences.getBoolean(IS_DEGREE, true);
-        boolean k = preferences.getBoolean(IS_KELVIN, false);
-        if (s && !k) {
-            keyC = preferences.getString("keyC", "");
-            tvNhietdo.setText(keyC + "ºC");
-        } else if (!s && k) {
-            keyF = preferences.getString("keyF", "");
-            tvNhietdo.setText(keyF + "ºF");
-        }
-
+        presenter.mainCvsF();
     }
 
     private void saveValueToPreference(List<ListAPI> list) {
@@ -156,8 +137,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     }
 
     private List<ListAPI> getValueFromPreference() {
-        Type collectionType = new TypeToken<List<ListAPI>>() {
-        }.getType();
+        Type collectionType = new TypeToken<List<ListAPI>>() {}.getType();
         return gson.fromJson(preferences.getString("keyList", ""), collectionType);
     }
 
@@ -222,19 +202,24 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     }
 
     @Override
+    public void nhietdoC(String C) {
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+        tvNhietdo.setTypeface(typeface);
+        tvNhietdo.setText(C + "ºC");
+    }
+
+    @Override
+    public void nhietdoF(String F) {
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+        tvNhietdo.setTypeface(typeface);
+        tvNhietdo.setText(F + "ºF");
+    }
+
+    @Override
     public void thanhpho(String s) {
         Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         tvThanhpho.setTypeface(typeface);
         tvThanhpho.setText(s);
-    }
-
-
-    @Override
-    public void nhietdo(double integer) {
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
-        tvNhietdo.setTypeface(typeface);
-        String sub = String.valueOf(integer).substring(0, 2);
-//        tvNhietdo.setText(sub + "ºC");
     }
 
     @Override
