@@ -18,7 +18,8 @@ public class MainModel {
     public static final String COLUMN_TRANGTHAI = "trangthai";
     public static final String COLUMN_ICON = "icon";
 
-    public static final String CREATE_TABLE_WHEATHER = " CREATE TABLE " + TABLE_WEATHER_SQL + "(" + COLUMN_NGAY + " INTEGER PRIMARY KEY, " + COLUMN_NHIETDO + " VARCHAR, " + COLUMN_DOAM + " VARCHAR, " + COLUMN_DOGIO + "" +
+    public static final String CREATE_TABLE_WHEATHER = " CREATE TABLE " + TABLE_WEATHER_SQL + "(" + COLUMN_NGAY +
+            " INTEGER PRIMARY KEY, " + COLUMN_NHIETDO + " VARCHAR, " + COLUMN_DOAM + " VARCHAR, " + COLUMN_DOGIO + "" +
             " VARCHAR, " + COLUMN_TOCDOGIO + " VARCHAR, " + COLUMN_TRANGTHAI + " VARCHAR, " + COLUMN_ICON + " VARCHAR) ";
 
     public String getNgayDt() {

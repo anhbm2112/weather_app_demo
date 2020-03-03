@@ -59,17 +59,12 @@ public class APICallManager  {
 
     }
 
-
-
-
     PeopleManager getPeopleManager;
     public class PeopleManager {
         WeatherService service;
-
         public PeopleManager() {
             this.service = getService(WeatherService.class);
         }
-
         public Call<Weather> getContacts(GPSTracker gpsTracker) {
             return service.getPeople(gpsTracker.getLatitude(), gpsTracker.getLongtitude());
         }

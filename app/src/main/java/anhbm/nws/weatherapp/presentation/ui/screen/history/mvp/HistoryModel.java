@@ -94,7 +94,7 @@ public class HistoryModel {
     public void setIconSql(String iconSql) {
         this.iconSql = iconSql;
     }
-    public double onConverF(double temp){
-        return temp * 1.8000 + 32.00;
-    }
+//    public double onConverF(double temp){
+//        return temp * 1.8000 + 32.00;
+//    }
 }

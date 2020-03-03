@@ -7,21 +7,15 @@
 
     <Button
         android:id="@+id/thoat_diag"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="#083145"
-        android:text="Thoát"
-        android:textColor="@color/white" />
+        style="@style/delete_history"
+        android:background="@color/ground"
+        android:text="@string/thoat" />
 
     <Button
         android:id="@+id/xoa_diag"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="#083145"
-        android:text="Xóa"
-        android:textColor="@color/white" />
+        style="@style/delete_history"
+        android:background="@color/ground"
+        android:text="@string/xoa" />
 
 
 </LinearLayout>

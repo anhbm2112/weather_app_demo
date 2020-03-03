@@ -4,34 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ground"
     android:orientation="vertical"
-    tools:context=".presentation.ui.screen.history.HistoryActivity"
-    android:background="#083145">
+    tools:context=".presentation.ui.screen.history.HistoryActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#051F2C"
-        >
+        style="@style/toolbar_main"
+        android:background="@color/ground_toolbar_city">
+
         <ImageView
             android:id="@+id/back_history"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_action_back"
-            />
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Lịch Sử Tìm Kiếm Thành Phố"
+            android:src="@drawable/ic_action_back" />
+
+        <TextView
+           style="@style/tieude_lichsu"
             android:textColor="@color/white"
-            android:textSize="16dp"
-            android:layout_marginLeft="60dp"
-            />
+             />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHistory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </LinearLayout>

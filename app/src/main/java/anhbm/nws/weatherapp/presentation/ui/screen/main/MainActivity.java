@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     private SharedPreferences.Editor editor;
     private Gson gson;
     private int type_degree = 0;
-    String oC, oF;
+//    String oC, oF;
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
 
@@ -67,7 +67,6 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         Managaer();
         enums = getValueFromPreference();
         initRecyclerView(enums);
-
     }
 
     private void init() {
@@ -123,8 +122,6 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         recyList.setAdapter(weatherListAdapter);
         String thanhpho = preferences.getString("keyThanhpho", "");
         tvThanhpho.setText(thanhpho);
-        Integer Onhiem = preferences.getInt("keyOnhiem", 1);
-        tvUsAQI.setText(String.valueOf(Onhiem));
         String ngay = preferences.getString("keyngay", "");
         tvNgay.setText(ngay);
         presenter.mainCvsF();
@@ -146,6 +143,77 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         recyNgay.setLayoutManager(horizontalLayoutManagaer);
         LinearLayoutManager LayoutManagaer = new LinearLayoutManager(getApplicationContext());
         recyList.setLayoutManager(LayoutManagaer);
+        Integer integer = preferences.getInt("keyOnhiem", 1);
+        tvUsAQI.setText(String.valueOf(integer));
+        if (integer >= 301) {
+            tvUsAQI.setBackgroundColor(Color.parseColor("#990000"));
+            tvonhiem.setText("Không Khí Đang Ở Mức Nguy hiểm");
+            tvonhiem.setTextColor(Color.parseColor("#990000"));
+            tvTieudeOnhiem.setTextColor(Color.parseColor("#990000"));
+            imageView.setImageResource(R.mipmap.ic_onhiem_301);
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            tvonhiem.setTypeface(typeface);
+            tvUsAQI.setTypeface(typeface);
+            tvTieudeOnhiem.setTypeface(type);
+///hien thi do o nhiem khi tat mang
+        } else if (integer >= 201) {
+            tvUsAQI.setBackgroundColor(Color.parseColor("#A2007C"));
+            tvonhiem.setText("Không Khí Đang Ở Mức RẤt Ô Nhiễm");
+            tvonhiem.setTextColor(Color.parseColor("#A2007C"));
+            tvTieudeOnhiem.setTextColor(Color.parseColor("#A2007C"));
+            imageView.setImageResource(R.mipmap.ic_onhiem_201);
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            tvonhiem.setTypeface(typeface);
+            tvUsAQI.setTypeface(typeface);
+            tvTieudeOnhiem.setTypeface(type);
+        } else if (integer >= 151) {
+            tvUsAQI.setBackgroundColor(Color.parseColor("#FF0000"));
+            tvonhiem.setText("Không Khí Đang Ở Mức Ô Nhiễm");
+            tvonhiem.setTextColor(Color.parseColor("#FF0000"));
+            tvTieudeOnhiem.setTextColor(Color.parseColor("#FF0000"));
+            imageView.setImageResource(R.mipmap.ic_onhiem_151);
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            tvonhiem.setTypeface(typeface);
+            tvUsAQI.setTypeface(typeface);
+            tvTieudeOnhiem.setTypeface(type);
+        } else if (integer >= 101) {
+            tvUsAQI.setBackgroundColor(Color.parseColor("#FF6600"));
+            tvonhiem.setText("Không Khí Đang Ở Mức Không tốt cho người thuộc nhóm nhạy cảm");
+            tvonhiem.setTextColor(Color.parseColor("#FF6600"));
+            tvTieudeOnhiem.setTextColor(Color.parseColor("#FF6600"));
+            imageView.setImageResource(R.mipmap.ic_onhiem_101);
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            tvonhiem.setTypeface(typeface);
+            tvUsAQI.setTypeface(typeface);
+            tvTieudeOnhiem.setTypeface(type);
+        } else if (integer >= 51) {
+            tvUsAQI.setBackgroundColor(Color.parseColor("#FFFF00"));
+            tvonhiem.setText("Không Khí Đang Ở Mức Vừa Phải");
+            tvonhiem.setTextColor(Color.parseColor("#FFFF00"));
+            tvTieudeOnhiem.setTextColor(Color.parseColor("#FFFF00"));
+            imageView.setImageResource(R.mipmap.ic_onhiem_51);
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            tvonhiem.setTypeface(typeface);
+            tvUsAQI.setTypeface(typeface);
+            tvTieudeOnhiem.setTypeface(type);
+        } else {
+            tvUsAQI.setBackgroundColor(Color.parseColor("#00FF33"));
+            tvonhiem.setText("Không Khí Đang Ở Mức Tốt");
+            tvonhiem.setTextColor(Color.parseColor("#00FF33"));
+            tvTieudeOnhiem.setTextColor(Color.parseColor("#00FF33"));
+            imageView.setImageResource(R.mipmap.ic_onhiem_50);
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            tvonhiem.setTypeface(typeface);
+            tvUsAQI.setTypeface(typeface);
+            tvTieudeOnhiem.setTypeface(type);
+        }
+
     }
 
     @Override
@@ -168,7 +236,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 
     private void nhietDoF() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View view1 = LayoutInflater.from(this).inflate(R.layout.dialog_f, null);
+        View view1 = LayoutInflater.from(this).inflate(R.layout.c_f_dialog, null);
         builder.setView(view1);
         builder.setTitle("Chuyển Đổi ºC vs ºF");
         final AlertDialog dialog = builder.show();
@@ -232,7 +300,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 //        Integer integer = preferences.getInt("keyOnhiem", 0);
 //        tvUsAQI.setText(integer + " US AQI");
         tvUsAQI.setText(String.valueOf(usAQI) + " US AQI");
-        presenter.MucDoONhiem();
+
     }
 
     @Override

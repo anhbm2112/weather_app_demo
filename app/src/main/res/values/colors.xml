@@ -47,4 +47,6 @@
     <!---background-->
     <color name="BottomNavigationView">#33CCFF</color>
     <color name="background">#66CCFF</color>
+    <color name="ground">#083145</color>
+    <color name="ground_toolbar_city">#051F2C</color>
 </resources>

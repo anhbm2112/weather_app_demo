@@ -31,8 +31,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
     private List<HistoryModel> historyModelList;
     private SqlDatabase sqlDatabase;
     private String pho;
-    private static final String IS_DEGREE = "IS_DEGREE";
-    private static final String IS_KELVIN = "IS_KELVIN";
 
     public HistoryAdapter(Context mContext, List<HistoryModel> historyModelList, SqlDatabase sqlDatabase) {
         this.mContext = mContext;
@@ -115,7 +113,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
                 trangthai = dialog.findViewById(R.id.trangthai_chitiet);
                 gio.setText(historyModel.getGiohientai());
                 ngay.setText(historyModel.getNgayhientai());
-                nhietdo.setText(String.valueOf(historyModel.getNhietDoTemp()).substring(0, 2) + "ºC");
+                nhietdo.setText(String.valueOf(historyModel.getNhietDoTemp()).substring(0, 2) + "º");
                 thanhpho.setText(historyModel.getThanhpho());
                 dogio.setText(historyModel.getDogioDeg());
                 tocdogio.setText(historyModel.getTocdogioSpeed() + "m/h");

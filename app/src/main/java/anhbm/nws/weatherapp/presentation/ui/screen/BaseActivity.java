@@ -120,7 +120,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 //    public void showF() {
 //        Dialog dialog = new Dialog(this);
 //        dialog.setTitle("Chuyển Sang ºF");
-//        dialog.setContentView(R.layout.dialog_f);
+//        dialog.setContentView(R.layout.c_f_dialog);
 //        dialog.show();
 //
 //    }

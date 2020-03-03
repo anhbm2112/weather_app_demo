@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    android:id="@+id/nes"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nes"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/anhthuhai"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".presentation.ui.screen.main.MainActivity"
-    tools:showIn="@layout/activity_main"
-android:background="@drawable/anhthuhai"
-   >
+    tools:showIn="@layout/activity_main">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,12 +19,11 @@ android:background="@drawable/anhthuhai"
             style="@style/texttitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_temperature"/>
+            android:layout_below="@+id/tv_temperature" />
 
         <TextView
             android:id="@+id/gach_tren"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
+            style="@style/gach_tren_duoi_main"
             android:layout_below="@id/tv_title"
             android:background="@color/white" />
 
@@ -37,19 +34,15 @@ android:background="@drawable/anhthuhai"
 
         <TextView
             android:id="@+id/gach_duoi"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
+            style="@style/gach_tren_duoi_main"
             android:layout_below="@+id/recyclerView"
             android:background="@color/white" />
 
         <LinearLayout
             android:id="@+id/chiso_onhiem"
-            style="@style/cardViewStyle"
-            android:layout_width="match_parent"
+            style="@style/Onhiem"
             android:layout_below="@+id/gach_duoi"
             android:orientation="vertical">
-
-
             <TextView
                 android:id="@+id/tieude"
                 style="@style/TieuDeONHIEM"
@@ -81,8 +74,7 @@ android:background="@drawable/anhthuhai"
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerviewDay"
-            android:layout_width="match_parent"
-            android:layout_height="370dp"
+            style="@style/recyclerviewDay_main"
             android:layout_below="@+id/chiso_onhiem" />
 
     </RelativeLayout>

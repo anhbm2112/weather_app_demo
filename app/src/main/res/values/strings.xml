@@ -50,5 +50,20 @@
         <item>Yen Bai</item>
         <item>Ca mau</item>
     </string-array>
+    <string name="doF">ºF</string>
+    <string name="doC">ºC</string>
+    <string name="nhietdotrong">_ _ _</string>
+    <string name="xoa">Xóa</string>
+    <string name="thoat">Thoát</string>
+    <string name="detail_history">Chi Tiết Lịch Sử Tìm Kiếm Thành Phố</string>
+    <string name="text1">Giờ Tìm Kiếm Thành Phố :</string>
+    <string name="text2">Ngày Tìm Kiếm Thành Phố :</string>
+    <string name="text3">Thành Phố Tìm Kiếm :</string>
+    <string name="text4">Nhiệt Độ Thành Phố Tìm Kiếm :</string>
+    <string name="text5">Độ Gió Của Thành Phố Tìm Kiếm :</string>
+    <string name="text6">Tốc Độ Gió Của Thành Phố Tìm Kiếm :</string>
+    <string name="text7">Độ Ẩm Của Thành Phố Tìm Kiếm :</string>
+    <string name="text8">Trạng Thái Thời Tiết Của Thành Phố :</string>
+
 
 </resources>

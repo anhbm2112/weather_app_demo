@@ -46,7 +46,7 @@ public class MainPresenterImpl implements APICallListener {
         sharedPreferences = context.getSharedPreferences("key", context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         editor.putInt("keyOnhiem", USaqi);
-        editor.apply();
+        editor.commit();
         Integer i = sharedPreferences.getInt("keyOnhiem", 1);
         if (i >= 301) {
             main.AQI301();
@@ -62,6 +62,7 @@ public class MainPresenterImpl implements APICallListener {
             main.AQI00();
         }
         main.usAQI(i);
+
     }
 
     public void MucDoONhiem() {
@@ -79,6 +80,7 @@ public class MainPresenterImpl implements APICallListener {
         } else {
             main.AQI00();
         }
+        main.usAQI(integer);
     }
 
     @Override
@@ -86,7 +88,6 @@ public class MainPresenterImpl implements APICallListener {
         weatherListDays = weatherList.getList();
         doC = Double.parseDouble(String.valueOf(weatherListDays.get(0).getMain().getTemp()));
         doF = Double.parseDouble(String.valueOf(weatherListDays.get(0).getMain().onConvertCelsiusToF(doC)));
-
 
         main.getRecyclerView(weatherListDays);
         String thanhpho = weatherList.getCity().getName();

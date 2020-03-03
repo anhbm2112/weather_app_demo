@@ -33,17 +33,14 @@ public class WeatherHorizontalAdapter extends RecyclerView.Adapter<WeatherHorizo
         View view = LayoutInflater.from(mContext).inflate(R.layout.main_horizontal_icon, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ListAPI listday = listPeople.get(position);
-
         int fomatnNgay = listday.getDt();
         Date date = new Date(fomatnNgay * 1000l);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE dd-MM-yyy HH:mm");
         String day = simpleDateFormat.format(date);
         holder.tvngay.setText(day);
-
         holder.tvmota_trangthai.setText(listday.getWeather().get(0).getDescription());
         String sub = String.valueOf(listday.getMain().getTemp()).substring(0, 2);
         String sF = String.valueOf(listday.getMain().onConvertCelsiusToF(Double.parseDouble(sub))).substring(0, 2);
@@ -52,7 +49,6 @@ public class WeatherHorizontalAdapter extends RecyclerView.Adapter<WeatherHorizo
         } else if (type == 1) {
             holder.tvnhietdo.setText(sF + "ºF");
         }
-
         String s = listday.getWeather().get(0).getIcon();
         Picasso.with(mContext).load("http://api.openweathermap.org/img/w/" + s + ".png").into(holder.imageView);
     }

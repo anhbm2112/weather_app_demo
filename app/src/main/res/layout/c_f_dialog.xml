@@ -6,21 +6,15 @@
 
     <Button
         android:id="@+id/c"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ºC"
-        android:background="#083145"
-        android:layout_margin="10dp"
-        android:textColor="@color/white"
-        android:textSize="20dp"/>
+        style="@style/CF_dialog"
+        android:background="@color/ground"
+        android:text="@string/doC"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/f"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ºF"
-        android:background="#083145"
-        android:layout_margin="10dp"
-        android:textColor="@color/white"
-        android:textSize="20dp"/>
+        style="@style/CF_dialog"
+        android:background="@color/ground"
+        android:text="@string/doF"
+        android:textColor="@color/white" />
 </LinearLayout>

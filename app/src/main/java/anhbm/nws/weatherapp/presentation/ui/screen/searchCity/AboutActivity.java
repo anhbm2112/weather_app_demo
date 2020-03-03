@@ -99,7 +99,7 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
         aboutPresenter = new AboutPresenterImpl(this, this);
         tvThanhpho = findViewById(R.id.tv_city_manCity);
         tvNhietdo = findViewById(R.id.tv_temperature_mancity);
-        tvNgayCity = findViewById(R.id.tv_ngaycity);
+//        tvNgayCity = findViewById(R.id.tv_ngaycity);
         recyCity = findViewById(R.id.recyclerViewCity);
         imageView = findViewById(R.id.imgIconchinh);
         spinner = findViewById(R.id.spin);

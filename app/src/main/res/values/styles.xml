@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
     </style>
 
     <style name="texttitle">
@@ -40,7 +39,8 @@
     </style>
 
     <style name="textviewcity">
-<!--        <item name="android:layout_marginTop">10dp</item>-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:text">_ _ _</item>
         <item name="android:textSize">40dp</item>
     </style>
@@ -51,17 +51,17 @@
         <item name="android:text">_ _ _</item>
         <item name="android:textSize">42dp</item>
     </style>
+
     <style name="iconchinh">
         <item name="android:layout_height">70dp</item>
         <item name="android:layout_width">100dp</item>
 
     </style>
 
-    <style name="cardViewStyle" parent="Base.CardView">
+    <style name="Onhiem" parent="Base.CardView">
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_margin">5dp</item>
-        <item name="cardCornerRadius">5dp</item>
-
     </style>
 
     <style name="tvStyleONHIEM_USAQI" parent="Base.CardView">
@@ -100,8 +100,132 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16dp</item>
     </style>
+
     <style name="BtTim">
         <item name="android:layout_margin">10dp</item>
         <item name="android:text">Tìm</item>
     </style>
+
+    <style name="CF_dialog">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="CollapsingToolbarLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">150dp</item>
+    </style>
+
+    <style name="tv_temperature">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">45dp</item>
+    </style>
+
+    <style name="toolbar_main">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">65dp</item>
+    </style>
+
+    <style name="gach_tren_duoi_main">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+    </style>
+
+    <style name="recyclerviewDay_main">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">370dp</item>
+    </style>
+
+    <style name="delete_history">
+        <item name="android:layout_width">160dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="tieu_de_chitiet">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="img_detail">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">65dp</item>
+    </style>
+
+    <style name="Text_LinearLayout_detail">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="hienthi_chitiet">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="hienthi_tieude_chitiet">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="img_back_timkiem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="tieude_timkiem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:text">Mời Chọn Thành Phố</item>
+        <item name="android:textSize">17dp</item>
+    </style>
+
+    <style name="gachdoc_timkiem">
+        <item name="android:layout_width">2dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="gachngang_timkiem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+    </style>
+
+    <style name="relativeLayout_timkiem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="gach_doc2">
+        <item name="android:layout_width">2dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
+    <style name="tieude_lichsu">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">60dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">Lịch Sử Tìm Kiếm Thành Phố</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
 </resources>

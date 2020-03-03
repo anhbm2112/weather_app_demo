@@ -13,213 +13,104 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            style="@style/tieu_de_chitiet"
             android:gravity="center"
-            android:text="Chi Tiết Lịch Sử Tìm Kiếm Thành Phố"
-            android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:text="@string/detail_history"
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/thoat_chitiet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="65dp"
+            style="@style/img_detail"
             android:src="@drawable/ic_action_xoa" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_margin="3dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <LinearLayout style="@style/Text_LinearLayout_detail">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Giờ Tìm Kiếm Thành Phố :"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_tieude_chitiet"
+            android:text="@string/text1" />
 
         <TextView
             android:id="@+id/gio_chitiet"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_chitiet" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_margin="3dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <LinearLayout style="@style/Text_LinearLayout_detail">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ngày Tìm Kiếm Thành Phố :"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_tieude_chitiet"
+            android:text="@string/text2" />
 
         <TextView
             android:id="@+id/ngay_chitiet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_chitiet" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_margin="3dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <LinearLayout style="@style/Text_LinearLayout_detail">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thành Phố Tìm Kiếm :"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_tieude_chitiet"
+            android:text="@string/text3" />
 
         <TextView
             android:id="@+id/thanhpho_chitiet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_chitiet" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_margin="3dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <LinearLayout style="@style/Text_LinearLayout_detail">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nhiệt Độ Thành Phố Tìm Kiếm :"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_tieude_chitiet"
+            android:text="@string/text4" />
 
         <TextView
             android:id="@+id/nhietdo_chitiet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_chitiet" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_margin="3dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <LinearLayout style="@style/Text_LinearLayout_detail">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Độ Gió Của Thành Phố Tìm Kiếm :"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_tieude_chitiet"
+            android:text="@string/text5" />
 
         <TextView
             android:id="@+id/dogio_chitiet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_chitiet" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_margin="3dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <LinearLayout style="@style/Text_LinearLayout_detail">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tốc Độ Gió Của Thành Phố Tìm Kiếm :"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_tieude_chitiet"
+            android:text="@string/text6" />
 
         <TextView
             android:id="@+id/tocdogio_chitiet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_chitiet" />
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_margin="3dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <LinearLayout style="@style/Text_LinearLayout_detail">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Độ Ẩm Của Thành Phố Tìm Kiếm :"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_tieude_chitiet"
+            android:text="@string/text7" />
 
         <TextView
             android:id="@+id/doam_chitiet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_chitiet" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_margin="3dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <LinearLayout style="@style/Text_LinearLayout_detail">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trạng Thái Thời Tiết Của Thành Phố :"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_tieude_chitiet"
+            android:text="@string/text8" />
 
         <TextView
             android:id="@+id/trangthai_chitiet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            style="@style/hienthi_chitiet" />
     </LinearLayout>
 
 </LinearLayout>
