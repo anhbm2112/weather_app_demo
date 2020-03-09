@@ -71,7 +71,6 @@ public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.
     public class hodel extends RecyclerView.ViewHolder {
         TextView ngay, thanhpho, tocdogio, dogio, nhietdo, doam, trangthai;
         ImageView imagIcon;
-
         public hodel(@NonNull View itemView) {
             super(itemView);
             imagIcon = itemView.findViewById(R.id.iconimg_city);

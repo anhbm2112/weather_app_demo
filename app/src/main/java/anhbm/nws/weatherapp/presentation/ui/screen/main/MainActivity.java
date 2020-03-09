@@ -141,8 +141,10 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     private void Managaer() {
         LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recyNgay.setLayoutManager(horizontalLayoutManagaer);
+
         LinearLayoutManager LayoutManagaer = new LinearLayoutManager(getApplicationContext());
         recyList.setLayoutManager(LayoutManagaer);
+
         Integer integer = preferences.getInt("keyOnhiem", 1);
         tvUsAQI.setText(String.valueOf(integer));
         if (integer >= 301) {
