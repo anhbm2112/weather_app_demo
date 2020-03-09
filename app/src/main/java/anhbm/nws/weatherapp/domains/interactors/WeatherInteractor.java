@@ -31,7 +31,7 @@ public class WeatherInteractor {
             @Override
             public void onFailure(Call<Weather> call, Throwable t) {
                 listener.onAPICallFailed(route, t);
-
+                Log.e("Ket Quaaaaaaaa", String.valueOf(t));
             }
         });
 
