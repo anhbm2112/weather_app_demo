@@ -24,38 +24,12 @@
     <string name="message.loading">Loading...</string>
     <string name="activity_about">About</string>
 
-    <string-array name="City">
-        <item>Ha noi</item>
-        <item>Ho chi minh</item>
-        <item>Tuyen Quang</item>
-        <item>Yen Bai</item>
-        <item>Ha Tinh</item>
-        <item>Ninh Binh</item>
-        <item>Phu Tho</item>
-        <item>Bac Giang</item>
-        <item>Hung Yen</item>
-        <item>Hai Duong</item>
-        <item>Bac Ninh</item>
-        <item>Binh Duong</item>
-        <item>Thanh Hoa</item>
-        <item>Thai Nguyen</item>
-        <item>Hue</item>
-        <item>Haiphong</item>
-        <item>Can Tho</item>
-        <item>Nam Dinh</item>
-        <item>Bac lieu</item>
-        <item>Ben Tre</item>
-        <item>Tay Ninh</item>
-        <item>Vinh Long</item>
-        <item>Yen Bai</item>
-        <item>Ca mau</item>
-    </string-array>
     <string name="doF">ºF</string>
     <string name="doC">ºC</string>
     <string name="nhietdotrong">_ _ _</string>
     <string name="xoa">Xóa</string>
     <string name="thoat">Thoát</string>
-    <string name="detail_history">Chi Tiết Lịch Sử Tìm Kiếm Thành Phố</string>
+    <string name="detail_history">Chi Tiết Lịch Sử GTìm Kiếm Thành Phố</string>
     <string name="text1">Giờ Tìm Kiếm Thành Phố :</string>
     <string name="text2">Ngày Tìm Kiếm Thành Phố :</string>
     <string name="text3">Thành Phố Tìm Kiếm :</string>
@@ -65,5 +39,64 @@
     <string name="text7">Độ Ẩm Của Thành Phố Tìm Kiếm :</string>
     <string name="text8">Trạng Thái Thời Tiết Của Thành Phố :</string>
 
+    <string name="GPSBat">GPS Đã Được Bật</string>
+    <string name="GPSTat">Ứng dụng cần xác định vị trí vui lòng bật GPS</string>
+    <string name="GPSCaiDat">Vào cài đặt GPS</string>
+    <string name="GpsHUY">Hủy</string>
+    <string name="BatMang">Đã Kết Nối Dữ Liệu</string>
+    <string name="TatMang">Dữ Liệu Di Dộng Đã Tắt</string>
+    <string name="caidatMang">Bật Dữ Liệu Di Động Hoặc Sử Dụng Wi-Fi Để Truy Cập Dữ Liệu</string>
+    <string name="Ok">OK</string>
+    <string name="CaiDat">Cài Đặt</string>
+    <string name="ThemLichSu">Thêm Thành Công Vào Lịch Sử Tìm Kiếm</string>
+    <string name="ThemLichSuThatBai">Thêm Thất Bại</string>
+    
+    <string name="NguyHiem">Không Khí Đang Ở Mức Nguy hiểm</string>
+    <string name="RatONhiem">Không Khí Đang Ở Mức RẤt Ô Nhiễm</string>
+    <string name="Onhiem">Không Khí Đang Ở Mức Ô Nhiễm</string>
+    <string name="NhayCam">Không Khí Đang Ở Mức Không tốt cho người thuộc nhóm nhạy cảm</string>
+    <string name="VuaPhai">Không Khí Đang Ở Mức Vừa Phải</string>
+    <string name="Tot">Không Khí Đang Ở Mức Tốt</string>
 
+    <string name="TitleFvsC">Chuyển Đổi ºC vs ºF</string>
+
+    <string-array name="List_City">
+        <item>Hà Nội</item>
+        <item>Thành Phố Hồ Chí Minh</item>
+        <item>Tuyên Quang</item>
+        <item>Hà Giang</item>
+        <item>Yên Bái</item>
+        <item>Cao Bằng</item>
+        <item>Hà Tĩnh</item>
+        <item>Ninh Binh</item>
+        <item>Phú Thọ</item>
+        <item>Vĩnh Phúc</item>
+        <item>Bắc Giang</item>
+        <item>Hưng Yên</item>
+        <item>Thành Phố Hải Dương</item>
+        <item>Bắc Ninh</item>
+        <item>Bình Dương</item>
+        <item>Thanh Hóa</item>
+        <item>Hà Nam</item>
+        <item>Hà Tĩnh</item>
+        <item>Thái Nguyên</item>
+        <item>Huế</item>
+        <item>Đà Nẵng</item>
+        <item>Cần Thơ</item>
+        <item>Nam Định</item>
+        <item>Bạc Liêu</item>
+        <item>Hải Phòng</item>
+        <item>Bến Tre</item>
+        <item>Tây Ninh</item>
+        <item>Yên Bái</item>
+        <item>Bạc Liêu</item>
+        <item>Bình Định</item>
+        <item>Tỉnh Bình Phước</item>
+        <item>Tỉnh Bình Thuận</item>
+        <item>Gia Lai</item>
+        <item>Khánh Hòa</item>
+        <item>Long An</item>
+        <item>Vĩnh Long</item>
+        <item>Cà Mau</item>
+    </string-array>
 </resources>

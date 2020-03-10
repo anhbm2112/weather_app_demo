@@ -3,6 +3,7 @@ package anhbm.nws.weatherapp.presentation.ui.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +32,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
     private List<HistoryModel> historyModelList;
     private SqlDatabase sqlDatabase;
     private String pho;
+    private static final String IS_DEGREE = "IS_DEGREE";
+    private static final String IS_KELVIN = "IS_KELVIN";
 
     public HistoryAdapter(Context mContext, List<HistoryModel> historyModelList, SqlDatabase sqlDatabase) {
         this.mContext = mContext;
@@ -47,6 +50,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
 
     @Override
     public void onBindViewHolder(@NonNull HistoryAdapter.holder holder, final int position) {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("key", mContext.MODE_PRIVATE);
+        boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
+        boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
         final HistoryModel historyModel = historyModelList.get(position);
         holder.chitiet.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         holder.xoa.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
@@ -61,7 +67,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
         String icon = historyModel.getIconSql();
         Picasso.with(mContext).load("http://api.openweathermap.org/img/w/" + icon + ".png").into(holder.iconviewHistory);
 
-        holder.tvnhietdo.setText(String.valueOf(historyModel.getNhietDoTemp()).substring(0, 2));
+        double nhietdoC = historyModel.getNhietDoTemp();
+        double nhietdoF = historyModel.onConverF(nhietdoC);
+        if (c && !k) {
+            holder.tvnhietdo.setText(String.valueOf(nhietdoC).substring(0, 2));
+        } else if (!c && k) {
+            holder.tvnhietdo.setText(String.valueOf(nhietdoF).substring(0,3));
+        }
+
         holder.xoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +126,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
                 trangthai = dialog.findViewById(R.id.trangthai_chitiet);
                 gio.setText(historyModel.getGiohientai());
                 ngay.setText(historyModel.getNgayhientai());
+
                 nhietdo.setText(String.valueOf(historyModel.getNhietDoTemp()).substring(0, 2) + "º");
                 thanhpho.setText(historyModel.getThanhpho());
                 dogio.setText(historyModel.getDogioDeg());

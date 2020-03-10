@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:text="Ngày"
             android:textColor="@color/black"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
         <!--    <TextView-->
         <!--        android:id="@+id/tv_ten_thanhpho"-->
         <!--        android:layout_width="match_parent"-->

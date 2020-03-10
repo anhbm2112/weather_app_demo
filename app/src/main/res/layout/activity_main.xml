@@ -12,6 +12,7 @@
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/AppBarLayout"
             style="@style/CollapsingToolbarLayout"
             android:background="@drawable/anhdau"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -49,6 +50,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <include layout="@layout/conten_main" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 

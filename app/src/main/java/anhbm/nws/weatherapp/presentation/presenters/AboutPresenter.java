@@ -12,7 +12,7 @@ public interface AboutPresenter {
 
     void icon(String icon);
 
-    void nhietdoF(String F);
+    void nhietdoF(Double F);
 
     void nhietdoC(Double C);
 //    interface AboutView extends BaseView {

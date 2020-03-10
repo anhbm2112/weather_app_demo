@@ -12,10 +12,10 @@ public interface WeatherService {
     Call<Weather> getPeople(@Query("lat") double lat,
                             @Query("lon") double lon);
 
-    @GET("data/2.5/forecast?appid=ecdd51cc4c60e1fb08cf11263bbb546a&units=metric")
+    @GET("data/2.5/forecast?appid=ecdd51cc4c60e1fb08cf11263bbb546a&units=metric&lang=vi")
     Call<WeatherList> getWeather(@Query("lat") double lat,
                                  @Query("lon") double lon);
 
-    @GET("data/2.5/forecast?appid=ecdd51cc4c60e1fb08cf11263bbb546a&units=metric")
+    @GET("data/2.5/forecast?appid=ecdd51cc4c60e1fb08cf11263bbb546a&units=metric&lang=vi")
     Call<WeatherList> getWeatherCity(@Query("q") String q);
 }

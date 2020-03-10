@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
@@ -31,7 +32,7 @@ public class AboutPresenterImpl implements APICallListener {
     private String gio, ngay, dogio, tocdogio, doam, trangthai, icon;
     private double nhietdo, nhietdoF;
     private double s;
-    private String s1;
+    private double s1;
     private HistoryModel historyModel = new HistoryModel();
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
@@ -59,7 +60,7 @@ public class AboutPresenterImpl implements APICallListener {
         String nhietdo = String.valueOf(weatherCity.getList().get(0).getMain().getTemp()).substring(0, 2);
         String iconchinh = weatherCity.getList().get(0).getWeather().get(0).getIcon();
         s = listCityList.get(0).getMain().getTemp();
-        s1 = String.valueOf(listCityList.get(0).getMain().onConvertCelsiusToF(s));
+        s1 = listCityList.get(0).getMain().onConvertCelsiusToF(s);
 
         SharedPreferences sharedPreferences = mcontext.getSharedPreferences("key", mcontext.MODE_PRIVATE);
         boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
@@ -86,9 +87,6 @@ public class AboutPresenterImpl implements APICallListener {
         historyModel.setThanhpho(snhap);
     }
     public void insetLichSu(List<ListAPI> listCityList) {
-        SharedPreferences sharedPreferences = mcontext.getSharedPreferences("key", mcontext.MODE_PRIVATE);
-        boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
-        boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
         nhietdo = listCityList.get(0).getMain().getTemp();
         nhietdoF = listCityList.get(0).getMain().onConvertCelsiusToF(nhietdo);
         dogio = String.valueOf(listCityList.get(0).getWind().getDeg());
@@ -101,11 +99,12 @@ public class AboutPresenterImpl implements APICallListener {
         ngay = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
         historyModel.setGiohientai(gio);
         historyModel.setNgayhientai(ngay);
-        if (c && !k) {
-            historyModel.setNhietDoTemp(nhietdo);
-        } else if (!c && k) {
-            historyModel.setNhietDoTemp(nhietdoF);
-        }
+        historyModel.setNhietDoTemp(nhietdo);
+//        if (c && !k) {
+//            historyModel.setNhietDoTemp(nhietdo);
+//        } else if (!c && k) {
+//            historyModel.setNhietDoTemp(nhietdoF);
+//        }
         historyModel.setDogioDeg(dogio);
         historyModel.setTocdogioSpeed(tocdogio);
         historyModel.setDoamHumidity(doam);
@@ -114,10 +113,10 @@ public class AboutPresenterImpl implements APICallListener {
         sqlDatabase = new SqlDatabase(mcontext);
         long kiemtra = sqlDatabase.insetHistory(historyModel);
         if (kiemtra > 0) {
-            Toast.makeText(mcontext, "Thêm Thành Công Vào Lịch Sử Tìm Kiếm", Toast.LENGTH_LONG).show();
+            Toast.makeText(mcontext, R.string.ThemLichSu, Toast.LENGTH_LONG).show();
 
         } else {
-            Toast.makeText(mcontext, "Thêm Thất Bại", Toast.LENGTH_LONG).show();
+            Toast.makeText(mcontext,R.string.ThemLichSuThatBai, Toast.LENGTH_LONG).show();
         }
     }
 

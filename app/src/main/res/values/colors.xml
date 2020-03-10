@@ -49,4 +49,11 @@
     <color name="background">#66CCFF</color>
     <color name="ground">#083145</color>
     <color name="ground_toolbar_city">#051F2C</color>
+    <!--o nhiem khong khi-->
+    <color name="MauNguyHiem">#990000</color>
+    <color name="MauRatONhiem">#A2007C</color>
+    <color name="MauOnhiem">#FF0000</color>
+    <color name="MauNhayCam">#FF6600</color>
+    <color name="MauVuaPhai">#FFFF00</color>
+    <color name="MauTot">#00FF33</color>
 </resources>

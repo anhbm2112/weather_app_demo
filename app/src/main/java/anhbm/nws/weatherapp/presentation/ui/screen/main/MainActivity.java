@@ -3,7 +3,6 @@ package anhbm.nws.weatherapp.presentation.ui.screen.main;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,19 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.application.GPSTracker;
@@ -141,29 +136,28 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     private void Managaer() {
         LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recyNgay.setLayoutManager(horizontalLayoutManagaer);
-
         LinearLayoutManager LayoutManagaer = new LinearLayoutManager(getApplicationContext());
         recyList.setLayoutManager(LayoutManagaer);
 
         Integer integer = preferences.getInt("keyOnhiem", 1);
         tvUsAQI.setText(String.valueOf(integer));
         if (integer >= 301) {
-            tvUsAQI.setBackgroundColor(Color.parseColor("#990000"));
-            tvonhiem.setText("Không Khí Đang Ở Mức Nguy hiểm");
-            tvonhiem.setTextColor(Color.parseColor("#990000"));
-            tvTieudeOnhiem.setTextColor(Color.parseColor("#990000"));
+            tvUsAQI.setBackgroundResource(R.color.MauNguyHiem);
+            tvonhiem.setText(R.string.NguyHiem);
+            tvonhiem.setTextColor(getResources().getColor(R.color.MauNguyHiem));
+            tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauNguyHiem));
             imageView.setImageResource(R.mipmap.ic_onhiem_301);
-            Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
-            Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            Typeface typeface = Typeface.createFromAsset(getAssets(),"SpaceMonoBold.ttf");
+            Typeface type = Typeface.createFromAsset(getAssets(),"SpaceMonoBold.ttf" );
             tvonhiem.setTypeface(typeface);
             tvUsAQI.setTypeface(typeface);
             tvTieudeOnhiem.setTypeface(type);
 ///hien thi do o nhiem khi tat mang
         } else if (integer >= 201) {
-            tvUsAQI.setBackgroundColor(Color.parseColor("#A2007C"));
-            tvonhiem.setText("Không Khí Đang Ở Mức RẤt Ô Nhiễm");
-            tvonhiem.setTextColor(Color.parseColor("#A2007C"));
-            tvTieudeOnhiem.setTextColor(Color.parseColor("#A2007C"));
+            tvUsAQI.setBackgroundResource(R.color.MauRatONhiem);
+            tvonhiem.setText(R.string.RatONhiem);
+            tvonhiem.setTextColor(getResources().getColor(R.color.MauRatONhiem));
+            tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauRatONhiem));
             imageView.setImageResource(R.mipmap.ic_onhiem_201);
             Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
             Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
@@ -171,21 +165,21 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
             tvUsAQI.setTypeface(typeface);
             tvTieudeOnhiem.setTypeface(type);
         } else if (integer >= 151) {
-            tvUsAQI.setBackgroundColor(Color.parseColor("#FF0000"));
-            tvonhiem.setText("Không Khí Đang Ở Mức Ô Nhiễm");
-            tvonhiem.setTextColor(Color.parseColor("#FF0000"));
-            tvTieudeOnhiem.setTextColor(Color.parseColor("#FF0000"));
+            tvUsAQI.setBackgroundResource(R.color.MauOnhiem);
+            tvonhiem.setText(R.string.Onhiem);
+            tvonhiem.setTextColor(getResources().getColor(R.color.MauOnhiem));
+            tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauOnhiem));
             imageView.setImageResource(R.mipmap.ic_onhiem_151);
-            Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            Typeface typeface = Typeface.createFromAsset(getAssets(),"SpaceMonoBold.ttf");
             Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
             tvonhiem.setTypeface(typeface);
             tvUsAQI.setTypeface(typeface);
             tvTieudeOnhiem.setTypeface(type);
         } else if (integer >= 101) {
-            tvUsAQI.setBackgroundColor(Color.parseColor("#FF6600"));
-            tvonhiem.setText("Không Khí Đang Ở Mức Không tốt cho người thuộc nhóm nhạy cảm");
-            tvonhiem.setTextColor(Color.parseColor("#FF6600"));
-            tvTieudeOnhiem.setTextColor(Color.parseColor("#FF6600"));
+            tvUsAQI.setBackgroundResource(R.color.MauNhayCam);
+            tvonhiem.setText(R.string.NhayCam);
+            tvonhiem.setTextColor(getResources().getColor(R.color.MauNhayCam));
+            tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauNhayCam));
             imageView.setImageResource(R.mipmap.ic_onhiem_101);
             Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
             Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
@@ -193,10 +187,10 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
             tvUsAQI.setTypeface(typeface);
             tvTieudeOnhiem.setTypeface(type);
         } else if (integer >= 51) {
-            tvUsAQI.setBackgroundColor(Color.parseColor("#FFFF00"));
-            tvonhiem.setText("Không Khí Đang Ở Mức Vừa Phải");
-            tvonhiem.setTextColor(Color.parseColor("#FFFF00"));
-            tvTieudeOnhiem.setTextColor(Color.parseColor("#FFFF00"));
+            tvUsAQI.setBackgroundResource(R.color.MauVuaPhai);
+            tvonhiem.setText(R.string.VuaPhai);
+            tvonhiem.setTextColor(getResources().getColor(R.color.MauVuaPhai));
+            tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauVuaPhai));
             imageView.setImageResource(R.mipmap.ic_onhiem_51);
             Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
             Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
@@ -204,10 +198,10 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
             tvUsAQI.setTypeface(typeface);
             tvTieudeOnhiem.setTypeface(type);
         } else {
-            tvUsAQI.setBackgroundColor(Color.parseColor("#00FF33"));
-            tvonhiem.setText("Không Khí Đang Ở Mức Tốt");
-            tvonhiem.setTextColor(Color.parseColor("#00FF33"));
-            tvTieudeOnhiem.setTextColor(Color.parseColor("#00FF33"));
+            tvUsAQI.setBackgroundResource(R.color.MauTot);
+            tvonhiem.setText(R.string.Tot);
+            tvonhiem.setTextColor(getResources().getColor(R.color.MauTot));
+            tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauTot));
             imageView.setImageResource(R.mipmap.ic_onhiem_50);
             Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
             Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
@@ -240,7 +234,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view1 = LayoutInflater.from(this).inflate(R.layout.c_f_dialog, null);
         builder.setView(view1);
-        builder.setTitle("Chuyển Đổi ºC vs ºF");
+        builder.setTitle(R.string.TitleFvsC);
         final AlertDialog dialog = builder.show();
         Button buttonC, buttonF;
         buttonC = dialog.findViewById(R.id.c);
@@ -307,10 +301,10 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 
     @Override
     public void AQI301() {
-        tvUsAQI.setBackgroundColor(Color.parseColor("#990000"));
-        tvonhiem.setText("Không Khí Đang Ở Mức Nguy hiểm");
-        tvonhiem.setTextColor(Color.parseColor("#990000"));
-        tvTieudeOnhiem.setTextColor(Color.parseColor("#990000"));
+        tvUsAQI.setBackgroundResource(R.color.MauNguyHiem);
+        tvonhiem.setText(R.string.NguyHiem);
+        tvonhiem.setTextColor(getResources().getColor(R.color.MauNguyHiem));
+        tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauNguyHiem));
         imageView.setImageResource(R.mipmap.ic_onhiem_301);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
@@ -321,10 +315,10 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 
     @Override
     public void AQI201() {
-        tvUsAQI.setBackgroundColor(Color.parseColor("#A2007C"));
-        tvonhiem.setText("Không Khí Đang Ở Mức RẤt Ô Nhiễm");
-        tvonhiem.setTextColor(Color.parseColor("#A2007C"));
-        tvTieudeOnhiem.setTextColor(Color.parseColor("#A2007C"));
+        tvUsAQI.setBackgroundResource(R.color.MauRatONhiem);
+        tvonhiem.setText(R.string.RatONhiem);
+        tvonhiem.setTextColor(getResources().getColor(R.color.MauRatONhiem));
+        tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauRatONhiem));
         imageView.setImageResource(R.mipmap.ic_onhiem_201);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
@@ -335,10 +329,10 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 
     @Override
     public void AQI151() {
-        tvUsAQI.setBackgroundColor(Color.parseColor("#FF0000"));
-        tvonhiem.setText("Không Khí Đang Ở Mức Ô Nhiễm");
-        tvonhiem.setTextColor(Color.parseColor("#FF0000"));
-        tvTieudeOnhiem.setTextColor(Color.parseColor("#FF0000"));
+        tvUsAQI.setBackgroundResource(R.color.MauOnhiem);
+        tvonhiem.setText(R.string.Onhiem);
+        tvonhiem.setTextColor(getResources().getColor(R.color.MauOnhiem));
+        tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauOnhiem));
         imageView.setImageResource(R.mipmap.ic_onhiem_151);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
@@ -349,10 +343,10 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 
     @Override
     public void AQI101() {
-        tvUsAQI.setBackgroundColor(Color.parseColor("#FF6600"));
-        tvonhiem.setText("Không Khí Đang Ở Mức Không tốt cho người thuộc nhóm nhạy cảm");
-        tvonhiem.setTextColor(Color.parseColor("#FF6600"));
-        tvTieudeOnhiem.setTextColor(Color.parseColor("#FF6600"));
+        tvUsAQI.setBackgroundResource(R.color.MauNhayCam);
+        tvonhiem.setText(R.string.NhayCam);
+        tvonhiem.setTextColor(getResources().getColor(R.color.MauNhayCam));
+        tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauNhayCam));
         imageView.setImageResource(R.mipmap.ic_onhiem_101);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
@@ -363,10 +357,10 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 
     @Override
     public void AQI51() {
-        tvUsAQI.setBackgroundColor(Color.parseColor("#FFFF00"));
-        tvonhiem.setText("Không Khí Đang Ở Mức Vừa Phải");
-        tvonhiem.setTextColor(Color.parseColor("#FFFF00"));
-        tvTieudeOnhiem.setTextColor(Color.parseColor("#FFFF00"));
+        tvUsAQI.setBackgroundResource(R.color.MauVuaPhai);
+        tvonhiem.setText(R.string.VuaPhai);
+        tvonhiem.setTextColor(getResources().getColor(R.color.MauVuaPhai));
+        tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauVuaPhai));
         imageView.setImageResource(R.mipmap.ic_onhiem_51);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
@@ -377,10 +371,10 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
 
     @Override
     public void AQI00() {
-        tvUsAQI.setBackgroundColor(Color.parseColor("#00FF33"));
-        tvonhiem.setText("Không Khí Đang Ở Mức Tốt");
-        tvonhiem.setTextColor(Color.parseColor("#00FF33"));
-        tvTieudeOnhiem.setTextColor(Color.parseColor("#00FF33"));
+        tvUsAQI.setBackgroundResource(R.color.MauTot);
+        tvonhiem.setText(R.string.Tot);
+        tvonhiem.setTextColor(getResources().getColor(R.color.MauTot));
+        tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauTot));
         imageView.setImageResource(R.mipmap.ic_onhiem_50);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
         Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");

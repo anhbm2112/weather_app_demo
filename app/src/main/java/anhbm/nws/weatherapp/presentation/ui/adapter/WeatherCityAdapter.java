@@ -47,7 +47,7 @@ public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.
         boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
         boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
         Double temp = Double.valueOf(String.valueOf(listCity.getMain().getTemp()).substring(0,2));
-        String temF = String.valueOf(listCity.getMain().onConvertCelsiusToF(temp)).substring(0,2);
+        String temF = String.valueOf(listCity.getMain().onConvertCelsiusToF(temp)).substring(0,3);
         if (c && !k) {
             holder.nhietdo.setText(temp + "ºC");
         } else if (!c && k) {

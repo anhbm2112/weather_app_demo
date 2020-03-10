@@ -99,6 +99,7 @@ public class MainPresenterImpl implements APICallListener {
         editor.putString("keyThanhpho", thanhpho);
         editor.putString("keynhietdo", String.valueOf(nhietdo).substring(0, 2));
         editor.putString("keyngay", ngaygio);
+
         editor.putString("keyC", String.valueOf(doC).substring(0, 2));
         editor.putString("keyF", String.valueOf(doF).substring(0, 2));
         editor.apply();

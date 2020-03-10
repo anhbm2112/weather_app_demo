@@ -1,8 +1,10 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.searchCity;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import anhbm.nws.weatherapp.R;
@@ -36,44 +39,59 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
     private ImageView imageView;
     private Spinner spinner;
     private ImageView back;
-    private ArrayList<String> arrayList;
+    private ArrayList arrayList ;
     private String thanhphoLichsu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         CheckInternetshowCaidat();
         init();
+
         arrayList = new ArrayList<>();
-        arrayList.add("Ha noi");
-        arrayList.add("Ho chi minh");
-        arrayList.add("Tuyen Quang");
-        arrayList.add("Yen Bai");
-        arrayList.add("Ha Tinh");
+        arrayList.add("Hà Nội");
+        arrayList.add("Thành Phố Hồ Chí Minh");
+        arrayList.add("Tuyên Quang");
+        arrayList.add("Hà Giang");
+        arrayList.add("Yên Bái");
+        arrayList.add("Cao Bằng");
+        arrayList.add("Hà Tĩnh");
         arrayList.add("Ninh Binh");
-        arrayList.add("Phu Tho");
-        arrayList.add("Bac Giang");
-        arrayList.add("Hung Yen");
-        arrayList.add("Hai Duong");
-        arrayList.add("Bac Ninh");
-        arrayList.add("Binh Duong");
-        arrayList.add("Thanh Hoa");
-        arrayList.add("thai nguyen");
-        arrayList.add("Hue");
-        arrayList.add("Can Tho");
-        arrayList.add("Nam Dinh");
-        arrayList.add("Bac lieu");
-        arrayList.add("Haiphong");
-        arrayList.add("Ben Tre");
-        arrayList.add("Tay Ninh");
-        arrayList.add("Yen Bai");
-        arrayList.add("Vinh Long");
-        arrayList.add("Ca mau");
+        arrayList.add("Phú Thọ");
+        arrayList.add("Vĩnh Phúc");
+        arrayList.add("Bắc Giang");
+        arrayList.add("Hưng Yên");
+        arrayList.add("Thành Phố Hải Dương");
+        arrayList.add("Bắc Ninh");
+        arrayList.add("Bình Dương");
+        arrayList.add("Thanh Hóa");
+        arrayList.add("Hà Nam");
+        arrayList.add("Hà Tĩnh");
+        arrayList.add("Tỉnh Thái Nguyên");
+        arrayList.add("Huế");
+        arrayList.add("Đà Nẵng");
+        arrayList.add("Cần Thơ");
+        arrayList.add("Nam Định");
+        arrayList.add("Bạc Liêu");
+        arrayList.add("Hải Phòng");
+        arrayList.add("Bến Tre");
+        arrayList.add("Tây Ninh");
+        arrayList.add("Yên Bái");
+        arrayList.add("Bạc Liêu");
+        arrayList.add("Bình Định");
+        arrayList.add("Tỉnh Bình Phước ");
+        arrayList.add("Tỉnh Bình Thuận");
+        arrayList.add("Gia Lai");
+        arrayList.add("Khánh Hòa");
+        arrayList.add("Long An");
+        arrayList.add("Vĩnh Long");
+        arrayList.add("Cà Mau");
 
         Intent intent = getIntent();
         thanhphoLichsu = intent.getStringExtra("timthanhpho");
         //spinner
-//        ArrayAdapter<CharSequence> arrayAdapterSpin = ArrayAdapter.createFromResource(this, R.array.City,
+//        ArrayAdapter<CharSequence> arrayAdapterSpin = ArrayAdapter.createFromResource(this, R.array.List_City,
 //                android.R.layout.simple_spinner_item);
 
         ArrayAdapter<String> arrayAdapterSpin = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
@@ -124,9 +142,10 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
     }
 
     @Override
-    public void nhietdoF(String F) {
-        tvNhietdo.setText(F.substring(0,2)+ "ºF");
+    public void nhietdoF(Double F) {
+        tvNhietdo.setText(String.valueOf(F).substring(0, 3) + "ºF");
     }
+
     @Override
     public void nhietdoC(Double C) {
         tvNhietdo.setText(String.valueOf(C).substring(0, 2) + "ºC");

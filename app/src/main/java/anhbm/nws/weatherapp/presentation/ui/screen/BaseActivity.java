@@ -64,11 +64,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     public void showToastGPS() {
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            Toast.makeText(this, "GPS Đã Được Bật ", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.GPSBat, Toast.LENGTH_LONG).show();
         } else {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage("Ứng dụng cần xác định vị trí vui lòng bật GPS").setCancelable(false)
-                    .setPositiveButton("Vào cài đặt GPS",
+            alertDialogBuilder.setMessage(R.string.GPSTat).setCancelable(false)
+                    .setPositiveButton(R.string.GPSCaiDat,
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     Intent callGPSSettingIntent = new Intent(
@@ -76,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
                                     startActivity(callGPSSettingIntent);
                                 }
                             });
-            alertDialogBuilder.setNegativeButton("Hủy",
+            alertDialogBuilder.setNegativeButton(R.string.GpsHUY,
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
@@ -92,18 +92,18 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
         android.net.NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
         if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
-            Toast.makeText(this, "Đã Kết Nối Dữ Liệu  ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,R.string.BatMang, Toast.LENGTH_SHORT).show();
         } else {
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Dữ Liệu Di Dộng Đã Tắt");
-            builder.setMessage("Bật Dữ Liệu Di Động Hoặc Sử Dụng Wi-Fi Để Truy Cập Dữ Liệu");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setTitle(R.string.TatMang);
+            builder.setMessage(R.string.caidatMang);
+            builder.setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     builder.create();
                 }
             });
-            builder.setNegativeButton("Cài Đặt", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(R.string.CaiDat, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
 

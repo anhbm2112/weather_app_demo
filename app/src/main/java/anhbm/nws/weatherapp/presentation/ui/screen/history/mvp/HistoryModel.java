@@ -26,6 +26,7 @@ public class HistoryModel {
             + COLUMN_GIO + " VARCHAR PRIMARY KEY, " + COLUMN_THANHPHOCHON + " VARCHAR, " + COLUMN_NGAY
             + " VARCHAR, " + COLUMN_NHIETDO + " VARCHAR, " + COLUMN_DOAM + " VARCHAR, " + COLUMN_DOGIO + "" +
             " VARCHAR, " + COLUMN_TOCDOGIO + " VARCHAR, " + COLUMN_TRANGTHAI + " VARCHAR, " + COLUMN_ICON + " VARCHAR) ";
+
     public String getThanhpho() {
         return thanhpho;
     }
@@ -33,6 +34,7 @@ public class HistoryModel {
     public void setThanhpho(String thanhpho) {
         this.thanhpho = thanhpho;
     }
+
     public String getGiohientai() {
         return giohientai;
     }
@@ -96,7 +98,8 @@ public class HistoryModel {
     public void setIconSql(String iconSql) {
         this.iconSql = iconSql;
     }
-//    public double onConverF(double temp){
-//        return temp * 1.8000 + 32.00;
-//    }
+
+    public double onConverF(double temp) {
+        return temp * 1.8000 + 32.00;
+    }
 }
