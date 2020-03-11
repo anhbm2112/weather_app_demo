@@ -13,12 +13,14 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/AppBarLayout"
-            style="@style/CollapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_AppBarLayout_"
             android:background="@drawable/anhdau"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
-                style="@style/CollapsingToolbarLayout"
+              android:layout_width="match_parent"
+                android:layout_height="@dimen/height_AppBarLayout_"
                 app:contentScrim="@drawable/anhdau"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -34,7 +36,8 @@
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
-                    style="@style/toolbar_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_Toolbar_main"
                     app:contentScrim="@drawable/backgroundweather"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -56,9 +59,11 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnavigation"
-        style="@style/bottomnavigation"
+        android:layout_height="@dimen/height_BottomNavigationView_main"
+        android:layout_width="match_parent"
         android:layout_below="@+id/nes"
         android:layout_alignParentBottom="true"
         app:itemIconTint="@color/white"
-        app:menu="@menu/menu_main" />
+        app:menu="@menu/menu_main"
+        app:itemIconSize="@dimen/size_icon_BottomNavigationView"/>
 </RelativeLayout>

@@ -50,16 +50,26 @@
     <string name="CaiDat">Cài Đặt</string>
     <string name="ThemLichSu">Thêm Thành Công Vào Lịch Sử Tìm Kiếm</string>
     <string name="ThemLichSuThatBai">Thêm Thất Bại</string>
-    
+
     <string name="NguyHiem">Không Khí Đang Ở Mức Nguy hiểm</string>
     <string name="RatONhiem">Không Khí Đang Ở Mức RẤt Ô Nhiễm</string>
     <string name="Onhiem">Không Khí Đang Ở Mức Ô Nhiễm</string>
     <string name="NhayCam">Không Khí Đang Ở Mức Không tốt cho người thuộc nhóm nhạy cảm</string>
     <string name="VuaPhai">Không Khí Đang Ở Mức Vừa Phải</string>
     <string name="Tot">Không Khí Đang Ở Mức Tốt</string>
-
+    <string name="xoalichsu">Bạn Có Chắc  Chắn Muốn Xóa Lịch Sử Tìm Kiếm Thành Phố </string>
+    <string name="Toastxoa">Đã Xóa Thành Công</string>
     <string name="TitleFvsC">Chuyển Đổi ºC vs ºF</string>
+    <string name="title_history">Lịch Sử Tìm Kiếm Thành Phố</string>
+<!--historyIcon-->
+    <string name="windSpeed">Tốc Độ Gió :</string>
+    <string name="wind">Độ gió :</string>
+    <string name="temperature">º</string>
+    <string name="Humidity">Độ Ẩm :</string>
+    <string name="delete_history">Xóa Lịch Sử</string>
+    <string name="detail">Chi Tiết</string>
 
+    <string name="AQI">US AQI</string>
     <string-array name="List_City">
         <item>Hà Nội</item>
         <item>Thành Phố Hồ Chí Minh</item>
@@ -79,7 +89,7 @@
         <item>Thanh Hóa</item>
         <item>Hà Nam</item>
         <item>Hà Tĩnh</item>
-        <item>Thái Nguyên</item>
+        <item>Tỉnh Thái Nguyên</item>
         <item>Huế</item>
         <item>Đà Nẵng</item>
         <item>Cần Thơ</item>

@@ -8,13 +8,14 @@
 
     <RelativeLayout
         android:id="@+id/rela2"
-        style="@style/relativeLayout_timkiem">
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_relativeLayout_Search">
 
         <ImageView
             android:id="@+id/back_timkiem"
             style="@style/img_back_timkiem"
-            android:src="@drawable/ic_action_back"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_action_back" />
 
         <TextView
             style="@style/gach_doc2"
@@ -25,11 +26,13 @@
             android:id="@+id/tv_choncity"
             style="@style/tieude_timkiem"
             android:layout_toRightOf="@id/back_timkiem"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/city_size_Search" />
 
         <TextView
             android:id="@+id/gach_doc"
-            style="@style/gachdoc_timkiem"
+            android:layout_width="@dimen/vertical_relativeLayout"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:background="@color/white" />
 
@@ -41,39 +44,38 @@
             android:layout_toRightOf="@+id/gach_doc" />
 
         <TextView
-            style="@style/gachngang_timkiem"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/horizontal_relativeLayout"
             android:layout_alignParentBottom="true"
             android:background="@color/white" />
     </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_city_manCity"
-        style="@style/textviewcity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rela2"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/bg_color" />
+        android:text="@string/nhietdotrong"
+        android:textColor="@color/bg_color"
+        android:textSize="@dimen/text_City" />
 
     <TextView
         android:id="@+id/tv_temperature_mancity"
-        style="@style/textTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tv_city_manCity"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/bg_color" />
+        android:text="@string/nhietdotrong"
+        android:textColor="@color/bg_color"
+        android:textSize="@dimen/text_temperature" />
 
     <ImageView
         android:id="@+id/imgIconchinh"
-        style="@style/iconchinh"
+        android:layout_width="@dimen/width_icon"
+        android:layout_height="@dimen/height_icon"
         android:layout_below="@+id/tv_temperature_mancity"
         android:layout_centerHorizontal="true" />
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/tv_ngaycity"-->
-    <!--        style="@style/tvngay_city"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@id/tv_temperature_mancity" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCity"

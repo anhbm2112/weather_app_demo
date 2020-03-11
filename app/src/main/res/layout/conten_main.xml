@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nes"
@@ -31,7 +30,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            style="@style/recy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/gach_tren" />
 
         <TextView
@@ -41,14 +41,18 @@
             android:background="@color/white" />
 
         <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/marginLeft_5"
             android:id="@+id/chiso_onhiem"
-            style="@style/Onhiem"
             android:layout_below="@+id/gach_duoi"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/tieude"
                 style="@style/TieuDeONHIEM"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="@dimen/sizeTieuDeONHIEM"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -58,9 +62,11 @@
                 <TextView
                     android:id="@+id/tv_pollution_AQI"
                     style="@style/tvStyleONHIEM_USAQI"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sizeONHIEM_USAQI" />
 
                 <ImageView
                     android:id="@+id/icon_onhiem"
@@ -71,12 +77,14 @@
             <TextView
                 android:id="@+id/tv_pollution2"
                 style="@style/tvStyleONHIEM"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="@dimen/ONHIEM"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerviewDay"
-            style="@style/recyclerviewDay_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_recy_vertical_main"
             android:layout_below="@+id/chiso_onhiem" />
 
     </RelativeLayout>

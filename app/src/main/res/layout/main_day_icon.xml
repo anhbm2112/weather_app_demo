@@ -3,19 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:alpha="0.4"
+    android:layout_margin="@dimen/margin_day"
+    android:alpha="0.6"
     android:background="@drawable/botron"
     android:orientation="vertical">
-    <!--    android:alpha="0.4"-->
     <TextView
         android:id="@+id/ngaylist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Ngày"
         android:textColor="@color/white"
-        android:textSize="14dp" />
+        android:textSize="@dimen/textSize_Day" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,36 +25,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Tốc Độ Gió :"
+            android:text="@string/windSpeed"
             android:textColor="@color/white"
-            android:textSize="14dp" />
+            android:textSize="@dimen/textSize_Day" />
 
         <TextView
             android:id="@+id/dogio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="@dimen/marginLeft_5"
             android:gravity="center"
-            android:text="chỉ số "
             android:textColor="@color/white"
-            android:textSize="14dp" />
+            android:textSize="@dimen/textSize_Day" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:text="Độ Gió"
+            android:layout_marginLeft="@dimen/marginLeft_40"
+            android:text="@string/wind"
             android:textColor="@color/white"
-            android:textSize="14dp" />
+            android:textSize="@dimen/textSize_Day" />
 
         <TextView
             android:id="@+id/gio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="chỉ số "
+            android:layout_marginLeft="@dimen/marginLeft_10"
             android:textColor="@color/white"
-            android:textSize="14dp" />
+            android:textSize="@dimen/textSize_Day" />
 
     </LinearLayout>
 
@@ -70,16 +66,16 @@
             android:id="@+id/nhietdolist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="__"
+            android:text="@string/nhietdotrong"
             android:textColor="@color/white"
-            android:textSize="24dp" />
+            android:textSize="@dimen/textSize_temperature_Day" />
 
         <ImageView
             android:id="@+id/iconlist"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/width_Img_day"
+            android:layout_height="@dimen/height_Img_day"
             android:layout_gravity="center"
-            android:layout_marginLeft="40dp" />
+            android:layout_marginLeft="@dimen/marginLeft_40" />
 
     </LinearLayout>
 
@@ -87,35 +83,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Độ Ẩm:"
+            android:text="@string/Humidity"
             android:textColor="@color/white"
-            android:textSize="14dp" />
+            android:textSize="@dimen/textSize_Day" />
 
         <TextView
             android:id="@+id/doam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Chỉ SỐ "
             android:textColor="@color/white"
-            android:textSize="14dp" />
+            android:textSize="@dimen/textSize_Day" />
 
         <TextView
             android:id="@+id/trangthailist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="@dimen/marginLeft_30"
             android:gravity="center"
-            android:text="Trạng Thái"
             android:textColor="@color/white"
-            android:textSize="14dp" />
+            android:textSize="@dimen/textSize_Day" />
 
 
     </LinearLayout>

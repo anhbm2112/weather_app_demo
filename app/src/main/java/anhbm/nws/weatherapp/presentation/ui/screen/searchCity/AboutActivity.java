@@ -19,7 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,7 +41,7 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
     private ImageView imageView;
     private Spinner spinner;
     private ImageView back;
-    private ArrayList arrayList ;
+
     private String thanhphoLichsu;
 
     @Override
@@ -48,45 +50,8 @@ public class AboutActivity extends BaseActivity implements AboutPresenter, Adapt
         setContentView(R.layout.activity_about);
         CheckInternetshowCaidat();
         init();
-
-        arrayList = new ArrayList<>();
-        arrayList.add("Hà Nội");
-        arrayList.add("Thành Phố Hồ Chí Minh");
-        arrayList.add("Tuyên Quang");
-        arrayList.add("Hà Giang");
-        arrayList.add("Yên Bái");
-        arrayList.add("Cao Bằng");
-        arrayList.add("Hà Tĩnh");
-        arrayList.add("Ninh Binh");
-        arrayList.add("Phú Thọ");
-        arrayList.add("Vĩnh Phúc");
-        arrayList.add("Bắc Giang");
-        arrayList.add("Hưng Yên");
-        arrayList.add("Thành Phố Hải Dương");
-        arrayList.add("Bắc Ninh");
-        arrayList.add("Bình Dương");
-        arrayList.add("Thanh Hóa");
-        arrayList.add("Hà Nam");
-        arrayList.add("Hà Tĩnh");
-        arrayList.add("Tỉnh Thái Nguyên");
-        arrayList.add("Huế");
-        arrayList.add("Đà Nẵng");
-        arrayList.add("Cần Thơ");
-        arrayList.add("Nam Định");
-        arrayList.add("Bạc Liêu");
-        arrayList.add("Hải Phòng");
-        arrayList.add("Bến Tre");
-        arrayList.add("Tây Ninh");
-        arrayList.add("Yên Bái");
-        arrayList.add("Bạc Liêu");
-        arrayList.add("Bình Định");
-        arrayList.add("Tỉnh Bình Phước ");
-        arrayList.add("Tỉnh Bình Thuận");
-        arrayList.add("Gia Lai");
-        arrayList.add("Khánh Hòa");
-        arrayList.add("Long An");
-        arrayList.add("Vĩnh Long");
-        arrayList.add("Cà Mau");
+        String[] array = getResources().getStringArray(R.array.List_City);
+        ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(array));
 
         Intent intent = getIntent();
         thanhphoLichsu = intent.getStringExtra("timthanhpho");

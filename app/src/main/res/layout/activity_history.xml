@@ -9,7 +9,8 @@
     tools:context=".presentation.ui.screen.history.HistoryActivity">
 
     <androidx.appcompat.widget.Toolbar
-        style="@style/toolbar_main"
+        android:layout_height="@dimen/height_Toolbar_main"
+        android:layout_width="match_parent"
         android:background="@color/ground_toolbar_city">
 
         <ImageView

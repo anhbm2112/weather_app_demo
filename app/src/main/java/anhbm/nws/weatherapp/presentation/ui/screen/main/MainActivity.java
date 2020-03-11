@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,7 +48,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     private SharedPreferences.Editor editor;
     private Gson gson;
     private int type_degree = 0;
-//    String oC, oF;
+    //    String oC, oF;
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
 
@@ -129,7 +130,8 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     }
 
     private List<ListAPI> getValueFromPreference() {
-        Type collectionType = new TypeToken<List<ListAPI>>() {}.getType();
+        Type collectionType = new TypeToken<List<ListAPI>>() {
+        }.getType();
         return gson.fromJson(preferences.getString("keyList", ""), collectionType);
     }
 
@@ -147,8 +149,8 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
             tvonhiem.setTextColor(getResources().getColor(R.color.MauNguyHiem));
             tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauNguyHiem));
             imageView.setImageResource(R.mipmap.ic_onhiem_301);
-            Typeface typeface = Typeface.createFromAsset(getAssets(),"SpaceMonoBold.ttf");
-            Typeface type = Typeface.createFromAsset(getAssets(),"SpaceMonoBold.ttf" );
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
+            Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
             tvonhiem.setTypeface(typeface);
             tvUsAQI.setTypeface(typeface);
             tvTieudeOnhiem.setTypeface(type);
@@ -170,7 +172,7 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
             tvonhiem.setTextColor(getResources().getColor(R.color.MauOnhiem));
             tvTieudeOnhiem.setTextColor(getResources().getColor(R.color.MauOnhiem));
             imageView.setImageResource(R.mipmap.ic_onhiem_151);
-            Typeface typeface = Typeface.createFromAsset(getAssets(),"SpaceMonoBold.ttf");
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
             Typeface type = Typeface.createFromAsset(getAssets(), "SpaceMonoBold.ttf");
             tvonhiem.setTypeface(typeface);
             tvUsAQI.setTypeface(typeface);

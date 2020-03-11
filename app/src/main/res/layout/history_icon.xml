@@ -8,50 +8,47 @@
         android:id="@+id/ngay_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:text="ngay "
+        android:layout_marginLeft="@dimen/marginLeft_30"
         android:textColor="@color/white"
-        android:textSize="15dp" />
+        android:textSize="@dimen/textSize_history" />
     <TextView
         android:id="@+id/gio_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/marginLeft_10"
         android:layout_toRightOf="@+id/ngay_history"
-        android:text="gio "
         android:textColor="@color/white"
-        android:textSize="15dp" />
+        android:textSize="@dimen/textSize_history" />
 
     <TextView
         android:id="@+id/tocdogio_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ngay_history"
-        android:layout_marginLeft="30dp"
-        android:text="Tốc Độ Gió"
+        android:layout_marginLeft="@dimen/marginLeft_30"
+        android:text="@string/windSpeed"
         android:textColor="@color/white"
-        android:textSize="15dp" />
+        android:textSize="@dimen/textSize_history" />
 
     <TextView
         android:id="@+id/tocdogioText_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ngay_history"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/marginLeft_10"
         android:layout_toRightOf="@+id/tocdogio_history"
-        android:text="Độ Gió text"
         android:textColor="@color/white"
-        android:textSize="15dp" />
+        android:textSize="@dimen/textSize_history" />
 
     <TextView
         android:id="@+id/nhietdo_hitory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tocdogioText_history"
-        android:layout_marginLeft="40dp"
-        android:text="___"
+        android:layout_marginLeft="@dimen/marginLeft_40"
+        android:text="@string/nhietdotrong"
         android:textColor="@color/white"
-        android:textSize="25dp"
+        android:textSize="@dimen/textSize_temperature_history"
 
         />
 
@@ -60,108 +57,104 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tocdogioText_history"
         android:layout_toRightOf="@id/nhietdo_hitory"
-        android:text="º"
+        android:text="@string/temperature"
         android:textColor="@color/white"
-        android:textSize="25dp" />
+        android:textSize="@dimen/textSize_temperature_history" />
 
     <TextView
         android:id="@+id/doam_hitory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nhietdo_hitory"
-        android:layout_marginLeft="30dp"
-        android:text="Độ Ẩm"
+        android:layout_marginLeft="@dimen/marginLeft_30"
+        android:text="@string/Humidity"
         android:textColor="@color/white"
-        android:textSize="15dp" />
+        android:textSize="@dimen/textSize_history" />
 
     <TextView
         android:id="@+id/doamText_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nhietdo_hitory"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/marginLeft_10"
         android:layout_toRightOf="@id/doam_hitory"
-        android:text="do am"
         android:textColor="@color/white"
-        android:textSize="15dp" />
+        android:textSize="@dimen/textSize_history" />
 
     <TextView
         android:id="@+id/thanhpho_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/gach_giua"
-        android:text="thanh pho"
         android:textColor="@color/white"
-        android:textSize="15dp" />
+        android:textSize="@dimen/textSize_history"
+        android:layout_marginLeft="@dimen/marginLeft_5"/>
 
     <TextView
         android:id="@+id/xoa_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Xóa Lịch Sử"
+        android:text="@string/delete_history"
         android:textColor="@color/white"
-        android:textSize="16dp"
-        android:layout_alignParentRight="true"/>
+        android:textSize="@dimen/textSize_16"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/thanhpho_history"/>
 
     <TextView
         android:id="@+id/dogio_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/thanhpho_history"
-        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/gach_giua"
-        android:text="Độ Gió"
+        android:layout_marginLeft="@dimen/marginLeft_5"
+        android:text="@string/wind"
         android:textColor="@color/white"
-        android:textSize="15dp" />
+        android:textSize="@dimen/textSize_history" />
     <TextView
         android:id="@+id/dogioText_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/thanhpho_history"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/marginLeft_10"
         android:layout_toRightOf="@+id/dogio_history"
-        android:text="Độ Gió"
         android:textColor="@color/white"
-        android:textSize="15dp" />
+        android:textSize="@dimen/textSize_history" />
     <ImageView
         android:id="@+id/icon_history"
-        android:layout_width="60dp"
-        android:layout_height="38dp"
+        android:layout_width="@dimen/width_img_history"
+        android:layout_height="@dimen/height_img_history"
         android:layout_below="@+id/dogio_history"
         android:layout_toRightOf="@+id/gach_giua"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="@dimen/marginLeft_10"/>
 
     <TextView
         android:id="@+id/trangthai_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="trang thai"
         android:layout_below="@id/icon_history"
         android:layout_toRightOf="@id/gach_giua"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/marginLeft_5"
         android:textColor="@color/white"/>
     <TextView
         android:id="@+id/chitiet_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chi Tiết"
+        android:text="@string/detail"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"
-        android:layout_marginBottom="10dp"
-        android:textSize="16dp"
-        android:layout_marginRight="15dp"/>
+        android:textSize="@dimen/textSize_16"
+        android:layout_marginRight="@dimen/marginRight_15"/>
     <TextView
         android:id="@+id/gach_giua"
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
+        android:layout_width="@dimen/vertical_relativeLayout"
+        android:layout_height="@dimen/height_center"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
         android:background="@color/white" />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/horizontal_relativeLayout"
         android:layout_alignParentBottom="true"
         android:background="@color/white" />
 </RelativeLayout>

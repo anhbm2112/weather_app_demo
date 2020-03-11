@@ -81,7 +81,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 View view1 = LayoutInflater.from(mContext).inflate(R.layout.delete_dialog, null);
                 builder.setView(view1);
-                builder.setTitle("Bạn Có Chắc  Chắn Muốn Xóa Lịch Sử Tìm Kiếm Thành Phố ");
+                builder.setTitle(R.string.xoalichsu);
                 final AlertDialog dialog = builder.show();
                 Button buttonXoa, buttonThoat;
                 buttonXoa = dialog.findViewById(R.id.xoa_diag);
@@ -93,7 +93,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
                         historyModelList.get(position);
                         historyModelList.remove(historyModel);
                         notifyDataSetChanged();
-                        Toast.makeText(mContext, "Đã Xóa Thành Công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, R.string.Toastxoa, Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
                 });

@@ -2,10 +2,8 @@ package anhbm.nws.weatherapp.presentation.ui.screen.main.mvp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
