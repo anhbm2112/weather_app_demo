@@ -50,6 +50,9 @@
     <string name="CaiDat">Cài Đặt</string>
     <string name="ThemLichSu">Thêm Thành Công Vào Lịch Sử Tìm Kiếm</string>
     <string name="ThemLichSuThatBai">Thêm Thất Bại</string>
+    <string name="LayvitriThanhCong">Cho Phép Lấy Vị Trí Thành Công</string>
+    <string name="LayvitriThatBai">Lấy Vị Trí Thất Bại</string>
+
 
     <string name="NguyHiem">Không Khí Đang Ở Mức Nguy hiểm</string>
     <string name="RatONhiem">Không Khí Đang Ở Mức RẤt Ô Nhiễm</string>
