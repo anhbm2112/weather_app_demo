@@ -115,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/thanhpho_history"
-        android:layout_marginLeft="@dimen/marginLeft_10"
+        android:layout_marginLeft="@dimen/marginLeft_5"
         android:layout_toRightOf="@+id/dogio_history"
         android:textColor="@color/white"
         android:textSize="@dimen/textSize_history" />
@@ -134,7 +134,8 @@
         android:layout_below="@id/icon_history"
         android:layout_toRightOf="@id/gach_giua"
         android:layout_marginLeft="@dimen/marginLeft_5"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize_history"/>
     <TextView
         android:id="@+id/chitiet_history"
         android:layout_width="wrap_content"

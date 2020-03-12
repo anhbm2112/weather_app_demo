@@ -16,7 +16,8 @@
             style="@style/tieu_de_chitiet"
             android:gravity="center"
             android:text="@string/detail_history"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize_title_detail"/>
 
         <ImageView
             android:id="@+id/thoat_chitiet"

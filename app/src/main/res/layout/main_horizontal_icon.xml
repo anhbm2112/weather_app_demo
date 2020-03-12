@@ -3,6 +3,7 @@
     android:layout_width="@dimen/width_horizontal"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_margin="@dimen/margin_3"
    >
 
     <TextView

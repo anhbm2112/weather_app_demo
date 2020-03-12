@@ -50,4 +50,13 @@
     <dimen name="height_Icon_img">45dp</dimen>
     <dimen name="width_horizontal">75dp</dimen>
 
+    <!--day_icon-->
+    <dimen name="margin_day">8dp</dimen>
+    <dimen name="textSize_Day">14sp</dimen>
+    <dimen name="textSize_temperature_Day">24sp</dimen>
+    <dimen name="width_Img_day">180px</dimen>
+    <dimen name="height_Img_day">120px</dimen>
+
+    <!--dialog-->
+    <dimen name="textSize_title_detail">16sp</dimen>
 </resources>

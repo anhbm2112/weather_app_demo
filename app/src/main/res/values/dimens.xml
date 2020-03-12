@@ -21,8 +21,11 @@
     <dimen name="height_recy_horizontal_main">160dp</dimen>
     <dimen name="height_recy_vertical_main">370dp</dimen>
     <dimen name="sizeONHIEM_USAQI">30sp</dimen>
-    <dimen name="ONHIEM">20sp</dimen>
+    <dimen name="ONHIEM">16sp</dimen>
     <dimen name="sizeTieuDeONHIEM">20sp</dimen>
+    <dimen name="height_icon_onhiem">80dp</dimen>
+    <dimen name="width_icon_onhiem">120dp</dimen>
+    <dimen name="text_center_chisoonhiem">200dp</dimen>
     <!--man history-->
     <dimen name="textSize_title_history">18sp</dimen>
     <dimen name="marginLeft_title_history">60dp</dimen>
@@ -46,7 +49,7 @@
     <dimen name="Size_temperature_Icon">18sp</dimen>
     <dimen name="height_Icon_img">45dp</dimen>
     <dimen name="width_horizontal">75dp</dimen>
-
+    <dimen name="margin_3">3dp</dimen>
     <!--day_icon-->
     <dimen name="margin_day">8dp</dimen>
     <dimen name="textSize_Day">14sp</dimen>
@@ -54,4 +57,5 @@
     <dimen name="width_Img_day">180px</dimen>
     <dimen name="height_Img_day">120px</dimen>
 
+    <dimen name="title_detail_size">16sp</dimen>
 </resources>

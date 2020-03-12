@@ -44,18 +44,11 @@
 
 
     <style name="tvStyleONHIEM_USAQI" parent="Base.CardView">
-        <item name="android:layout_height">wrap_content</item>
+
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:alpha">0.8</item>
-        <item name="android:layout_width">200dp</item>
-
-    </style>
-
-    <style name="tvStyleONHIEM">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">5dp</item>
     </style>
 
     <style name="TieuDeONHIEM">
@@ -63,11 +56,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:text">Chỉ Số Ô Nhiễm US AQI</item>
-    </style>
-
-    <style name="iconOnhiem">
-        <item name="android:layout_width">120dp</item>
-        <item name="android:layout_height">80dp</item>
     </style>
 
     <style name="EdtTim">
@@ -91,7 +79,7 @@
 
     <style name="tv_temperature">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/maginTop_temperature_main</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/textSize_temperature_main</item>
@@ -107,13 +95,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:padding">10dp</item>
     </style>
 
     <style name="tieu_de_chitiet">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">5dp</item>
-        <item name="android:textSize">18sp</item>
+
     </style>
 
     <style name="img_detail">
@@ -165,6 +154,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_marginLeft">5dp</item>
     </style>
+
     <style name="tieude_lichsu">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

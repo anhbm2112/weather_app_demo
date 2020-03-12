@@ -62,6 +62,7 @@
                 <TextView
                     android:id="@+id/tv_pollution_AQI"
                     style="@style/tvStyleONHIEM_USAQI"
+                    android:layout_width="@dimen/text_center_chisoonhiem"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -69,14 +70,16 @@
                     android:textSize="@dimen/sizeONHIEM_USAQI" />
 
                 <ImageView
+                    android:layout_height="@dimen/height_icon_onhiem"
+                    android:layout_width="@dimen/width_icon_onhiem"
                     android:id="@+id/icon_onhiem"
-                    style="@style/iconOnhiem"
                     android:src="@mipmap/ic_onhiem_50" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_pollution2"
-                style="@style/tvStyleONHIEM"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:gravity="center"
                 android:textSize="@dimen/ONHIEM"/>
         </LinearLayout>
