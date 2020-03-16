@@ -12,15 +12,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.application.GPSTracker;
@@ -51,7 +55,8 @@ public class MainActivity extends BaseActivity implements MainPresenter, BottomN
     //    String oC, oF;
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
-private LocationManager locationManager;
+    private String oC;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +70,6 @@ private LocationManager locationManager;
         enums = getValueFromPreference();
         Managaer();
         initRecyclerView(enums);
-
 
 
     }
@@ -105,13 +109,13 @@ private LocationManager locationManager;
 
     @Override
     public void getRecyclerView(List<ListAPI> weatherListDays) {
-//        oC = String.valueOf(weatherListDays.get(0).getMain().getTemp()).substring(0, 2);
+        oC = String.valueOf(weatherListDays.get(0).getMain().getTemp()).substring(0, 2);
 //        oF = String.valueOf(weatherListDays.get(0).getMain().onConvertCelsiusToF(Double.parseDouble(oC))).substring(0, 2);
         saveValueToPreference(weatherListDays);
-//        weatherListDayAdapter = new WeatherHorizontalAdapter(this, weatherListDays, type_degree);
-//        recyNgay.setAdapter(weatherListDayAdapter);
-//        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, weatherListDays, type_degree);
-//        recyList.setAdapter(weatherListAdapter);
+        weatherListDayAdapter = new WeatherHorizontalAdapter(this, weatherListDays, type_degree);
+        recyNgay.setAdapter(weatherListDayAdapter);
+        weatherListAdapter = new WeatherDayAdapter(MainActivity.this, weatherListDays, type_degree);
+        recyList.setAdapter(weatherListAdapter);
 
     }
 

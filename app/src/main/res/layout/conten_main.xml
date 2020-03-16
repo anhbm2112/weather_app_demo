@@ -62,7 +62,7 @@
                 <TextView
                     android:id="@+id/tv_pollution_AQI"
                     style="@style/tvStyleONHIEM_USAQI"
-                    android:layout_width="@dimen/text_center_chisoonhiem"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
