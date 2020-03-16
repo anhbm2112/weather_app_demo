@@ -2,7 +2,7 @@
 <resources>
     <!--man tim kiem-->
     <dimen name="height_relativeLayout_Search">50dp</dimen>
-    <dimen name="city_size_Search">16sp</dimen>
+    <dimen name="city_size_Search">12sp</dimen>
     <dimen name="vertical_relativeLayout">2dp</dimen>
     <dimen name="horizontal_relativeLayout">2dp</dimen>
     <dimen name="text_City">40sp</dimen>
