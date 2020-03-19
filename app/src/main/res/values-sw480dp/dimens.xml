@@ -5,7 +5,7 @@
     <dimen name="city_size_Search">12sp</dimen>
     <dimen name="vertical_relativeLayout">2dp</dimen>
     <dimen name="horizontal_relativeLayout">2dp</dimen>
-    <dimen name="text_City">30sp</dimen>
+    <dimen name="text_City">32sp</dimen>
     <dimen name="text_temperature">38sp</dimen>
     <dimen name="height_icon">200px</dimen>
     <dimen name="width_icon">300px</dimen>
@@ -23,9 +23,9 @@
     <dimen name="sizeONHIEM_USAQI">22sp</dimen>
     <dimen name="ONHIEM">18sp</dimen>
     <dimen name="sizeTieuDeONHIEM">18sp</dimen>
-    <dimen name="height_icon_onhiem">60dp</dimen>
-    <dimen name="width_icon_onhiem">100dp</dimen>
-
+    <dimen name="height_icon_onhiem">80dp</dimen>
+    <dimen name="width_icon_onhiem">120dp</dimen>
+    <dimen name="pabding_5">5dp</dimen>
     <!--man history-->
     <dimen name="textSize_title_history">18sp</dimen>
     <dimen name="marginLeft_title_history">60dp</dimen>

@@ -1,27 +1,33 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--    xmlns:tools="http://schemas.android.com/tools"-->
-    <!--    tools:context=".presentation.ui.screen.main.MainActivity">-->
-    <!--    <item-->
-    <!--        android:id="@+id/menu_main_about"-->
-    <!--        android:orderInCategory="100"-->
-    <!--        android:title="About"-->
-    <!--
-           app:showAsAction="ifRoom" />-->
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_bottomn_Right"
-        android:icon="@drawable/ic_action_menu"
+        android:id="@+id/menu_Home"
+        android:icon="@drawable/ic_action_home"
         android:title=""
+        android:enabled="true"
+        app:showAsAction="always"
         />
     <item
-        android:id="@+id/menu_bottomn_Left"
+        android:id="@+id/menu_bottomn_FvsC"
+        android:icon="@drawable/ic_action_menu"
+        android:title=""
+
+        />
+    <item
+        android:id="@+id/menu_bottomn_search"
         android:icon="@drawable/ic_action_weather"
-        android:title="" />
+        android:title=""
+        android:enabled="true"
+        app:showAsAction="always"
+        />
     <item
         android:id="@+id/menu_history"
         android:icon="@drawable/ic_action_history"
-        android:title="" />
+        android:title=""
+        android:enabled="true"
+        app:showAsAction="always"
+        />
+
 
 
 </menu>

@@ -5,7 +5,7 @@
     <dimen name="city_size_Search">12sp</dimen>
     <dimen name="vertical_relativeLayout">2dp</dimen>
     <dimen name="horizontal_relativeLayout">2dp</dimen>
-    <dimen name="text_City">40sp</dimen>
+    <dimen name="text_City">32sp</dimen>
     <dimen name="text_temperature">42sp</dimen>
     <dimen name="height_icon">200px</dimen>
     <dimen name="width_icon">300px</dimen>
@@ -16,7 +16,7 @@
     <dimen name="maginTop_temperature_main">50dp</dimen>
     <dimen name="height_Toolbar_main">65dp</dimen>
     <dimen name="height_BottomNavigationView_main">50dp</dimen>
-    <dimen name="size_icon_BottomNavigationView">30dp</dimen>
+    <dimen name="size_icon_BottomNavigationView">25dp</dimen>
     <dimen name="textSize_title">18sp</dimen>
     <dimen name="height_recy_horizontal_main">160dp</dimen>
     <dimen name="height_recy_vertical_main">240dp</dimen>

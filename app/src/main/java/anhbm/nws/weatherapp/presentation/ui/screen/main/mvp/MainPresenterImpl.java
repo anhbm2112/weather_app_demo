@@ -17,7 +17,7 @@ import anhbm.nws.weatherapp.utils.Enums;
 public class MainPresenterImpl implements APICallListener {
     //    private MainView view;
     private WeatherInteractor peopleInteractor;
-    private MainPresenter main;
+
     private Integer USaqi;
     private double nhietdo;
     private String ngaygio;
@@ -25,10 +25,10 @@ public class MainPresenterImpl implements APICallListener {
     private Context context;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-    private String nhietdof;
     private double doF, doC;
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
+    private MainPresenter main;
 
     public MainPresenterImpl(MainPresenter main, GPSTracker gpsTracker, Context context) {
         this.context = context;
@@ -36,7 +36,9 @@ public class MainPresenterImpl implements APICallListener {
         this.peopleInteractor = new WeatherInteractor(this);
         peopleInteractor.callAPIGetContacts(gpsTracker);
         peopleInteractor.callAPIlist(gpsTracker);
+
     }
+
 
     @Override
     public void onAPICallSucceed(Enums.APIRoute route, Weather weather) {
@@ -63,30 +65,12 @@ public class MainPresenterImpl implements APICallListener {
 
     }
 
-    public void MucDoONhiem() {
-        Integer integer = sharedPreferences.getInt("keyOnhiem", 1);
-        if (integer >= 301) {
-            main.AQI301();
-        } else if (integer >= 201) {
-            main.AQI201();
-        } else if (integer >= 151) {
-            main.AQI151();
-        } else if (integer >= 101) {
-            main.AQI101();
-        } else if (integer >= 51) {
-            main.AQI51();
-        } else {
-            main.AQI00();
-        }
-        main.usAQI(integer);
-    }
 
     @Override
     public void onAPICallSucceedList(WeatherList weatherList) {
         weatherListDays = weatherList.getList();
         doC = Double.parseDouble(String.valueOf(weatherListDays.get(0).getMain().getTemp()));
         doF = Double.parseDouble(String.valueOf(weatherListDays.get(0).getMain().onConvertCelsiusToF(doC)));
-
         main.getRecyclerView(weatherListDays);
         String thanhpho = weatherList.getCity().getName();
         nhietdo = weatherList.getList().get(0).getMain().getTemp();
@@ -95,40 +79,30 @@ public class MainPresenterImpl implements APICallListener {
         SharedPreferences sharedPreferences = context.getSharedPreferences("key", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("keyThanhpho", thanhpho);
-        editor.putString("keynhietdo", String.valueOf(nhietdo).substring(0, 2));
         editor.putString("keyngay", ngaygio);
 
         editor.putString("keyC", String.valueOf(doC).substring(0, 2));
         editor.putString("keyF", String.valueOf(doF).substring(0, 2));
         editor.apply();
+
         main.ngay(ngaygio);
         main.thanhpho(thanhpho);
-
-    }
-
-    public void mainCvsF() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("key", context.MODE_PRIVATE);
         boolean s = sharedPreferences.getBoolean(IS_DEGREE, true);
         boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
         if (s && !k) {
-            String keyC = sharedPreferences.getString("keyC", "");
-            main.nhietdoC(keyC);
+            main.nhietdoC(doC);
+
         } else if (!s && k) {
-            String keyF = sharedPreferences.getString("keyF", "");
-            main.nhietdoF(keyF);
-
+            main.nhietdoF(doF);
         }
-    }
 
+    }
 
     @Override
     public void onAPICallSucceedCity(WeatherList weatherCity) {
-
     }
 
     @Override
     public void onAPICallFailed(Enums.APIRoute route, Throwable throwable) {
-//        onError(throwable.getMessage());
     }
-
 }

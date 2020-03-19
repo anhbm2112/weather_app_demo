@@ -7,12 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 
@@ -22,10 +27,11 @@ public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
 
-    public WeatherCityAdapter(List<ListAPI> listCityList, Context context) {
-        this.context = context;
+    public WeatherCityAdapter(Context context,List<ListAPI> listCityList) {
         this.listCityList = listCityList;
+        this.context = context;
     }
+
 
     @NonNull
     @Override
@@ -46,12 +52,12 @@ public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.
         SharedPreferences sharedPreferences = context.getSharedPreferences("key", context.MODE_PRIVATE);
         boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
         boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
-        Double temp = Double.valueOf(String.valueOf(listCity.getMain().getTemp()).substring(0,2));
-        Double temF = Double.valueOf(String.valueOf(listCity.getMain().onConvertCelsiusToF(temp)).substring(0,3));
+        Double temp = Double.valueOf(String.valueOf(listCity.getMain().getTemp()).substring(0, 2));
+        Double temF = Double.valueOf(String.valueOf(listCity.getMain().onConvertCelsiusToF(temp)).substring(0, 3));
         if (c && !k) {
             holder.nhietdo.setText(temp + "ºC");
         } else if (!c && k) {
-            holder.nhietdo.setText(temF+ "ºF");
+            holder.nhietdo.setText(temF + "ºF");
         }
 
         holder.tocdogio.setText(String.valueOf(listCity.getWind().getSpeed()));
@@ -71,6 +77,7 @@ public class WeatherCityAdapter extends RecyclerView.Adapter<WeatherCityAdapter.
     public class hodel extends RecyclerView.ViewHolder {
         TextView ngay, thanhpho, tocdogio, dogio, nhietdo, doam, trangthai;
         ImageView imagIcon;
+
         public hodel(@NonNull View itemView) {
             super(itemView);
             imagIcon = itemView.findViewById(R.id.iconimg_city);

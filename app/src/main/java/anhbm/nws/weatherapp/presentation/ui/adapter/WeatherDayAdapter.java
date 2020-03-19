@@ -1,6 +1,7 @@
 package anhbm.nws.weatherapp.presentation.ui.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +19,12 @@ import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.hodel> {
     private Context context;
     private List<ListAPI> listAPIS;
-    private int type_F;
+    private static final String IS_DEGREE = "IS_DEGREE";
+    private static final String IS_KELVIN = "IS_KELVIN";
 
-    public WeatherDayAdapter(Context context, List<ListAPI> weatherList, int type) {
+    public WeatherDayAdapter(Context context, List<ListAPI> weatherList) {
         this.context = context;
         this.listAPIS = weatherList;
-        this.type_F = type;
-
     }
 
     @NonNull
@@ -45,12 +45,18 @@ public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.ho
         holder.tvdogio.setText(String.valueOf(listAPI.getWind().getSpeed()));
         holder.tvgio.setText(String.valueOf(listAPI.getWind().getDeg()));
         String oC = String.valueOf(listAPI.getMain().getTemp()).substring(0,2);
+
         String oF = String.valueOf(listAPI.getMain().onConvertCelsiusToF(Double.parseDouble(oC))).substring(0, 2);
-        if (type_F == 0) {
-            holder.tvnhietdo.setText(oC + "ºC");
-        } else if (type_F == 1) {
-            holder.tvnhietdo.setText(oF + "ºF");
-        }
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("key", Context.MODE_PRIVATE);
+        boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
+        boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
+            if (c && !k) {
+                holder.tvnhietdo.setText(oC + "ºC");
+            } else if (!c && k) {
+                holder.tvnhietdo.setText(oF + "ºF");
+            }
+
         holder.tvdoam.setText(String.valueOf(listAPI.getMain().getHumidity() + "%"));
         holder.tvtrangthai.setText(listAPI.getWeather().get(0).getDescription());
         String ss = listAPI.getWeather().get(0).getIcon();

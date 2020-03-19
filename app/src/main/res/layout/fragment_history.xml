@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/ground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_history"
+            android:layout_height="@dimen/height_Toolbar_main"
+            android:layout_width="match_parent"
+            android:background="@color/ground_toolbar_city"
+            >
+
+            <ImageView
+                android:id="@+id/back_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_back" />
+
+            <TextView
+                style="@style/tieude_lichsu"
+                android:textColor="@color/white"
+                />
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar_history"/>
+</LinearLayout>

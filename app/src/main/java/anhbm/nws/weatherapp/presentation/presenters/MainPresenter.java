@@ -1,22 +1,18 @@
 package anhbm.nws.weatherapp.presentation.presenters;
 
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
-import anhbm.nws.weatherapp.presentation.presenters.base.BasePresenter;
 
-public interface MainPresenter extends BasePresenter {
+public interface MainPresenter {
 
     void thanhpho(String s);
 
     void getRecyclerView(List<ListAPI> weatherListDays);
 
-    void nhietdoC(String C);
+    void nhietdoC(Double C);
 
-    void nhietdoF(String F);
+    void nhietdoF(Double F);
 
 //    void nhietF(double inF);
 //

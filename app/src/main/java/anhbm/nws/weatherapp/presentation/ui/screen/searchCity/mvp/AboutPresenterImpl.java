@@ -1,16 +1,17 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.searchCity.mvp;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
+import android.net.ConnectivityManager;
+import android.provider.Settings;
 import android.widget.Toast;
-
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
@@ -20,13 +21,12 @@ import anhbm.nws.weatherapp.application.SQLiteWeather.SqlDatabase;
 import anhbm.nws.weatherapp.domains.interactors.WeatherInteractor;
 import anhbm.nws.weatherapp.presentation.presenters.AboutPresenter;
 import anhbm.nws.weatherapp.presentation.ui.screen.history.mvp.HistoryModel;
-import anhbm.nws.weatherapp.presentation.ui.screen.main.MainActivity;
 import anhbm.nws.weatherapp.utils.Enums;
 
 public class AboutPresenterImpl implements APICallListener {
-    WeatherInteractor weatherInteractor;
-    AboutPresenter mView;
-    Context mcontext;
+    private WeatherInteractor weatherInteractor;
+    private AboutPresenter mView;
+    private Context mcontext;
     List<ListAPI> listCityList = new ArrayList<>();
     private SqlDatabase sqlDatabase;
     private String gio, ngay, dogio, tocdogio, doam, trangthai, icon;
@@ -41,6 +41,12 @@ public class AboutPresenterImpl implements APICallListener {
         this.mView = mView;
         this.mcontext = context;
         this.weatherInteractor = new WeatherInteractor(this);
+
+    }
+
+    public void Tim(String s) {
+        weatherInteractor.callAPICity(s);
+        historyModel.setThanhpho(s);
     }
 
     @Override
@@ -55,13 +61,11 @@ public class AboutPresenterImpl implements APICallListener {
     @Override
     public void onAPICallSucceedCity(WeatherList weatherCity) {
         listCityList = weatherCity.getList();
-        mView.getRecyCity(listCityList);
+        mView.getRecyCitySearch(listCityList);
         String thanhpho = weatherCity.getCity().getName();
-        String nhietdo = String.valueOf(weatherCity.getList().get(0).getMain().getTemp()).substring(0, 2);
         String iconchinh = weatherCity.getList().get(0).getWeather().get(0).getIcon();
         s = listCityList.get(0).getMain().getTemp();
         s1 = listCityList.get(0).getMain().onConvertCelsiusToF(s);
-
         SharedPreferences sharedPreferences = mcontext.getSharedPreferences("key", mcontext.MODE_PRIVATE);
         boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
         boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
@@ -74,18 +78,15 @@ public class AboutPresenterImpl implements APICallListener {
         }
         mView.icon(iconchinh);
         mView.thanhpho(thanhpho);
-
-
+        insetLichSu(listCityList);
     }
+
     @Override
     public void onAPICallFailed(Enums.APIRoute route, Throwable throwable) {
 
     }
 
-    public void Tim(String snhap) {
-        weatherInteractor.callAPICity(snhap);
-        historyModel.setThanhpho(snhap);
-    }
+
     public void insetLichSu(List<ListAPI> listCityList) {
         nhietdo = listCityList.get(0).getMain().getTemp();
         nhietdoF = listCityList.get(0).getMain().onConvertCelsiusToF(nhietdo);
@@ -100,11 +101,6 @@ public class AboutPresenterImpl implements APICallListener {
         historyModel.setGiohientai(gio);
         historyModel.setNgayhientai(ngay);
         historyModel.setNhietDoTemp(nhietdo);
-//        if (c && !k) {
-//            historyModel.setNhietDoTemp(nhietdo);
-//        } else if (!c && k) {
-//            historyModel.setNhietDoTemp(nhietdoF);
-//        }
         historyModel.setDogioDeg(dogio);
         historyModel.setTocdogioSpeed(tocdogio);
         historyModel.setDoamHumidity(doam);
@@ -116,12 +112,10 @@ public class AboutPresenterImpl implements APICallListener {
             Toast.makeText(mcontext, R.string.ThemLichSu, Toast.LENGTH_LONG).show();
 
         } else {
-            Toast.makeText(mcontext,R.string.ThemLichSuThatBai, Toast.LENGTH_LONG).show();
+            Toast.makeText(mcontext, R.string.ThemLichSuThatBai, Toast.LENGTH_LONG).show();
         }
     }
 
-    public void quaylai() {
-        Intent intent = new Intent(mcontext, MainActivity.class);
-        mcontext.startActivity(intent);
-    }
+
+
 }

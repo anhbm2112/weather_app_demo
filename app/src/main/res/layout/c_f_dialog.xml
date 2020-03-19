@@ -4,17 +4,17 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/c"
-        style="@style/CF_dialog"
-        android:background="@color/ground"
-        android:text="@string/doC"
-        android:textColor="@color/white" />
+<!--    <Button-->
+<!--        android:id="@+id/c"-->
+<!--        style="@style/CF_dialog"-->
+<!--        android:background="@color/ground"-->
+<!--        android:text="@string/doC"-->
+<!--        android:textColor="@color/white" />-->
 
-    <Button
-        android:id="@+id/f"
-        style="@style/CF_dialog"
-        android:background="@color/ground"
-        android:text="@string/doF"
-        android:textColor="@color/white" />
+<!--    <Button-->
+<!--        android:id="@+id/f"-->
+<!--        style="@style/CF_dialog"-->
+<!--        android:background="@color/ground"-->
+<!--        android:text="@string/doF"-->
+<!--        android:textColor="@color/white" />-->
 </LinearLayout>

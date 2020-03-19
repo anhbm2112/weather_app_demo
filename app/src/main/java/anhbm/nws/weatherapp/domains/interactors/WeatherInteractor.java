@@ -1,5 +1,6 @@
 package anhbm.nws.weatherapp.domains.interactors;
 
+import android.content.Context;
 import android.util.Log;
 import anhbm.nws.weatherapp.api.APICallListener;
 import anhbm.nws.weatherapp.api.APICallManager;
@@ -8,6 +9,8 @@ import anhbm.nws.weatherapp.api.APICallManagerList;
 import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Weather;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherList;
 import anhbm.nws.weatherapp.application.GPSTracker;
+import anhbm.nws.weatherapp.presentation.ui.screen.fragment.SearchCityFragment;
+import anhbm.nws.weatherapp.presentation.ui.screen.main.MainActivity;
 import anhbm.nws.weatherapp.utils.Enums;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,6 +21,7 @@ public class WeatherInteractor {
     APICallListener listener;
     public WeatherInteractor(APICallListener listener) {
         this.listener = listener;
+
     }
 
     public void callAPIGetContacts(GPSTracker gpsTracker) {

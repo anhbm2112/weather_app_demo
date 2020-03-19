@@ -1,4 +1,4 @@
-package anhbm.nws.weatherapp.presentation.presenters.onClickRecy;
+package anhbm.nws.weatherapp.presentation.presenters.onSetInterFace;
 
 import android.view.View;
 

@@ -2,10 +2,9 @@ package anhbm.nws.weatherapp.presentation.ui.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +12,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
-
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.application.SQLiteWeather.SqlDatabase;
-import anhbm.nws.weatherapp.presentation.presenters.onClickRecy.ItemOnClick;
+import anhbm.nws.weatherapp.presentation.presenters.onSetInterFace.ItemOnClick;
 import anhbm.nws.weatherapp.presentation.ui.screen.history.mvp.HistoryModel;
-import anhbm.nws.weatherapp.presentation.ui.screen.searchCity.AboutActivity;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> {
     private Context mContext;
@@ -53,6 +47,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
         SharedPreferences sharedPreferences = mContext.getSharedPreferences("key", mContext.MODE_PRIVATE);
         boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
         boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
+
         final HistoryModel historyModel = historyModelList.get(position);
         holder.chitiet.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         holder.xoa.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
@@ -72,7 +67,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
         if (c && !k) {
             holder.tvnhietdo.setText(String.valueOf(nhietdoC).substring(0, 2));
         } else if (!c && k) {
-            holder.tvnhietdo.setText(String.valueOf(nhietdoF).substring(0,3));
+            holder.tvnhietdo.setText(String.valueOf(nhietdoF).substring(0, 3));
         }
 
         holder.xoa.setOnClickListener(new View.OnClickListener() {
@@ -145,10 +140,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
         holder.setItem(new ItemOnClick() {
             @Override
             public void onClick(View view, int i, boolean isLongClick) {
-                Intent intent = new Intent(mContext, AboutActivity.class);
-                intent.putExtra("timthanhpho", historyModel.getThanhpho());
-                mContext.startActivity(intent);
-                Log.d("tenthanhpho", historyModel.getThanhpho());
+                Bundle bundle = new Bundle();
+                bundle.putString("timthanhpho", historyModel.getThanhpho());
             }
         });
 
@@ -180,6 +173,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
             iconviewHistory = itemView.findViewById(R.id.icon_history);
             chitiet = itemView.findViewById(R.id.chitiet_history);
             xoa = itemView.findViewById(R.id.xoa_history);
+            itemView.setTag(itemView);
         }
 
         public void setItem(ItemOnClick item) {

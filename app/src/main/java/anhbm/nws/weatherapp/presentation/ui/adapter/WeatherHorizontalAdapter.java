@@ -21,10 +21,9 @@ public class WeatherHorizontalAdapter extends RecyclerView.Adapter<WeatherHorizo
     private Context mContext;
     private int type;
 
-    public WeatherHorizontalAdapter(Context mContext, List<ListAPI> listPeople, int type) {
+    public WeatherHorizontalAdapter(Context mContext, List<ListAPI> listPeople) {
         this.listPeople = listPeople;
         this.mContext = mContext;
-        this.type = type;
     }
 
     @NonNull

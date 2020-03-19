@@ -41,47 +41,66 @@
             android:background="@color/white" />
 
         <LinearLayout
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_margin="@dimen/marginLeft_5"
             android:id="@+id/chiso_onhiem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_below="@+id/gach_duoi"
+            android:layout_margin="@dimen/marginLeft_5"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tieude"
                 style="@style/TieuDeONHIEM"
                 android:gravity="center"
-                android:textSize="@dimen/sizeTieuDeONHIEM"/>
+                android:textSize="@dimen/sizeTieuDeONHIEM" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_pollution_AQI"
-                    style="@style/tvStyleONHIEM_USAQI"
-                    android:layout_width="200dp"
+                <LinearLayout
+                    android:id="@+id/LinearOnhiem"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/sizeONHIEM_USAQI" />
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="@dimen/marginLeft_30"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_pollution_AQI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sizeONHIEM_USAQI"
+                        android:padding="@dimen/pabding_5"/>
+
+                    <TextView
+                        android:id="@+id/tv_pollution_AQI_hai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/AQI"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sizeONHIEM_USAQI"
+                        android:padding="@dimen/pabding_5" />
+                </LinearLayout>
 
                 <ImageView
-                    android:layout_height="@dimen/height_icon_onhiem"
-                    android:layout_width="@dimen/width_icon_onhiem"
                     android:id="@+id/icon_onhiem"
+                    android:layout_width="@dimen/width_icon_onhiem"
+                    android:layout_height="@dimen/height_icon_onhiem"
                     android:src="@mipmap/ic_onhiem_50" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_pollution2"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="@dimen/ONHIEM"/>
+                android:textSize="@dimen/ONHIEM" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
