@@ -3,7 +3,6 @@ package anhbm.nws.weatherapp.presentation.ui.screen.fragment;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -27,23 +23,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import anhbm.nws.weatherapp.R;
-import anhbm.nws.weatherapp.api.APICallListener;
-import anhbm.nws.weatherapp.api.weather.modelWeatherAPI.Data;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
-import anhbm.nws.weatherapp.application.GPSTracker;
-import anhbm.nws.weatherapp.domains.interactors.WeatherInteractor;
 import anhbm.nws.weatherapp.presentation.presenters.AboutPresenter;
-import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
 import anhbm.nws.weatherapp.presentation.presenters.onSetInterFace.OnCallBackData;
 import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherCityAdapter;
-import anhbm.nws.weatherapp.presentation.ui.screen.BaseActivity;
 import anhbm.nws.weatherapp.presentation.ui.screen.BaseFragment;
-import anhbm.nws.weatherapp.presentation.ui.screen.main.MainActivity;
-import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainModel;
-import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainPresenterImpl;
-import anhbm.nws.weatherapp.presentation.ui.screen.searchCity.AboutActivity;
-import anhbm.nws.weatherapp.presentation.ui.screen.searchCity.mvp.AboutPresenterImpl;
-import butterknife.ButterKnife;
+
 
 public class SearchCityFragment extends BaseFragment implements AboutPresenter, AdapterView.OnItemSelectedListener {
     private TextView tvThanhpho, tvNhietdo;

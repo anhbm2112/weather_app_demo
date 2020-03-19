@@ -1,6 +1,8 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.fragment;
 
+import android.Manifest;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,9 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
@@ -64,6 +71,15 @@ public class HomeFragment extends Fragment implements MainPresenter {
         imageView = view.findViewById(R.id.icon_onhiem);
         linearLayout=view.findViewById(R.id.LinearOnhiem);
         AQI=view.findViewById(R.id.tv_pollution_AQI_hai);
+
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+
+            } else {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            }
+        }
         init();
         enums = getValueFromPreference();
         initRecyclerView(enums);
@@ -338,5 +354,23 @@ public class HomeFragment extends Fragment implements MainPresenter {
 
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
+        switch (requestCode) {
+            case 1: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(getActivity(), R.string.LayvitriThanhCong, Toast.LENGTH_SHORT).show();
+
+                    }
+                } else {
+                    Toast.makeText(getActivity(), R.string.LayvitriThatBai, Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+        }
+
+    }
 }

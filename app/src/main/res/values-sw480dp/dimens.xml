@@ -26,6 +26,9 @@
     <dimen name="height_icon_onhiem">80dp</dimen>
     <dimen name="width_icon_onhiem">120dp</dimen>
     <dimen name="pabding_5">5dp</dimen>
+    <dimen name="pabding_10">10dp</dimen>
+    <dimen name="layout_margin_20">20dp</dimen>
+
     <!--man history-->
     <dimen name="textSize_title_history">18sp</dimen>
     <dimen name="marginLeft_title_history">60dp</dimen>

@@ -62,7 +62,9 @@
     <string name="Tot">Không Khí Đang Ở Mức Tốt</string>
     <string name="xoalichsu">Bạn Có Chắc  Chắn Muốn Xóa Lịch Sử Tìm Kiếm Thành Phố </string>
     <string name="Toastxoa">Đã Xóa Thành Công</string>
-    <string name="TitleFvsC">Chuyển Đổi ºC vs ºF</string>
+
+    <string name="TitleFvsC">Mời bạn Chọn Nhiệt Độ Hiển Thị</string>
+
     <string name="title_history">Lịch Sử Tìm Kiếm Thành Phố</string>
     <!--historyIcon-->
     <string name="windSpeed">Tốc Độ Gió :</string>

@@ -1,21 +1,10 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.main;
-
-import android.Manifest;
-import android.app.AlertDialog;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.application.GPSTracker;
 import anhbm.nws.weatherapp.presentation.presenters.onSetInterFace.OnCallBackData;
@@ -35,7 +24,6 @@ public class MainActivity extends BaseActivity implements OnCallBackData, Bottom
     ///SharedPreferences
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
-    private Gson gson;
     //    String oC, oF;
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
@@ -47,16 +35,6 @@ public class MainActivity extends BaseActivity implements OnCallBackData, Bottom
         showToastGPS();
         CheckInternetshowCaidat();
         init();
-
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            }
-        }
         HomeFragment homeFragment = new HomeFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frameLayout_main, homeFragment).commit();
@@ -68,7 +46,6 @@ public class MainActivity extends BaseActivity implements OnCallBackData, Bottom
     private void init() {
         preferences = getSharedPreferences("key", MODE_PRIVATE);
         editor = preferences.edit();
-        gson = new Gson();
         initLayout();
         initData();
     }
@@ -121,24 +98,23 @@ public class MainActivity extends BaseActivity implements OnCallBackData, Bottom
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-        switch (requestCode) {
-            case 1: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                        Toast.makeText(this, R.string.LayvitriThanhCong, Toast.LENGTH_SHORT).show();
-//                        gpsTracker = new GPSTracker(getApplicationContext());
-//                        init();
-//                        enums = getValueFromPreference();
-//                        Managaer();
-//                        initRecyclerView(enums);
-                    }
-                } else {
-                    Toast.makeText(this, R.string.LayvitriThatBai, Toast.LENGTH_SHORT).show();
-                }
-                return;
-            }
-
-        }
+//        switch (requestCode) {
+//            case 1: {
+//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+//                        Toast.makeText(this, R.string.LayvitriThanhCong, Toast.LENGTH_SHORT).show();
+//                        HomeFragment homeFragment = new HomeFragment();
+//                        FragmentManager fragmentManager = getSupportFragmentManager();
+//                        fragmentManager.beginTransaction().replace(R.id.frameLayout_main, homeFragment).commit();
+//
+//                    }
+//                } else {
+//                    Toast.makeText(this, R.string.LayvitriThatBai, Toast.LENGTH_SHORT).show();
+//                }
+//                return;
+//            }
+//
+//        }
 
     }
 

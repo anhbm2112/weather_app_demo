@@ -24,7 +24,8 @@
     <dimen name="ONHIEM">20sp</dimen>
     <dimen name="sizeTieuDeONHIEM">20sp</dimen>
     <dimen name="pabding_5">5dp</dimen>
-
+    <dimen name="pabding_10">10dp</dimen>
+    <dimen name="layout_margin_20">20dp</dimen>
     <!--man history-->
     <dimen name="textSize_title_history">18sp</dimen>
     <dimen name="marginLeft_title_history">60dp</dimen>

@@ -23,7 +23,9 @@
     <dimen name="sizeONHIEM_USAQI">30sp</dimen>
     <dimen name="ONHIEM">20sp</dimen>
     <dimen name="sizeTieuDeONHIEM">20sp</dimen>
-
+    <dimen name="pabding_5">5dp</dimen>
+    <dimen name="pabding_10">10dp</dimen>
+    <dimen name="layout_margin_20">20dp</dimen>
     <!--    <dimen name="sizeONHIEM_USAQI">22sp</dimen>-->
     <!--    <dimen name="ONHIEM">16sp</dimen>-->
     <!--    <dimen name="sizeTieuDeONHIEM">18sp</dimen>-->
