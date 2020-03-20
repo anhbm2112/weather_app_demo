@@ -66,7 +66,7 @@ public class WeatherDayAdapter extends RecyclerView.Adapter<WeatherDayAdapter.ho
 
     @Override
     public int getItemCount() {
-        return listAPIS.size();
+        return (listAPIS != null) ? listAPIS.size() : 0;
     }
 
     public class hodel extends RecyclerView.ViewHolder {

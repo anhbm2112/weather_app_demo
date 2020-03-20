@@ -148,7 +148,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
 
     @Override
     public int getItemCount() {
-        return historyModelList.size();
+        return (historyModelList != null) ? historyModelList.size() : 0;
     }
 
     public class holder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
