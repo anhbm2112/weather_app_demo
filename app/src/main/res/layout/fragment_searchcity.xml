@@ -24,7 +24,9 @@
             style="@style/tieude_timkiem"
             android:layout_toRightOf="@id/back_timkiem"
             android:textColor="@color/white"
-            android:textSize="@dimen/city_size_Search" />
+            android:textSize="@dimen/city_size_Search"
+            android:textStyle="bold"
+           />
 
         <TextView
             android:id="@+id/gach_doc"
@@ -55,7 +57,9 @@
         android:layout_centerHorizontal="true"
         android:text="@string/nhietdotrong"
         android:textColor="@color/bg_color"
-        android:textSize="@dimen/text_City" />
+        android:textSize="@dimen/text_City"
+        android:textStyle="bold"
+      />
 
     <TextView
         android:id="@+id/tv_temperature_mancity"
@@ -65,7 +69,9 @@
         android:layout_centerHorizontal="true"
         android:text="@string/nhietdotrong"
         android:textColor="@color/bg_color"
-        android:textSize="@dimen/text_temperature" />
+        android:textSize="@dimen/text_temperature"
+        android:textStyle="bold"
+       />
 
     <ImageView
         android:id="@+id/imgIconchinh"

@@ -11,7 +11,7 @@
         android:id="@+id/menu_bottomn_FvsC"
         android:icon="@drawable/ic_action_menu"
         android:title=""
-
+app:showAsAction="always"
         />
     <item
         android:id="@+id/menu_bottomn_search"
