@@ -17,7 +17,6 @@ import anhbm.nws.weatherapp.utils.Enums;
 public class MainPresenterImpl implements APICallListener {
     //    private MainView view;
     private WeatherInteractor peopleInteractor;
-
     private Integer USaqi;
     private double nhietdo;
     private String ngaygio;
@@ -38,8 +37,6 @@ public class MainPresenterImpl implements APICallListener {
         peopleInteractor.callAPIlist(gpsTracker);
 
     }
-
-
     @Override
     public void onAPICallSucceed(Enums.APIRoute route, Weather weather) {
         USaqi = weather.getData().getCurrent().getPollution().getAqius();
@@ -82,7 +79,7 @@ public class MainPresenterImpl implements APICallListener {
         editor.putString("keyngay", ngaygio);
 
         editor.putString("keyC", String.valueOf(doC).substring(0, 2));
-        editor.putString("keyF", String.valueOf(doF).substring(0, 2));
+        editor.putString("keyF", String.valueOf(doF).substring(0, 3));
         editor.apply();
 
         main.ngay(ngaygio);

@@ -25,7 +25,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
     private Context mContext;
     private List<HistoryModel> historyModelList;
     private SqlDatabase sqlDatabase;
-    private String pho;
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
 
@@ -53,8 +52,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
         holder.xoa.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         holder.tvgio.setText(historyModel.getGiohientai());
         holder.tvngay.setText(historyModel.getNgayhientai());
-        pho = historyModel.getThanhpho();
-        holder.tvthanhpho.setText(pho);
+        String thanhpho = historyModel.getThanhpho();
+        holder.tvthanhpho.setText(thanhpho);
         holder.tvdogio.setText(historyModel.getDogioDeg());
         holder.tvtocdogio.setText(historyModel.getTocdogioSpeed());
         holder.tvdoam.setText(historyModel.getDoamHumidity() + "%");
@@ -149,7 +148,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
 
     @Override
     public int getItemCount() {
-        return (historyModelList != null) ? historyModelList.size() : 0;
+        return historyModelList.size();
     }
 
     public class holder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {

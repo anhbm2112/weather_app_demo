@@ -60,7 +60,7 @@ public class WeatherHorizontalAdapter extends RecyclerView.Adapter<WeatherHorizo
 
     @Override
     public int getItemCount() {
-        return (listPeople != null) ? listPeople.size() : 0;
+        return listPeople.size();
     }
 
 

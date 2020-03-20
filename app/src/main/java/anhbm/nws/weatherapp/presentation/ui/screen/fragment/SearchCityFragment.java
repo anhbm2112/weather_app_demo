@@ -39,7 +39,7 @@ public class SearchCityFragment extends BaseFragment implements AboutPresenter, 
     private ImageView back;
     private ArrayAdapter<String> arrayAdapterSpin;
     private OnCallBackData onCallBackData;
-
+private  Typeface typeface;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -112,8 +112,6 @@ public class SearchCityFragment extends BaseFragment implements AboutPresenter, 
 
     @Override
     public void thanhpho(String thanhpho) {
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "SpaceMonoBold.ttf");
-        tvThanhpho.setTypeface(typeface);
         tvThanhpho.setText(thanhpho);
     }
 
@@ -130,15 +128,11 @@ public class SearchCityFragment extends BaseFragment implements AboutPresenter, 
 
     @Override
     public void nhietdoF(Double F) {
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "SpaceMonoBold.ttf");
-        tvNhietdo.setTypeface(typeface);
-        tvNhietdo.setText(String.valueOf(F).substring(0, 2) + "ºF");
+        tvNhietdo.setText(String.valueOf(F).substring(0, 3) + "ºF");
     }
 
     @Override
     public void nhietdoC(Double aDouble) {
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "SpaceMonoBold.ttf");
-        tvNhietdo.setTypeface(typeface);
         tvNhietdo.setText(String.valueOf(aDouble).substring(0, 2) + "ºC");
     }
 

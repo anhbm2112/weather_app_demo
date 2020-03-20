@@ -10,19 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
-
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
 import anhbm.nws.weatherapp.R;
-import anhbm.nws.weatherapp.application.GPSTracker;
-import anhbm.nws.weatherapp.presentation.ui.screen.BaseFragment;
-import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainPresenterImpl;
 
 public class TemperatureFragment extends BottomSheetDialogFragment {
     private Button buttonC, buttonF;
@@ -31,8 +25,6 @@ public class TemperatureFragment extends BottomSheetDialogFragment {
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
     private ImageView imageView;
-    private static final String Check_Permission = "Permission";
-
     public static TemperatureFragment newInstance() {
         return new TemperatureFragment();
     }
