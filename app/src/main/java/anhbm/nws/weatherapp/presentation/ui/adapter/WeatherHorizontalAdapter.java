@@ -1,6 +1,7 @@
 package anhbm.nws.weatherapp.presentation.ui.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,11 @@ import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 
 public class WeatherHorizontalAdapter extends RecyclerView.Adapter<WeatherHorizontalAdapter.ViewHolder> {
-
     private List<ListAPI> listPeople;
     private Context mContext;
-    private int type;
+    private static final String IS_DEGREE = "IS_DEGREE";
+    private static final String IS_KELVIN = "IS_KELVIN";
+
 
     public WeatherHorizontalAdapter(Context mContext, List<ListAPI> listPeople) {
         this.listPeople = listPeople;
@@ -43,11 +45,15 @@ public class WeatherHorizontalAdapter extends RecyclerView.Adapter<WeatherHorizo
         holder.tvmota_trangthai.setText(listday.getWeather().get(0).getDescription());
         String sub = String.valueOf(listday.getMain().getTemp()).substring(0, 2);
         String sF = String.valueOf(listday.getMain().onConvertCelsiusToF(Double.parseDouble(sub))).substring(0, 2);
-        if (type == 0) {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("key", Context.MODE_PRIVATE);
+        boolean c = sharedPreferences.getBoolean(IS_DEGREE, true);
+        boolean k = sharedPreferences.getBoolean(IS_KELVIN, false);
+        if (c && !k) {
             holder.tvnhietdo.setText(sub + "ºC");
-        } else if (type == 1) {
+        } else if (!c && k) {
             holder.tvnhietdo.setText(sF + "ºF");
         }
+
         String s = listday.getWeather().get(0).getIcon();
         Picasso.with(mContext).load("http://api.openweathermap.org/img/w/" + s + ".png").into(holder.imageView);
     }

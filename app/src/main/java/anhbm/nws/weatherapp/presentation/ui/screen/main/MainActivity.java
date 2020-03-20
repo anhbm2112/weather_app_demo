@@ -1,10 +1,19 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.main;
+
+import android.Manifest;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.application.GPSTracker;
 import anhbm.nws.weatherapp.presentation.presenters.onSetInterFace.OnCallBackData;
@@ -28,38 +37,40 @@ public class MainActivity extends BaseActivity implements OnCallBackData, Bottom
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
 
+    private static final String Check_Permission = "Permission";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         showToastGPS();
         CheckInternetshowCaidat();
-        init();
-        HomeFragment homeFragment = new HomeFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frameLayout_main, homeFragment).commit();
-        gpsTracker = new GPSTracker(getApplicationContext());
-        presenterMain = new MainPresenterImpl(homeFragment, gpsTracker, this);
+        CheckLocationPermission();
 
+        init();
+        boolean trueData = preferences.getBoolean(Check_Permission, true);
+        boolean falseData=preferences.getBoolean(Check_Permission,false);
+        if (trueData==true){
+            HomeFragment homeFragment = new HomeFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frameLayout_main, homeFragment).commit();
+            gpsTracker = new GPSTracker(getApplicationContext());
+            presenterMain = new MainPresenterImpl(homeFragment, gpsTracker, this);
+        }else if (falseData==false){
+            HomeFragment homeFragment = new HomeFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frameLayout_main, homeFragment).commit();
+            gpsTracker = new GPSTracker(getApplicationContext());
+            presenterMain = new MainPresenterImpl(homeFragment, gpsTracker, this);
+        }
     }
 
     private void init() {
         preferences = getSharedPreferences("key", MODE_PRIVATE);
         editor = preferences.edit();
         initLayout();
-        initData();
     }
 
-
-    private void initData() {
-        boolean c = preferences.getBoolean(IS_DEGREE, true);
-        boolean k = preferences.getBoolean(IS_KELVIN, false);
-        if (c && !k) {
-
-        } else if (!c && k) {
-
-        }
-    }
     private void initLayout() {
         bottomNavigationView = findViewById(R.id.bottomnavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -98,23 +109,26 @@ public class MainActivity extends BaseActivity implements OnCallBackData, Bottom
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-//        switch (requestCode) {
-//            case 1: {
-//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-//                        Toast.makeText(this, R.string.LayvitriThanhCong, Toast.LENGTH_SHORT).show();
-//                        HomeFragment homeFragment = new HomeFragment();
-//                        FragmentManager fragmentManager = getSupportFragmentManager();
-//                        fragmentManager.beginTransaction().replace(R.id.frameLayout_main, homeFragment).commit();
-//
-//                    }
-//                } else {
-//                    Toast.makeText(this, R.string.LayvitriThatBai, Toast.LENGTH_SHORT).show();
-//                }
-//                return;
-//            }
-//
-//        }
+        switch (requestCode) {
+            case 1: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(this, R.string.LayvitriThanhCong, Toast.LENGTH_SHORT).show();
+                        HomeFragment homeFragment = new HomeFragment();
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.frameLayout_main, homeFragment).commit();
+                        gpsTracker = new GPSTracker(getApplicationContext());
+                        presenterMain = new MainPresenterImpl(homeFragment, gpsTracker, this);
+                        editor.putBoolean(Check_Permission, true);
+                    }
+                } else {
+                    Toast.makeText(this, R.string.LayvitriThatBai, Toast.LENGTH_SHORT).show();
+                    editor.putBoolean(Check_Permission, false);
+                }
+                return;
+            }
+
+        }
 
     }
 

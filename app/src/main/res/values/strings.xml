@@ -52,7 +52,7 @@
     <string name="ThemLichSuThatBai">Thêm Thất Bại</string>
     <string name="LayvitriThanhCong">Cho Phép Lấy Vị Trí Thành Công</string>
     <string name="LayvitriThatBai">Lấy Vị Trí Thất Bại</string>
-
+<string name="PermissionsLocation">Cho Phép Lấy Vị Trí</string>
 
     <string name="NguyHiem">Không Khí Đang Ở Mức Nguy hiểm</string>
     <string name="RatONhiem">Không Khí Đang Ở Mức RẤt Ô Nhiễm</string>

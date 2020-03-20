@@ -23,9 +23,14 @@
     <dimen name="sizeONHIEM_USAQI">30sp</dimen>
     <dimen name="ONHIEM">20sp</dimen>
     <dimen name="sizeTieuDeONHIEM">20sp</dimen>
+    <dimen name="height_icon_onhiem">80dp</dimen>
+    <dimen name="width_icon_onhiem">120dp</dimen>
     <dimen name="pabding_5">5dp</dimen>
     <dimen name="pabding_10">10dp</dimen>
     <dimen name="layout_margin_20">20dp</dimen>
+    <dimen name="icon_location_50">50dp</dimen>
+    <dimen name="icon_location_40">40dp</dimen>
+
     <!--    <dimen name="sizeONHIEM_USAQI">22sp</dimen>-->
     <!--    <dimen name="ONHIEM">16sp</dimen>-->
     <!--    <dimen name="sizeTieuDeONHIEM">18sp</dimen>-->

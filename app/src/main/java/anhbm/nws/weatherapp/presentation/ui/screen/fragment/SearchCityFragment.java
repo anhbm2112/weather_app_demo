@@ -112,14 +112,14 @@ public class SearchCityFragment extends BaseFragment implements AboutPresenter, 
 
     @Override
     public void thanhpho(String thanhpho) {
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "SpaceMonoBold.ttf");
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "SpaceMonoBold.ttf");
         tvThanhpho.setTypeface(typeface);
         tvThanhpho.setText(thanhpho);
     }
 
     @Override
     public void getRecyCitySearch(List<ListAPI> listCityList) {
-        weatherCityAdapter = new WeatherCityAdapter(getActivity(), listCityList);
+        weatherCityAdapter = new WeatherCityAdapter(getContext(), listCityList);
         recyCity.setAdapter(weatherCityAdapter);
     }
 
@@ -130,14 +130,14 @@ public class SearchCityFragment extends BaseFragment implements AboutPresenter, 
 
     @Override
     public void nhietdoF(Double F) {
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "SpaceMonoBold.ttf");
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "SpaceMonoBold.ttf");
         tvNhietdo.setTypeface(typeface);
         tvNhietdo.setText(String.valueOf(F).substring(0, 2) + "ºF");
     }
 
     @Override
     public void nhietdoC(Double aDouble) {
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "SpaceMonoBold.ttf");
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "SpaceMonoBold.ttf");
         tvNhietdo.setTypeface(typeface);
         tvNhietdo.setText(String.valueOf(aDouble).substring(0, 2) + "ºC");
     }

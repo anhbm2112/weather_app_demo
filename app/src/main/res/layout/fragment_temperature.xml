@@ -1,37 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center">
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/layout_margin_20">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/pabding_10">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/TitleFvsC"
-            android:textColor="@color/ground"
-            android:layout_margin="@dimen/margin_day"
-            android:textSize="@dimen/textSize_16"/>
-    <Button
-            android:id="@+id/c"
-            style="@style/CF_dialog"
-            android:background="@color/ground"
-            android:text="@string/doC"
-            android:textColor="@color/white" />
+    android:gravity="center"
+    android:background="@color/cyan">
 
-        <Button
-            android:id="@+id/f"
-            style="@style/CF_dialog"
-            android:background="@color/ground"
-            android:text="@string/doF"
-            android:textColor="@color/white" />
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginLeft_10"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="@dimen/marginLeft_5"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+           >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/PermissionsLocation"
+                android:textColor="@color/ground"
+                android:textSize="@dimen/textSize_16"
+                android:layout_gravity="center"
+                />
+            <ImageView
+                android:id="@+id/icon_location"
+                android:layout_width="@dimen/icon_location_50"
+                android:layout_height="@dimen/icon_location_40"
+                android:src="@drawable/location"
+                android:layout_gravity="center"
+                android:padding="@dimen/margin_3"
+                android:layout_marginLeft="@dimen/marginLeft_40"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/location"
+        android:layout_margin="@dimen/marginLeft_10"
+        app:cardCornerRadius="@dimen/marginLeft_5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/pabding_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_day"
+                android:text="@string/TitleFvsC"
+                android:textColor="@color/ground"
+                android:textSize="@dimen/textSize_16" />
+
+            <Button
+                android:id="@+id/c"
+                style="@style/CF_dialog"
+                android:background="@color/ground"
+                android:text="@string/doC"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/f"
+                style="@style/CF_dialog"
+                android:background="@color/ground"
+                android:text="@string/doF"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
 </RelativeLayout>
