@@ -1,8 +1,10 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +13,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
@@ -39,11 +44,15 @@ public class SearchCityFragment extends BaseFragment implements AboutPresenter, 
     private ImageView back;
     private ArrayAdapter<String> arrayAdapterSpin;
     private OnCallBackData onCallBackData;
-private  Typeface typeface;
+    private Typeface typeface;
+    private ArrayList<String> arrayList;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_searchcity, container, false);
+
         return view;
     }
 
@@ -69,6 +78,7 @@ private  Typeface typeface;
         setSpinner();
         LinearLayoutManager LayoutManagaer = new LinearLayoutManager(getActivity());
         recyCity.setLayoutManager(LayoutManagaer);
+
     }
 
     @Override
@@ -79,12 +89,20 @@ private  Typeface typeface;
         } catch (ClassCastException e) {
 
         }
+
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String thanhpho = adapterView.getItemAtPosition(i).toString();
         onCallBackData.DataCity(thanhpho);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("key", getActivity().MODE_PRIVATE);
+        String thanhpho11 = sharedPreferences.getString("keyThanhpho", "");
+        if (thanhpho11 == thanhpho) {
+            spinner.setSelection(3);
+        }
+
     }
 
     @Override
@@ -94,21 +112,24 @@ private  Typeface typeface;
 
     private void setSpinner() {
         String[] array = getResources().getStringArray(R.array.List_City);
-        ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(array));
+        arrayList = new ArrayList<String>(Arrays.asList(array));
         arrayAdapterSpin = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arrayList);
         arrayAdapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapterSpin);
         spinner.setOnItemSelectedListener(this);
 
-//        for (int i = 0; i < arrayList.size(); i++) {
-//            if (arrayList.get(i).equals(thanhphoLichsu)) {
-//                spinner.setSelection(i);
-//            }
-//        }
-//        Bundle bundle = getArguments();
-//        String lichsuThanhpho = bundle.getString("timthanhpho");
-//        Log.e("TTTTHHHHAAAANNNHHHh", lichsuThanhpho);
+        //        Bundle args = this.getArguments();
+////        if (args != null) {
+////            Log.e("LLLSSSS", String.valueOf(args));
+////        }
+//
+////        for (int i = 0; i < arrayList.size(); i++) {
+////            if (arrayList.get(i).equals(s)) {
+////                spinner.setSelection();
+////            }
+////        }
     }
+
 
     @Override
     public void thanhpho(String thanhpho) {
@@ -135,6 +156,5 @@ private  Typeface typeface;
     public void nhietdoC(Double aDouble) {
         tvNhietdo.setText(String.valueOf(aDouble).substring(0, 2) + "ºC");
     }
-
 
 }

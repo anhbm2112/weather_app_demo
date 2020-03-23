@@ -2,6 +2,8 @@ package anhbm.nws.weatherapp.presentation.ui.screen.main.mvp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
+
 import java.util.ArrayList;
 import java.util.List;
 import anhbm.nws.weatherapp.api.APICallListener;
@@ -11,6 +13,7 @@ import anhbm.nws.weatherapp.api.weather.modelWeatherList.WeatherList;
 import anhbm.nws.weatherapp.application.GPSTracker;
 import anhbm.nws.weatherapp.domains.interactors.WeatherInteractor;
 import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
+import anhbm.nws.weatherapp.presentation.ui.screen.fragment.SearchCityFragment;
 import anhbm.nws.weatherapp.utils.Enums;
 
 
@@ -77,7 +80,6 @@ public class MainPresenterImpl implements APICallListener {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("keyThanhpho", thanhpho);
         editor.putString("keyngay", ngaygio);
-
         editor.putString("keyC", String.valueOf(doC).substring(0, 2));
         editor.putString("keyF", String.valueOf(doF).substring(0, 3));
         editor.apply();
@@ -92,7 +94,6 @@ public class MainPresenterImpl implements APICallListener {
         } else if (!s && k) {
             main.nhietdoF(doF);
         }
-
     }
 
     @Override

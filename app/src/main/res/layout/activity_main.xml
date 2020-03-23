@@ -27,8 +27,7 @@
         android:background="@color/ground"
         app:itemIconSize="@dimen/size_icon_BottomNavigationView"
         app:itemIconTint="@color/white"
-        app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_main"
-
+        app:labelVisibilityMode="selected"
         />
 </RelativeLayout>

@@ -74,10 +74,10 @@
     <string name="delete_history">Xóa Lịch Sử</string>
     <string name="detail">Chi Tiết</string>
     <string name="AQI"> US AQI</string>
-
+<string name="Permission">Đã Cho Quyền Vị Trí</string>
     <string-array name="List_City">
-        <item>Hà Nội</item>
         <item>Thành Phố Hồ Chí Minh</item>
+        <item>Hà Nội</item>
         <item>Tuyên Quang</item>
         <item>Hà Giang</item>
         <item>Yên Bái</item>

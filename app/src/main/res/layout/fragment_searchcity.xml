@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundweather">
+    android:background="@drawable/backgroundweather"
+    android:layout_marginTop="@dimen/layout_margin_20">
     <RelativeLayout
         android:id="@+id/rela2"
         android:layout_width="match_parent"
@@ -10,7 +11,8 @@
 
         <ImageView
             android:id="@+id/back_timkiem"
-            style="@style/img_back_timkiem"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_action_back" />
 
@@ -46,7 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/horizontal_relativeLayout"
             android:layout_alignParentBottom="true"
-            android:background="@color/white" />
+            android:background="@color/white"
+           />
     </RelativeLayout>
 
     <TextView
@@ -83,7 +86,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/imgIconchinh">
 
     </androidx.recyclerview.widget.RecyclerView>

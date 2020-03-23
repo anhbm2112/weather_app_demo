@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
@@ -25,6 +26,11 @@ public class TemperatureFragment extends BottomSheetDialogFragment {
     private static final String IS_DEGREE = "IS_DEGREE";
     private static final String IS_KELVIN = "IS_KELVIN";
     private ImageView imageView;
+    //    private static final String Check_Permission = "Permission";
+    private static final String Check_Permission_TrueFalse = "PermissionTrueFalse";
+    private boolean s;
+    private CardView cardView;
+
     public static TemperatureFragment newInstance() {
         return new TemperatureFragment();
     }
@@ -42,27 +48,29 @@ public class TemperatureFragment extends BottomSheetDialogFragment {
         buttonC = view.findViewById(R.id.c);
         buttonF = view.findViewById(R.id.f);
         imageView = view.findViewById(R.id.icon_location);
+        cardView = view.findViewById(R.id.location);
         preferences = this.getActivity().getSharedPreferences("key", getActivity().MODE_PRIVATE);
         editor = preferences.edit();
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
-                            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-
-                        } else {
-                            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                        }
+        s = preferences.getBoolean(Check_Permission_TrueFalse, true);
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                        dismissAllowingStateLoss();
+                    } else {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                        dismissAllowingStateLoss();
                     }
+                }
+            });
+        } else {
+            Toast.makeText(getActivity(),R.string.Permission, Toast.LENGTH_SHORT).show();
+            cardView.setVisibility(View.GONE);
+        }
 
-                    Toast.makeText(getActivity(), "Đã Cho Quyền Vị Trí ", Toast.LENGTH_LONG).show();
 
-
-                dismissAllowingStateLoss();
-
-            }
-        });
         buttonC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,11 +107,12 @@ public class TemperatureFragment extends BottomSheetDialogFragment {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         Toast.makeText(getActivity(), R.string.LayvitriThanhCong, Toast.LENGTH_SHORT).show();
+                        editor.putBoolean(Check_Permission_TrueFalse, true);
 
                     }
                 } else {
                     Toast.makeText(getActivity(), R.string.LayvitriThatBai, Toast.LENGTH_SHORT).show();
-
+                    editor.putBoolean(Check_Permission_TrueFalse, false);
                 }
                 return;
             }

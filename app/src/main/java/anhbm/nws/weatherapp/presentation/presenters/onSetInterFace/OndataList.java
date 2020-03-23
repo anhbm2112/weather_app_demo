@@ -1,6 +1,5 @@
 package anhbm.nws.weatherapp.presentation.presenters.onSetInterFace;
 
-public interface OnCallBackData {
-    void DataCity(String s);
-
+public interface OndataList {
+    void DataListCity(String s);
 }

@@ -47,6 +47,7 @@ public class AboutPresenterImpl implements APICallListener {
     public void Tim(String s) {
         weatherInteractor.callAPICity(s);
         historyModel.setThanhpho(s);
+
     }
 
     @Override

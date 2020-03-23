@@ -1,8 +1,7 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.fragment;
 
-import android.Manifest;
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,14 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
@@ -29,6 +23,8 @@ import java.util.List;
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
+import anhbm.nws.weatherapp.presentation.presenters.onSetInterFace.OnCallBackData;
+import anhbm.nws.weatherapp.presentation.presenters.onSetInterFace.OndataList;
 import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherDayAdapter;
 import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherHorizontalAdapter;
 
@@ -77,6 +73,7 @@ public class HomeFragment extends Fragment implements MainPresenter {
         enums = getValueFromPreference();
         initRecyclerView(enums);
         Managaer();
+
     }
 
     private void init() {
