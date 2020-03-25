@@ -26,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
+        >
 
     </FrameLayout>
 
@@ -47,5 +47,5 @@
         app:menu="@menu/menu_main"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"/>
+     />
 </androidx.constraintlayout.widget.ConstraintLayout>
