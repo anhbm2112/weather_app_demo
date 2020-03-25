@@ -3,19 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    android:layout_gravity="center">
 
-    <Button
-        android:id="@+id/thoat_diag"
-        style="@style/delete_history"
-        android:background="@color/ground"
-        android:text="@string/thoat" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/xoalichsu"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize_16"
+        android:gravity="center"
+        android:padding="@dimen/marginLeft_5"
+        />
 
-    <Button
-        android:id="@+id/xoa_diag"
-        style="@style/delete_history"
-        android:background="@color/ground"
-        android:text="@string/xoa" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/marginLeft_10">
 
+        <Button
+            android:id="@+id/thoat_diag"
+            style="@style/delete_history"
+            android:background="@color/ground"
+            android:text="@string/thoat"
+            />
+
+        <Button
+            android:id="@+id/xoa_diag"
+            style="@style/delete_history"
+            android:background="@color/ground"
+            android:text="@string/xoa" />
+    </LinearLayout>
 
 </LinearLayout>

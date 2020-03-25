@@ -1,12 +1,7 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.searchCity.mvp;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.provider.Settings;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -89,8 +84,7 @@ public class AboutPresenterImpl implements APICallListener {
 
 
     public void insetLichSu(List<ListAPI> listCityList) {
-        nhietdo = listCityList.get(0).getMain().getTemp();
-        nhietdoF = listCityList.get(0).getMain().onConvertCelsiusToF(nhietdo);
+        nhietdo = Double.parseDouble(String.valueOf(listCityList.get(0).getMain().getTemp()).substring(0,4));
         dogio = String.valueOf(listCityList.get(0).getWind().getDeg());
         tocdogio = String.valueOf(listCityList.get(0).getWind().getSpeed());
         doam = String.valueOf(listCityList.get(0).getMain().getHumidity());
@@ -107,6 +101,7 @@ public class AboutPresenterImpl implements APICallListener {
         historyModel.setDoamHumidity(doam);
         historyModel.setTrangthaiDescription(trangthai);
         historyModel.setIconSql(icon);
+
         sqlDatabase = new SqlDatabase(mcontext);
         long kiemtra = sqlDatabase.insetHistory(historyModel);
         if (kiemtra > 0) {
@@ -115,8 +110,7 @@ public class AboutPresenterImpl implements APICallListener {
         } else {
             Toast.makeText(mcontext, R.string.ThemLichSuThatBai, Toast.LENGTH_LONG).show();
         }
+
     }
-
-
 
 }

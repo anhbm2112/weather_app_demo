@@ -2,7 +2,7 @@
 <resources>
     <!--man tim kiem-->
     <dimen name="height_relativeLayout_Search">50dp</dimen>
-    <dimen name="city_size_Search">12sp</dimen>
+    <dimen name="city_size_Search">13sp</dimen>
     <dimen name="vertical_relativeLayout">2dp</dimen>
     <dimen name="horizontal_relativeLayout">2dp</dimen>
     <dimen name="text_City">32sp</dimen>
@@ -19,12 +19,12 @@
     <dimen name="size_icon_BottomNavigationView">25dp</dimen>
     <dimen name="textSize_title">18sp</dimen>
     <dimen name="height_recy_horizontal_main">160dp</dimen>
-    <dimen name="height_recy_vertical_main">255dp</dimen>
+    <dimen name="height_recy_vertical_main">250dp</dimen>
     <dimen name="sizeONHIEM_USAQI">22sp</dimen>
     <dimen name="ONHIEM">18sp</dimen>
     <dimen name="sizeTieuDeONHIEM">18sp</dimen>
-    <dimen name="height_icon_onhiem">80dp</dimen>
-    <dimen name="width_icon_onhiem">120dp</dimen>
+    <dimen name="height_icon_onhiem">60dp</dimen>
+    <dimen name="width_icon_onhiem">100dp</dimen>
     <dimen name="pabding_5">5dp</dimen>
     <dimen name="pabding_10">10dp</dimen>
     <dimen name="layout_margin_20">20dp</dimen>

@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundweather"
-    android:layout_marginTop="@dimen/layout_margin_20">
+    android:background="@drawable/backgroundweather">
+
     <RelativeLayout
         android:id="@+id/rela2"
         android:layout_width="match_parent"
@@ -11,8 +11,8 @@
 
         <ImageView
             android:id="@+id/back_timkiem"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_action_back" />
 
@@ -24,11 +24,18 @@
         <TextView
             android:id="@+id/tv_choncity"
             style="@style/tieude_timkiem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/marginLeft_10"
             android:layout_toRightOf="@id/back_timkiem"
+            android:padding="@dimen/pabding_5"
+            android:text="@string/city_text"
             android:textColor="@color/white"
             android:textSize="@dimen/city_size_Search"
             android:textStyle="bold"
-           />
+
+            />
 
         <TextView
             android:id="@+id/gach_doc"
@@ -42,14 +49,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/gach_doc" />
+            android:layout_toRightOf="@+id/gach_doc"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/horizontal_relativeLayout"
             android:layout_alignParentBottom="true"
-            android:background="@color/white"
-           />
+            android:background="@color/white" />
     </RelativeLayout>
 
     <TextView
@@ -61,8 +69,7 @@
         android:text="@string/nhietdotrong"
         android:textColor="@color/bg_color"
         android:textSize="@dimen/text_City"
-        android:textStyle="bold"
-      />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_temperature_mancity"
@@ -73,8 +80,7 @@
         android:text="@string/nhietdotrong"
         android:textColor="@color/bg_color"
         android:textSize="@dimen/text_temperature"
-        android:textStyle="bold"
-       />
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imgIconchinh"

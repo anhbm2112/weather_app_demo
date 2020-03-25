@@ -1,6 +1,5 @@
 package anhbm.nws.weatherapp.presentation.ui.screen.fragment;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -23,8 +22,6 @@ import java.util.List;
 import anhbm.nws.weatherapp.R;
 import anhbm.nws.weatherapp.api.weather.modelWeatherList.ListAPI;
 import anhbm.nws.weatherapp.presentation.presenters.MainPresenter;
-import anhbm.nws.weatherapp.presentation.presenters.onSetInterFace.OnCallBackData;
-import anhbm.nws.weatherapp.presentation.presenters.onSetInterFace.OndataList;
 import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherDayAdapter;
 import anhbm.nws.weatherapp.presentation.ui.adapter.WeatherHorizontalAdapter;
 
@@ -49,6 +46,7 @@ public class HomeFragment extends Fragment implements MainPresenter {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         return view;
     }

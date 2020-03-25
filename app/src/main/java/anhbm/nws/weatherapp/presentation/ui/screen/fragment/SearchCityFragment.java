@@ -97,11 +97,11 @@ public class SearchCityFragment extends BaseFragment implements AboutPresenter, 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String thanhpho = adapterView.getItemAtPosition(i).toString();
         onCallBackData.DataCity(thanhpho);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("key", getActivity().MODE_PRIVATE);
-        String thanhpho11 = sharedPreferences.getString("keyThanhpho", "");
-        if (thanhpho11 == thanhpho) {
-            spinner.setSelection(3);
-        }
+//        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("key", getActivity().MODE_PRIVATE);
+//        String thanhpho11 = sharedPreferences.getString("keyThanhpho", "");
+//        if (thanhpho11 == thanhpho) {
+//            spinner.setSelection(3);
+//        }
 
     }
 
@@ -113,23 +113,11 @@ public class SearchCityFragment extends BaseFragment implements AboutPresenter, 
     private void setSpinner() {
         String[] array = getResources().getStringArray(R.array.List_City);
         arrayList = new ArrayList<String>(Arrays.asList(array));
-        arrayAdapterSpin = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arrayList);
+        arrayAdapterSpin = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, arrayList);
         arrayAdapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapterSpin);
         spinner.setOnItemSelectedListener(this);
-
-        //        Bundle args = this.getArguments();
-////        if (args != null) {
-////            Log.e("LLLSSSS", String.valueOf(args));
-////        }
-//
-////        for (int i = 0; i < arrayList.size(); i++) {
-////            if (arrayList.get(i).equals(s)) {
-////                spinner.setSelection();
-////            }
-////        }
     }
-
 
     @Override
     public void thanhpho(String thanhpho) {

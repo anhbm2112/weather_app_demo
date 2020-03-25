@@ -2,7 +2,7 @@
 <resources>
     <!--man tim kiem-->
     <dimen name="height_relativeLayout_Search">50dp</dimen>
-    <dimen name="city_size_Search">12sp</dimen>
+    <dimen name="city_size_Search">13sp</dimen>
     <dimen name="vertical_relativeLayout">2dp</dimen>
     <dimen name="horizontal_relativeLayout">2dp</dimen>
     <dimen name="text_City">32sp</dimen>
@@ -19,16 +19,21 @@
     <dimen name="size_icon_BottomNavigationView">25dp</dimen>
     <dimen name="textSize_title">18sp</dimen>
     <dimen name="height_recy_horizontal_main">160dp</dimen>
-    <dimen name="height_recy_vertical_main">255dp</dimen>
-    <dimen name="sizeONHIEM_USAQI">30sp</dimen>
+    <dimen name="height_recy_vertical_main">150dp</dimen>
+    <dimen name="sizeONHIEM_USAQI">25sp</dimen>
     <dimen name="ONHIEM">20sp</dimen>
     <dimen name="sizeTieuDeONHIEM">20sp</dimen>
+    <dimen name="height_icon_onhiem">60dp</dimen>
+    <dimen name="width_icon_onhiem">100dp</dimen>
     <dimen name="pabding_5">5dp</dimen>
     <dimen name="pabding_10">10dp</dimen>
     <dimen name="layout_margin_20">20dp</dimen>
     <dimen name="icon_location_50">50dp</dimen>
     <dimen name="icon_location_40">40dp</dimen>
 
+    <!--    <dimen name="sizeONHIEM_USAQI">22sp</dimen>-->
+    <!--    <dimen name="ONHIEM">16sp</dimen>-->
+    <!--    <dimen name="sizeTieuDeONHIEM">18sp</dimen>-->
     <!--man history-->
     <dimen name="textSize_title_history">18sp</dimen>
     <dimen name="marginLeft_title_history">60dp</dimen>
@@ -47,11 +52,10 @@
     <dimen name="height_center">80dp</dimen>
 
     <!--horizontal Icon<-->
-    <dimen name="text_horizontal">15sp</dimen>
+    <dimen name="text_horizontal">12sp</dimen>
     <dimen name="Size_temperature_Icon">18sp</dimen>
     <dimen name="height_Icon_img">45dp</dimen>
     <dimen name="width_horizontal">75dp</dimen>
-    <dimen name="margin_3">3dp</dimen>
 
     <!--day_icon-->
     <dimen name="margin_day">8dp</dimen>
@@ -59,7 +63,7 @@
     <dimen name="textSize_temperature_Day">24sp</dimen>
     <dimen name="width_Img_day">180px</dimen>
     <dimen name="height_Img_day">120px</dimen>
-
+    <dimen name="height_icon_history_115">115dp</dimen>
     <!--dialog-->
     <dimen name="title_detail_size">16sp</dimen>
 </resources>

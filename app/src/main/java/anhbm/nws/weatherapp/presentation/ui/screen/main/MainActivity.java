@@ -28,7 +28,7 @@ import anhbm.nws.weatherapp.presentation.ui.screen.fragment.TemperatureFragment;
 import anhbm.nws.weatherapp.presentation.ui.screen.main.mvp.MainPresenterImpl;
 import anhbm.nws.weatherapp.presentation.ui.screen.searchCity.mvp.AboutPresenterImpl;
 
-public class MainActivity extends BaseActivity implements OnCallBackData, BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements OnCallBackData {
     private BottomNavigationView bottomNavigationView;
     private MainPresenterImpl presenterMain;
     private AboutPresenterImpl presenterAbout;
@@ -56,38 +56,43 @@ public class MainActivity extends BaseActivity implements OnCallBackData, Bottom
     }
 
     private void init() {
+        bottomNavigationView = findViewById(R.id.bottomnavigation);
         preferences = getSharedPreferences("key", MODE_PRIVATE);
         editor = preferences.edit();
-        initLayout();
+        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//        initLayout();
     }
 
-    private void initLayout() {
-        bottomNavigationView = findViewById(R.id.bottomnavigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
-    }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        switch (menuItem.getItemId()) {
-            case R.id.menu_Home:
-                fragmentManager.beginTransaction().replace(R.id.frameLayout_main, new HomeFragment()).commit();
-                return true;
-            case R.id.menu_bottomn_search:
-                SearchCityFragment searchCityFragment = new SearchCityFragment();
-                presenterAbout = new AboutPresenterImpl(searchCityFragment, this);
-                fragmentManager.beginTransaction().add(R.id.frameLayout_main, searchCityFragment).commit();
-                return true;
-            case R.id.menu_bottomn_FvsC:
-                TemperatureFragment temperatureFragment = TemperatureFragment.newInstance();
-                temperatureFragment.show(getSupportFragmentManager(), "ActionBottomDialog");
-                return true;
-            case R.id.menu_history:
-                fragmentManager.beginTransaction().add(R.id.frameLayout_main, new HistoryFragment()).commit();
-                return true;
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            switch (menuItem.getItemId()) {
+                case R.id.menu_Home:
+                    fragmentManager.beginTransaction().replace(R.id.frameLayout_main, new HomeFragment()).commit();
+                    break;
+                case R.id.menu_bottomn_search:
+                    SearchCityFragment searchCityFragment = new SearchCityFragment();
+                    presenterAbout = new AboutPresenterImpl(searchCityFragment, getApplicationContext());
+                    fragmentManager.beginTransaction().add(R.id.frameLayout_main, searchCityFragment).commit();
+                    break;
+                case R.id.menu_bottomn_FvsC:
+                    TemperatureFragment temperatureFragment = TemperatureFragment.newInstance();
+                    temperatureFragment.show(getSupportFragmentManager(), "ActionBottomDialog");
+                    break;
+                case R.id.menu_history:
+                    fragmentManager.beginTransaction().add(R.id.frameLayout_main, new HistoryFragment()).commit();
+                    break;
+            }
+            return false;
         }
-        return false;
-    }
+
+    };
+
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

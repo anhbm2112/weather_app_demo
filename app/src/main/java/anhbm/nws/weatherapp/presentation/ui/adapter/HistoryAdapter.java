@@ -75,7 +75,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 View view1 = LayoutInflater.from(mContext).inflate(R.layout.delete_dialog, null);
                 builder.setView(view1);
-                builder.setTitle(R.string.xoalichsu);
                 final AlertDialog dialog = builder.show();
                 Button buttonXoa, buttonThoat;
                 buttonXoa = dialog.findViewById(R.id.xoa_diag);
@@ -109,7 +108,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
                 final AlertDialog dialog = builder.show();
                 TextView gio, ngay, dogio, tocdogio, nhietdo, trangthai, doam, thanhpho;
                 ImageView imageView;
-                imageView = dialog.findViewById(R.id.thoat_chitiet);
                 gio = dialog.findViewById(R.id.gio_chitiet);
                 ngay = dialog.findViewById(R.id.ngay_chitiet);
                 nhietdo = dialog.findViewById(R.id.nhietdo_chitiet);
@@ -128,12 +126,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.holder> 
                 doam.setText(historyModel.getDoamHumidity() + "%");
                 trangthai.setText(historyModel.getTrangthaiDescription());
 
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
             }
         });
         holder.setItem(new ItemOnClick() {

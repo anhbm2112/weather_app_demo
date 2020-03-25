@@ -9,7 +9,7 @@
     <dimen name="text_temperature">42sp</dimen>
     <dimen name="height_icon">200px</dimen>
     <dimen name="width_icon">300px</dimen>
-    <dimen name="marginLeft_city">10dp</dimen>
+    <dimen name="marginLeft_city">20dp</dimen>
     <!--man main-->
     <dimen name="height_AppBarLayout_">150dp</dimen>
     <dimen name="textSize_temperature_main">45dp</dimen>

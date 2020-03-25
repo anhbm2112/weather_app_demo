@@ -23,8 +23,8 @@ public class HistoryModel {
     public static final String COLUMN_ICON = "icon";
 
     public static final String CREATE_TABLE_HISTORY = " CREATE TABLE " + TABLE_HISTORY_SQL + "("
-            + COLUMN_GIO + " VARCHAR PRIMARY KEY, " + COLUMN_THANHPHOCHON + " VARCHAR, " + COLUMN_NGAY
-            + " VARCHAR, " + COLUMN_NHIETDO + " VARCHAR, " + COLUMN_DOAM + " VARCHAR, " + COLUMN_DOGIO + "" +
+            + COLUMN_GIO + " VARCHAR, " + COLUMN_THANHPHOCHON + " VARCHAR, " + COLUMN_NGAY
+            + " VARCHAR, " + COLUMN_NHIETDO + " VARCHAR PRIMARY KEY, " + COLUMN_DOAM + " VARCHAR, " + COLUMN_DOGIO + "" +
             " VARCHAR, " + COLUMN_TOCDOGIO + " VARCHAR, " + COLUMN_TRANGTHAI + " VARCHAR, " + COLUMN_ICON + " VARCHAR) ";
 
     public String getThanhpho() {

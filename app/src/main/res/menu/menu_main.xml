@@ -4,21 +4,29 @@
         android:id="@+id/menu_Home"
         android:icon="@drawable/ic_action_home"
         android:title=""
+        android:enabled="true"
+        app:showAsAction="always"
         />
     <item
         android:id="@+id/menu_bottomn_FvsC"
         android:icon="@drawable/ic_action_menu"
         android:title=""
+        android:enabled="true"
+        app:showAsAction="always"
         />
     <item
         android:id="@+id/menu_bottomn_search"
         android:icon="@drawable/ic_action_search"
         android:title=""
+        android:enabled="true"
+        app:showAsAction="always"
         />
     <item
         android:id="@+id/menu_history"
         android:icon="@drawable/ic_action_history"
         android:title=""
+        android:enabled="true"
+        app:showAsAction="always"
         />
 
 

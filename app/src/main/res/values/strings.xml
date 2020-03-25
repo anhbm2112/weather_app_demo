@@ -32,13 +32,12 @@
     <string name="detail_history">Chi Tiết Lịch Sử Tìm Kiếm Thành Phố</string>
     <string name="text1">Giờ Tìm Kiếm Thành Phố :</string>
     <string name="text2">Ngày Tìm Kiếm Thành Phố :</string>
-    <string name="text3">Thành Phố Tìm Kiếm :</string>
-    <string name="text4">Nhiệt Độ Thành Phố Tìm Kiếm :</string>
-    <string name="text5">Độ Gió Của Thành Phố Tìm Kiếm :</string>
-    <string name="text6">Tốc Độ Gió Của Thành Phố Tìm Kiếm :</string>
-    <string name="text7">Độ Ẩm Của Thành Phố Tìm Kiếm :</string>
-    <string name="text8">Trạng Thái Thời Tiết Của Thành Phố :</string>
-
+    <string name="text3">Thành Phố :</string>
+    <string name="text4">Nhiệt Độ Thành Phố :</string>
+    <string name="text5">Độ Gió Của Thành Phố :</string>
+    <string name="text6">Tốc Độ Gió Của Thành Phố :</string>
+    <string name="text7">Độ Ẩm Của Thành Phố :</string>
+    <string name="text8">Trạng Thái Thời Tiết :</string>
     <string name="GPSBat">GPS Đã Được Bật</string>
     <string name="GPSTat">Ứng dụng cần xác định vị trí vui lòng bật GPS</string>
     <string name="GPSCaiDat">Vào cài đặt GPS</string>
@@ -49,10 +48,10 @@
     <string name="Ok">OK</string>
     <string name="CaiDat">Cài Đặt</string>
     <string name="ThemLichSu">Thêm Thành Công Vào Lịch Sử Tìm Kiếm</string>
-    <string name="ThemLichSuThatBai">Thêm Thất Bại</string>
+    <string name="ThemLichSuThatBai">Đã Có Trong Lịch Sử</string>
     <string name="LayvitriThanhCong">Cho Phép Lấy Vị Trí Thành Công</string>
     <string name="LayvitriThatBai">Lấy Vị Trí Thất Bại</string>
-<string name="PermissionsLocation">Cho Phép Lấy Vị Trí</string>
+    <string name="PermissionsLocation">Cho Phép Lấy Vị Trí</string>
 
     <string name="NguyHiem">Không Khí Đang Ở Mức Nguy hiểm</string>
     <string name="RatONhiem">Không Khí Đang Ở Mức RẤt Ô Nhiễm</string>
@@ -64,6 +63,7 @@
     <string name="Toastxoa">Đã Xóa Thành Công</string>
 
     <string name="TitleFvsC">Mời bạn Chọn Nhiệt Độ Hiển Thị</string>
+<string name="city_text">Mời Chọn Thành Phố</string>
 
     <string name="title_history">Lịch Sử Tìm Kiếm Thành Phố</string>
     <!--historyIcon-->
@@ -74,7 +74,7 @@
     <string name="delete_history">Xóa Lịch Sử</string>
     <string name="detail">Chi Tiết</string>
     <string name="AQI"> US AQI</string>
-<string name="Permission">Đã Cho Quyền Vị Trí</string>
+    <string name="Permission">Đã Cho Quyền Vị Trí</string>
     <string-array name="List_City">
         <item>Thành Phố Hồ Chí Minh</item>
         <item>Hà Nội</item>

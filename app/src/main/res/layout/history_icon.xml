@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="@dimen/height_icon_history_115"
     android:background="@color/ground"
     android:orientation="vertical">
     <TextView
@@ -145,7 +145,8 @@
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"
         android:textSize="@dimen/textSize_16"
-        android:layout_marginRight="@dimen/marginRight_15"/>
+        android:layout_marginRight="@dimen/marginRight_15"
+        android:layout_below="@+id/trangthai_history"/>
     <TextView
         android:id="@+id/gach_giua"
         android:layout_width="@dimen/vertical_relativeLayout"
