@@ -52,7 +52,6 @@ public class SearchCityFragment extends BaseFragment implements AboutPresenter, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_searchcity, container, false);
-
         return view;
     }
 
