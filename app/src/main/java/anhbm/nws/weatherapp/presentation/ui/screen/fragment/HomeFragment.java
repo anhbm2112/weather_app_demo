@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,6 +50,11 @@ public class HomeFragment extends Fragment implements MainPresenter {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         return view;
     }
 
@@ -65,7 +72,6 @@ public class HomeFragment extends Fragment implements MainPresenter {
         imageView = view.findViewById(R.id.icon_onhiem);
         linearLayout=view.findViewById(R.id.LinearOnhiem);
         AQI=view.findViewById(R.id.tv_pollution_AQI_hai);
-
 
         init();
         enums = getValueFromPreference();

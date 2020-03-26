@@ -9,11 +9,10 @@
 
     <TextView
         style="@style/tieu_de_chitiet"
-        android:layout_gravity="center"
-        android:gravity="center"
         android:text="@string/detail_history"
         android:textColor="@color/white"
-        android:textSize="@dimen/textSize_16" />
+        android:textSize="@dimen/textSize_16"
+        android:layout_gravity="left"/>
 
     <LinearLayout style="@style/Text_LinearLayout_detail">
 

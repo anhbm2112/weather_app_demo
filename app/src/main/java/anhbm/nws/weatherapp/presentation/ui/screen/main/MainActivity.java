@@ -60,6 +60,8 @@ public class MainActivity extends BaseActivity implements OnCallBackData {
         preferences = getSharedPreferences("key", MODE_PRIVATE);
         editor = preferences.edit();
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
 //        initLayout();
     }
 
