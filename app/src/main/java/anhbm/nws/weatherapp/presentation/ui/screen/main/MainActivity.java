@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity implements OnCallBackData {
         init();
         HomeFragment homeFragment = new HomeFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.frameLayout_main, homeFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.frameLayout_main, homeFragment).commit();
         gpsTracker = new GPSTracker(getApplicationContext());
         presenterMain = new MainPresenterImpl(homeFragment, gpsTracker, this);
     }
@@ -78,14 +78,14 @@ public class MainActivity extends BaseActivity implements OnCallBackData {
                 case R.id.menu_bottomn_search:
                     SearchCityFragment searchCityFragment = new SearchCityFragment();
                     presenterAbout = new AboutPresenterImpl(searchCityFragment, getApplicationContext());
-                    fragmentManager.beginTransaction().add(R.id.frameLayout_main, searchCityFragment).commit();
+                    fragmentManager.beginTransaction().replace(R.id.frameLayout_main, searchCityFragment).commit();
                     break;
                 case R.id.menu_bottomn_FvsC:
                     TemperatureFragment temperatureFragment = TemperatureFragment.newInstance();
                     temperatureFragment.show(getSupportFragmentManager(), "ActionBottomDialog");
                     break;
                 case R.id.menu_history:
-                    fragmentManager.beginTransaction().add(R.id.frameLayout_main, new HistoryFragment()).commit();
+                    fragmentManager.beginTransaction().replace(R.id.frameLayout_main, new HistoryFragment()).commit();
                     break;
             }
             return false;
